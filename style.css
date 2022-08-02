@@ -316,9 +316,13 @@ main.sign-up-mode .carousel {
 
 @media (max-width: 850px) {
   .box {
-    height: auto;
+    height: 420px;
     max-width: 550px;
-    overflow: hidden;
+    overflow: auto;
+  }
+
+  form{
+    justify-content: flex-start;
   }
 
   .inner-box {
@@ -381,6 +385,11 @@ main.sign-up-mode .carousel {
 
   .box {
     border-radius: 2rem;
+  }
+
+  
+  form{
+    justify-content: flex-start;
   }
 
   .inner-box {
@@ -460,7 +469,7 @@ span.text {
     height: 22vmin;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 830px) {
   .carousel{
     display: none;
   }
