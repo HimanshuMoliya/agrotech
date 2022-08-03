@@ -1,3 +1,17 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
 *,
@@ -22,7 +36,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(img/4.jpg);
+  background-image: url(./img/4.jpg);
   background-position: center;
   background-size: cover;
   background-blend-mode: overlay;
