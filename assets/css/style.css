@@ -333,10 +333,15 @@ main.sign-up-mode .carousel {
     height: 420px;
     max-width: 550px;
     overflow: auto;
+    overflow-x: hidden;
   }
 
   form{
     justify-content: flex-start;
+  }
+
+  .actual-form{
+    margin-top: 22px;
   }
 
   .inner-box {
@@ -400,10 +405,13 @@ main.sign-up-mode .carousel {
   .box {
     border-radius: 2rem;
   }
-
   
   form{
     justify-content: flex-start;
+  }
+
+  .actual-form{
+    margin-top: 22px;
   }
 
   .inner-box {
