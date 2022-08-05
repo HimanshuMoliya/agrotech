@@ -150,7 +150,7 @@ $invalid = false;
               </div>
             </form>
 
-            <form action="register.php" method="post" autocomplete="off" class="sign-up-form">
+            <form action="index.php" method="post" autocomplete="off" class="sign-up-form">
               <div class="logo">
                 <img src="assets/css/img/logo.png" alt="easyclass" />
                 <h4>Aggregte Agro</h4>
