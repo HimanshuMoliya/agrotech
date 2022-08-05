@@ -104,6 +104,16 @@ $invalid = false;
         rel="stylesheet"
       />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      @media (max-width: 850px) {
+        .box {
+          height: 420px;
+          max-width: 550px;
+          overflow: auto;
+          overflow-x: hidden;
+        }
+      }
+      </style>
   </head>
   <body>
     <main>
