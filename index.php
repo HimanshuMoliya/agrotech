@@ -144,10 +144,10 @@ if(!isset($_SESSION['email'])){
                                             <!-- <li><a href="contact.html">contacts</a></li> -->
 
                                             <?php
-                                            if(isset($email)){
+                                            if(isset($_SESSION['email'])){
                                                 ?>
 
-                                            <li><a href="#"><?php echo $email; ?></a>
+                                            <li><a href="#"><?php echo $_SESSION['email']; ?></a>
                                                 <ul class="submenu">
                                                     <li><a href="#">My account</a></li>
                                                     <li><a href="logout.php">Logout</a></li>
