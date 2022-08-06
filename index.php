@@ -141,12 +141,26 @@ if(!isset($_SESSION['email'])){
                                                     <li><a href="blog-details.html">Blog Details</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html">contacts</a></li>
+                                            <!-- <li><a href="contact.html">contacts</a></li> -->
+
                                             <?php
-                                            if(!isset($email)){
+                                            if(isset($email)){
                                                 ?>
 
-                                            <li><a href="#">login</a>
+                                            <li><a href="#"><?php echo $email; ?></a>
+                                                <ul class="submenu">
+                                                    <li><a href="#">My account</a></li>
+                                                    <li><a href="logout.php">Logout</a></li>
+                                                </ul>
+                                            </li>
+                                                
+
+
+
+                                            <?php
+                                            }else{
+                                                ?>
+                                               <li><a href="#">Login</a>
                                                 <ul class="submenu">
                                                     <li><a href="loginfarmer.php">As an farmer</a></li>
                                                     <li><a href="loginworker.php">as an worker</a></li>
@@ -154,19 +168,12 @@ if(!isset($_SESSION['email'])){
                                                 </ul>
                                             </li>
 
+                                            
 
-                                            <?php
-                                            }else{
-                                                ?>
-                                            <li class="dropdown"><a href="#"><?php echo $email; ?></a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">My account</a></li>
-                                                    <li><a href="logout.php">Logout</a></li>
-                                                </ul>
-                                            </li>
                                             <?php
                                             }
                                             ?>
+
                                         </ul>
                                     </div>
                                     <!-- <div class="header-action d-none d-md-block"> -->
