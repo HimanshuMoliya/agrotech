@@ -24,7 +24,7 @@ $invalid = false;
                     // console.log($_SESSION['id']);
 
                     setcookie('email',$email,time()+60*60*24*30);
-                    header("location: agrifram/index.html");
+                    header("location: agrifram/index.php");
                 }else{
                    
                     $invalid = true;
@@ -71,7 +71,7 @@ $invalid = false;
                 $result_insert = mysqli_query($con,$insert);
                 // $result_user = mysqli_query($con,$insert_userprofile);
                 $_SESSION['email'] = $email;
-                header("location: agrifram/index.html");
+                header("location: agrifram/index.php");
             }else{
                 ?>
                 <div class="alert alert-danger" role="alert">
