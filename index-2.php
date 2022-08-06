@@ -50,11 +50,11 @@ if(!isset($_SESSION['email'])){
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
         <style>
+            /* .navbar-wrap.main-menu.d-none.d-lg-flex {
+            margin-left: 0rem;
+            } */
             .navbar-wrap.main-menu.d-none.d-lg-flex {
-            margin-left: -10rem;
-            }
-            .navbar-wrap.main-menu.d-none.d-lg-flex {
-                margin-right: -12rem;
+                margin-right: 0rem;
             }
         </style>
     </head>
