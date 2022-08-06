@@ -147,7 +147,7 @@ if(!isset($_SESSION['email'])){
                                             if(isset($_SESSION['email'])){
                                                 ?>
 
-                                            <li><a href="#"><?php echo $_SESSION['email']; ?></a>
+                                            <li class="dropdown"><a href="#"><?php echo $_SESSION['email']; ?></a>
                                                 <ul class="submenu">
                                                     <li><a href="#">My account</a></li>
                                                     <li><a href="logout.php">Logout</a></li>
@@ -160,7 +160,7 @@ if(!isset($_SESSION['email'])){
                                             <?php
                                             }else{
                                                 ?>
-                                               <li><a href="#">Login</a>
+                                               <li class="dropdown"><a href="#">Login</a>
                                                 <ul class="submenu">
                                                     <li><a href="loginfarmer.php">As an farmer</a></li>
                                                     <li><a href="loginworker.php">as an worker</a></li>
