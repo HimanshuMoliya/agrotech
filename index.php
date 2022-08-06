@@ -26,7 +26,7 @@ if(!isset($_SESSION['email'])){
 <!doctype html>
 <html class="no-js" lang="en">
     
-<!-- Mirrored from themebeyond.com/html/agrifram/agrifram/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Aug 2022 02:44:27 GMT -->
+<!-- Mirrored from themebeyond.com/html/agrifram/agrifram/index-3.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Aug 2022 02:44:27 GMT -->
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -107,16 +107,16 @@ if(!isset($_SESSION['email'])){
                             <div class="menu-wrap">
                                 <nav class="menu-nav show">
                                     <div class="logo">
-                                        <a href="index-2.html">
+                                        <a href="index-2.php">
                                             <img src="img/logo/logo.png" alt="Logo">
                                         </a>
                                     </div>
                                     <div class="navbar-wrap main-menu d-none d-lg-flex">
                                         <ul class="navigation">
-                                            <li class="active dropdown"><a href="index-2.html">Home</a>
+                                            <li class="active dropdown"><a href="index-2.php">Home</a>
                                                 <ul class="submenu">
-                                                    <li><a href="index-2.html">Home One</a></li>
-                                                    <li><a href="index-3.html">Home Two</a></li>
+                                                    <li><a href="index-2.php">Home One</a></li>
+                                                    <li><a href="index-3.php">Home Two</a></li>
                                                     <li class="active"><a href="index-4.html">Home Three</a></li>
                                                 </ul>
                                             </li>
@@ -262,7 +262,7 @@ if(!isset($_SESSION['email'])){
                                 <div class="close-btn"><i class="fas fa-times"></i></div>
 
                                 <nav class="menu-box">
-                                    <div class="nav-logo"><a href="index-2.html"><img src="img/logo/w_logo.png" alt="" title=""></a>
+                                    <div class="nav-logo"><a href="index-2.php"><img src="img/logo/w_logo.png" alt="" title=""></a>
                                     </div>
                                     <div class="menu-outer">
                                         <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
@@ -808,7 +808,7 @@ if(!isset($_SESSION['email'])){
                         <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="footer-widget mb-50">
                                 <div class="footer-logo mb-35">
-                                    <a href="index-2.html"><img src="img/logo/w_logo.png" alt=""></a>
+                                    <a href="index-2.php"><img src="img/logo/w_logo.png" alt=""></a>
                                 </div>
                                 <div class="footer-text">
                                     <p>Agrifram Farming of relse etras sheets connig passag.</p>
@@ -949,5 +949,5 @@ if(!isset($_SESSION['email'])){
         <script src="js/main.js"></script>
     </body>
 
-<!-- Mirrored from themebeyond.com/html/agrifram/agrifram/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Aug 2022 02:44:31 GMT -->
+<!-- Mirrored from themebeyond.com/html/agrifram/agrifram/index-3.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Aug 2022 02:44:31 GMT -->
 </html>

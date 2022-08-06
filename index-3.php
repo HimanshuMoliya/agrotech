@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
     
-<!-- Mirrored from themebeyond.com/html/agrifram/agrifram/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Aug 2022 02:43:55 GMT -->
+<!-- Mirrored from themebeyond.com/html/agrifram/agrifram/index-2.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Aug 2022 02:43:55 GMT -->
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -78,7 +78,7 @@
                         <div class="row align-items-center">
                             <div class="col-xl-2 col-lg-3">
                                 <div class="logo">
-                                    <a href="index-2.html"><img src="img/logo/logo_2.png" alt="Logo"></a>
+                                    <a href="index-2.php"><img src="img/logo/logo_2.png" alt="Logo"></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-9">
@@ -129,10 +129,10 @@
                                         </div>
                                         <div class="navbar-wrap main-menu d-none d-lg-flex">
                                             <ul class="navigation">
-                                                <li class="active dropdown"><a href="index-2.html">Home</a>
+                                                <li class="active dropdown"><a href="index-2.php">Home</a>
                                                     <ul class="submenu">
-                                                        <li><a href="index-2.html">Home One</a></li>
-                                                        <li class="active"><a href="index-3.html">Home Two</a></li>
+                                                        <li><a href="index-2.php">Home One</a></li>
+                                                        <li class="active"><a href="index-3.php">Home Two</a></li>
                                                         <li><a href="index-4.html">Home Three</a></li>
                                                     </ul>
                                                 </li>
@@ -234,7 +234,7 @@
                                     <div class="close-btn"><i class="fas fa-times"></i></div>
 
                                     <nav class="menu-box">
-                                        <div class="nav-logo"><a href="index-2.html"><img src="img/logo/w_logo.png" alt="" title=""></a>
+                                        <div class="nav-logo"><a href="index-2.php"><img src="img/logo/w_logo.png" alt="" title=""></a>
                                         </div>
                                         <div class="menu-outer">
                                             <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
@@ -1016,7 +1016,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="footer-widget mb-50">
                                 <div class="footer-logo mb-30">
-                                    <a href="index-2.html"><img src="img/logo/logo.png" alt=""></a>
+                                    <a href="index-2.php"><img src="img/logo/logo.png" alt=""></a>
                                 </div>
                                 <div class="footer-text mb-35">
                                     <p>Organic farming is an alternative agriultural system which originated early in the 20th century in reaction to rapidly
@@ -1132,5 +1132,5 @@
         <script src="js/main.js"></script>
     </body>
 
-<!-- Mirrored from themebeyond.com/html/agrifram/agrifram/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Aug 2022 02:44:27 GMT -->
+<!-- Mirrored from themebeyond.com/html/agrifram/agrifram/index-2.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Aug 2022 02:44:27 GMT -->
 </html>
