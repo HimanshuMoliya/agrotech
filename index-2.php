@@ -99,7 +99,7 @@ if(!isset($_SESSION['email'])){
                                                 <ul class="submenu">
                                                     <li class="active"><a href="index-2.php">Home One</a></li>
                                                     <li><a href="index-3.php">Home Two</a></li>
-                                                    <li><a href="index-4.html">Home Three</a></li>
+                                                    <li><a href="index-4.php">Home Three</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="about.html">About</a></li>
