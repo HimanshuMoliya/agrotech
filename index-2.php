@@ -153,7 +153,7 @@ if(!isset($_SESSION['email'])){
                                         
                                         </ul>
                                     </div>
-                                    <div class="header-action d-none d-md-block">
+                                    <!-- <div class="header-action d-none d-md-block">
                                         <ul>
                                             <li class="header-shop-cart"><a href="#"><i
                                                         class="fas fa-shopping-basket"></i><span>2</span></a>
@@ -219,7 +219,7 @@ if(!isset($_SESSION['email'])){
                                                 </ul>
                                             </li>
                                             </ul>
-                                    </div>
+                                    </div> -->
                                 </nav>
                             </div>
                             <div class="header-bottom-wrap d-none d-lg-flex">
