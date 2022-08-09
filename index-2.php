@@ -19,7 +19,7 @@ if(!isset($_SESSION['email'])){
     //     $result_query = mysqli_query($con,$online_query);
     // }
 
-}
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -56,6 +56,12 @@ if(!isset($_SESSION['email'])){
             .navbar-wrap.main-menu.d-none.d-lg-flex {
                 margin-right: 0rem;
             }
+            .navbar-wrap ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 8rem;
+}
         </style>
     </head>
     <body>
