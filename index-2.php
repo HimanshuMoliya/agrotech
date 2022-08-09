@@ -148,7 +148,13 @@ if(!isset($_SESSION['email'])){
                                                 ?>
                                             <li class="dropdown"><a href="#"><?php echo $email; ?></a>
                                                 <ul class="submenu">
-                                                    <li><a href="blog.html">My account</a></li>
+                                                <?php
+                                                    $member = "SELECT * FROM `register` WHERE `email` = '$email'";
+                                                    $result_m = mysqli_query($con,$member);
+                                                    $row_my = mysqli_fetch_assoc($result_m);
+                                                    ?>
+                                                    
+                                                    <li><a href="myprofile.php?my_id=<?php echo $row_my['uid']; ?>">My account</a></li>
                                                     <li><a href="logout.php">Logout</a></li>
                                                 </ul>
                                             </li>
