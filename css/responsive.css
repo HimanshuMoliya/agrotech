@@ -307,7 +307,7 @@
 
 
 /* Large devices (desktops, 992px and up) */
-@media (max-width: 991.98px) {
+@media (max-width: 1130px) {
 .container-full {
 	padding: 0 40px;
 }
