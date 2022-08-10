@@ -24,7 +24,7 @@ $invalid = false;
                     // console.log($_SESSION['id']);
 
                     setcookie('email',$email,time()+60*60*24*30);
-                    header("location: index-2.php");
+                    header("location: myprofile.php");
                 }else{
                    
                     $invalid = true;
@@ -53,7 +53,7 @@ $invalid = false;
             $result_check = mysqli_query($con,$check);
     
             $num_check = mysqli_num_rows($result_check);
-    
+            $row = mysqli_fetch_assoc($result_check);
             if($num_check > 0){
             $valid= true;
                 
@@ -62,16 +62,20 @@ $invalid = false;
             
             else{
             if($password == $confirm_password){
+              
                 $user_id = rand ( 1000 , 999999 ); 
-                $insert = "INSERT INTO `register` ( `uid`,`occupation`, `first_name`, `last_name`, `email`, `phoneno`, `password`, `date`) VALUES ( $user_id,'worker', '$first_name', '$last_name', '$mail', '$phoneno', '$password', current_timestamp())";
+                $insert = "INSERT INTO `register` ( `uid`,`occupation`, `first_name`, `last_name`, `email`, `phoneno`, `password`, `date`) VALUES ( $user_id,'farmer', '$first_name', '$last_name', '$mail', '$phoneno', '$password', current_timestamp())";
 
                 // $fullname = $first_name . ' ' .$last_name;
                 // $insert_userprofile = "INSERT INTO `user_profile` (`id`, `email`, `fullname`, `profile_picture`, `about`, `birthdate`, `gender`, `city`, `mothertongue`, `hobbys`, `maritualstatus`, `ethencity`, `heighest_education`, `occupation`, `annual_income`, `height`, `weight`, `any_disability`, `my_habbits`, `verified`, `is_online`, `date`) VALUES ($user_id, '$mail', '$fullname', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, current_timestamp())";
+                $_SESSION['email'] = $mail;
+                $_SESSION['loggedin'] = true;
+                $_SESSION['online'] = "true";
+                $_SESSION['id'] = $row['uid'];
 
                 $result_insert = mysqli_query($con,$insert);
                 // $result_user = mysqli_query($con,$insert_userprofile);
-                $_SESSION['email'] = $email;
-                header("location: index-2.php");
+                header("location: myprofile.php");
             }else{
                 ?>
                 <div class="alert alert-danger" role="alert">
@@ -120,7 +124,7 @@ $invalid = false;
       <div class="box">
         <div class="inner-box">
           <div class="forms-wrap">
-            <form action="loginworker.php" method="post" autocomplete="off" class="sign-in-form">
+            <form action="login.php" method="post" autocomplete="off" class="sign-in-form">
               <div class="logo">
                 <img src="assets/css/img/logo.png" alt="easyclass" />
                 <h4>Aggregte Agro</h4>
@@ -160,7 +164,7 @@ $invalid = false;
               </div>
             </form>
 
-            <form action="loginworker.php" method="post" autocomplete="off" class="sign-up-form">
+            <form action="login.php" method="post" autocomplete="off" class="sign-up-form">
               <div class="logo">
                 <img src="assets/css/img/logo.png" alt="easyclass" />
                 <h4>Aggregte Agro</h4>
