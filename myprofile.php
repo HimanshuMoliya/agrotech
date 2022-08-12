@@ -1,3 +1,44 @@
+<?php
+// echo "hello";
+require "db/db.php";
+// $loggedin = true;
+
+// if(!isset($_SESSION['email'])){
+//     $loggedin = false;
+//     header("location: login.php");
+// }else{
+//     $loggedin = true;
+//     $online = $_SESSION['online'];
+//     $email = $_SESSION['email'];
+//     $id = $_SESSION['id'];
+    
+   
+// }
+require_once 'db/config.php';
+if(!isset($_SESSION['user_token']) AND !isset($_SESSION['email'])){
+    header("location: login.php");
+    die();
+  }else{
+if(isset($_SESSION['user_token'])){
+
+$sql = "SELECT * FROM user_profile WHERE token = '{$_SESSION['user_token']}'";
+$result = mysqli_query($con,$sql);
+
+if(mysqli_num_rows($result) > 0){
+    $userinfo = mysqli_fetch_assoc($result);
+    
+ }
+}
+else{
+    $sql = "SELECT * FROM user_profile WHERE email = '{$_SESSION['email']}' ";
+    $result = mysqli_query($con,$sql);
+
+    if(mysqli_num_rows($result) > 0){
+        $userinfo = mysqli_fetch_assoc($result);
+    }
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -69,12 +110,28 @@
           <div class="col-lg-4">
             <div class="card mb-4">
               <div class="card-body text-center">
+                <?php 
+                if(!isset($userinfo['picture'])){
+                ?>
                 <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                  src="assets/css/img/user-default.png"
                   alt="avatar"
                   class="rounded-circle img-fluid"
                   style="width: 150px"
                 />
+                
+                <?php
+                }else{
+                  ?>
+                <img
+                  src="<?php echo $userinfo['picture'];?>"
+                  alt="avatar"
+                  class="rounded-circle img-fluid"
+                  style="width: 150px"
+                />
+                <?php
+                }
+                ?>
                 <h5 class="my-3">John Smith</h5>
                 <!-- <p class="text-muted mb-1">abcd@gmail.com</p> -->
                 <div class="d-flex justify-content-center mb-2">
@@ -250,7 +307,7 @@
                     <p class="mb-0">Full Name</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">Johnatan Smith</p>
+                    <p class="text-muted mb-0"><?php echo $userinfo['fullname']; ?></p>
                   </div>
                 </div>
                 <hr />
@@ -259,7 +316,7 @@
                     <p class="mb-0">Email</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">example@example.com</p>
+                    <p class="text-muted mb-0"><?php echo $userinfo['email']; ?></p>
                   </div>
                 </div>
                 <hr />

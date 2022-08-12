@@ -6,7 +6,9 @@ require_once 'vendor/autoload.php';
 require_once 'db/config.php';
 $login = true;
 if(isset($_SESSION['user_token'])){
-  header("location: index.php");
+  // header("location: index.php");
+  header("location: myprofile.php");
+
 }else{
   $login = false;
 }
@@ -39,7 +41,9 @@ $invalid = false;
                     // console.log($_SESSION['id']);
 
                     setcookie('email',$email,time()+60*60*24*30);
-                    header("location: index1.php");
+                    // header("location: index1.php");
+                    header("location: myprofile.php");
+
                 }else{
                    
                     $invalid = true;
@@ -91,7 +95,8 @@ $invalid = false;
 
                 $result_insert = mysqli_query($con,$insert);
                 $result_user = mysqli_query($con,$sql);
-                header("location: index1.php");
+                // header("location: index1.php");
+                header("location: myprofile.php");
             }else{
                 ?>
                 <div class="alert alert-danger" role="alert">
