@@ -1,6 +1,21 @@
 <?php
 require "db/db.php";
-session_start();
+
+require_once 'vendor/autoload.php';
+
+require_once 'db/config.php';
+$login = true;
+if(isset($_SESSION['user_token'])){
+  header("location: index.php");
+}else{
+  $login = false;
+}
+
+
+// authenticate code from Google OAuth Flow
+
+
+
 
 $invalid = false;
         if($_SERVER['REQUEST_METHOD'] = "post"){
@@ -24,7 +39,7 @@ $invalid = false;
                     // console.log($_SESSION['id']);
 
                     setcookie('email',$email,time()+60*60*24*30);
-                    header("location: myprofile.php");
+                    header("location: index1.php");
                 }else{
                    
                     $invalid = true;
@@ -66,7 +81,8 @@ $invalid = false;
                 $user_id = rand ( 1000 , 999999 ); 
                 $insert = "INSERT INTO `register` ( `uid`,`occupation`, `first_name`, `last_name`, `email`, `phoneno`, `password`, `date`) VALUES ( $user_id,'farmer', '$first_name', '$last_name', '$mail', '$phoneno', '$password', current_timestamp())";
 
-                // $fullname = $first_name . ' ' .$last_name;
+                $fullname = $first_name . ' ' .$last_name;
+                $sql = "INSERT INTO `user_profile` ( `picture`, `token`, `email`, `fullname`, `phoneno`, `address`, `gender`, `age`, `workhour`, `approxsalary`, `date`) VALUES ( NULL,NULL , '{$mail}', '{$fullname}', '{$phoneno}', NULL, NULL, NULL, NULL,NULL, CURRENT_TIMESTAMP);";
                 // $insert_userprofile = "INSERT INTO `user_profile` (`id`, `email`, `fullname`, `profile_picture`, `about`, `birthdate`, `gender`, `city`, `mothertongue`, `hobbys`, `maritualstatus`, `ethencity`, `heighest_education`, `occupation`, `annual_income`, `height`, `weight`, `any_disability`, `my_habbits`, `verified`, `is_online`, `date`) VALUES ($user_id, '$mail', '$fullname', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, current_timestamp())";
                 $_SESSION['email'] = $mail;
                 $_SESSION['loggedin'] = true;
@@ -74,8 +90,8 @@ $invalid = false;
                 $_SESSION['id'] = $row['uid'];
 
                 $result_insert = mysqli_query($con,$insert);
-                // $result_user = mysqli_query($con,$insert_userprofile);
-                header("location: myprofile.php");
+                $result_user = mysqli_query($con,$sql);
+                header("location: index1.php");
             }else{
                 ?>
                 <div class="alert alert-danger" role="alert">
@@ -156,6 +172,14 @@ $invalid = false;
                 ?>
 
                 <input type="submit" name="submit" value="Sign In" class="sign-btn" />
+                    <?php
+                    if($login == false){
+                      echo "<a href='".$client->createAuthUrl()."'>Google Login</a>";
+                    }else{
+                      echo "loggedin";
+                    }
+                    ?>
+                
 
                 <p class="text">
                   Forgotten your password or you login datails?
