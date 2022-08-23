@@ -1,13 +1,15 @@
 <?php
 $server = "remotemysql.com";
-$username = "YQuItX2V3A";
-$password = "lhCbn4LxLJ";
-$database = "YQuItX2V3A";
+$username = "0x3toku0DW";
+$password = "rL2tFZwORu";
+$database = "0x3toku0DW";
 
-$con =  mysqli_connect($server, $username, $password,$database);
+$con = mysqli_connect($server,$username,$password,$database);
 
-// Check connection
-if (!$con) {
-  die("Connection failed: " . $conn->connect_error);
+
+if(!$con){
+    die("Database connection error");
 }
+
+
 ?>

@@ -19,3 +19,6 @@ secret id
 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
 
 https://aggregate-agro.herokuapp.com/
+
+google credential link
+https://console.cloud.google.com/apis/credentials/oauthclient/837007103942-jr4t61mr2h5d007p13sitc7ene3lo0ba.apps.googleusercontent.com?authuser=2&project=agrotech-359105&supportedpurview=project
