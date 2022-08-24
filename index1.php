@@ -50,7 +50,8 @@ else{
     <link rel="icon" type="image/x-icon" href="assets/css/img/logo.png">
     <style>
         #preload{
-            background: #000;
+            background: #000 url(assets/css/img/loader.gif) no-repeat center center;
+            background-size: 15%;
             height: 100vh;
             width: 100%;
             position: fixed;
