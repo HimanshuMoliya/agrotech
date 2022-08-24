@@ -1,3 +1,31 @@
+<?php
+require "db/db.php";
+require_once 'db/config.php';
+if(!isset($_SESSION['user_token']) AND !isset($_SESSION['email'])){
+    header("location: login.php");
+    die();
+  }else{
+if(isset($_SESSION['user_token'])){
+
+$sql = "SELECT * FROM user_profile WHERE token = '{$_SESSION['user_token']}'";
+$result = mysqli_query($con,$sql);
+
+if(mysqli_num_rows($result) > 0){
+    $userinfo = mysqli_fetch_assoc($result);
+    
+ }
+}
+else{
+    $sql = "SELECT * FROM user_profile WHERE email = '{$_SESSION['email']}' ";
+    $result = mysqli_query($con,$sql);
+
+    if(mysqli_num_rows($result) > 0){
+        $userinfo = mysqli_fetch_assoc($result);
+    }
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +50,15 @@
         border: 1px solid rgb(134, 141, 134);
         background: #0675e8;
         border-radius: 2rem;
+        box-shadow: 2px 4px 3px 1px #b3cccc;
       }
+
+      #profile_img {
+      width: 50px;
+      border: 1px solid black;
+      margin-right: 20px;
+      height: 48px;
+    }
 
     </style>
 </head>
@@ -39,7 +75,7 @@
           <div class="collapse navbar-collapse menu_items" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active text-dark" aria-current="page" href="#">Home</a>
+                <a class="nav-link active text-dark" aria-current="page" href="/agrotech/index1.php">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-dark" href="#">About</a>
@@ -65,8 +101,14 @@
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn w-50 text-light" type="submit" id="search_btn">Search</button>
             </form>
+            <a href="/agrotech/myprofile.php">
+            <!-- <img src="/agrotech/assets/navbar/images/person1.jpg" class="rounded-circle" id="profile_img"> -->
+            <!-- <img src="<?php 
+            // echo $userinfo['picture'];
+            ?>" alt="" width="90px" height="90px" class="rounded-circle" id="profile_img"> -->
+            <img src="https://lh3.googleusercontent.com/a/AItbvmnKBcTr6lqh3jV224BUJ8LUQjnAaAtB8CKw2264=s96-c" alt="error">
 
-            <img src="/agrotech/assets/navbar/images/person1.jpg" class="rounded-circle" id="profile_img">
+            </a>
           </div>
         </div>
       </nav>

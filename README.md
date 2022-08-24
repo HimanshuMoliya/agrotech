@@ -32,7 +32,7 @@ button color
 
 
 code for access google photo name email etc...
-<img src="<?php echo $userinfo['picture'];?>" alt="" width="90px" height="90px">
+    <img src="<?php echo $userinfo['picture'];?>" alt="" width="90px" height="90px">
     
     <ul>
         <li>Full name: <?php echo $userinfo['fullname']; ?></li>
