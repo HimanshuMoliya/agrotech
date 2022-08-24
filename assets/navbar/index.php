@@ -103,10 +103,9 @@ else{
             </form>
             <a href="/agrotech/myprofile.php">
             <!-- <img src="/agrotech/assets/navbar/images/person1.jpg" class="rounded-circle" id="profile_img"> -->
-            <!-- <img src="<?php 
-            // echo $userinfo['picture'];
-            ?>" alt="" width="90px" height="90px" class="rounded-circle" id="profile_img"> -->
-            <img src="https://lh3.googleusercontent.com/a/AItbvmnKBcTr6lqh3jV224BUJ8LUQjnAaAtB8CKw2264=s96-c" alt="error">
+             <img src="<?php 
+             echo $userinfo['picture']; ?>" alt="" width="90px" height="90px" class="rounded-circle" id="profile_img"> 
+            <!-- <img src="https://lh3.googleusercontent.com/a/AItbvmnKBcTr6lqh3jV224BUJ8LUQjnAaAtB8CKw2264=s96-c" alt="error"> -->
 
             </a>
           </div>
