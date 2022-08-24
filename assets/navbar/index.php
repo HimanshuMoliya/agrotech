@@ -7,6 +7,24 @@
     <title>Document</title>
     <link rel="stylesheet" href="/agrotech/assets/navbar/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <style>
+      #navbar{
+        background: #ecf5ff;
+        background-size: 300% 300%;
+        color: black;
+        }
+
+      button::before{
+          background: white;
+      }
+
+      #search_btn{
+        border: 1px solid rgb(134, 141, 134);
+        background: #0675e8;
+        border-radius: 2rem;
+      }
+
+    </style>
 </head>
 <body>
 
@@ -21,13 +39,13 @@
           <div class="collapse navbar-collapse menu_items" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
+                <a class="nav-link active text-dark" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-light" href="#">About</a>
+                <a class="nav-link text-dark" href="#">About</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Services
                 </a>
                 <ul class="dropdown-menu">
@@ -39,7 +57,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link text-light" href="#">Contact Us</a>
+                <a class="nav-link text-dark" href="#">Contact Us</a>
               </li>
             </ul>
                

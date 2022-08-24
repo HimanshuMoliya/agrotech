@@ -52,13 +52,8 @@ else{
     <title>welcome</title>
 </head>
 <body>
-    <img src="<?php echo $userinfo['picture'];?>" alt="" width="90px" height="90px">
-    
-    <ul>
-        <li>Full name: <?php echo $userinfo['fullname']; ?></li>
-        <li>Email: <?php echo $userinfo['email']; ?></li>
-        <li>Gender: <?php echo $userinfo['gender']; ?></li>
-        <li><a href="logout.php">Logout</a></li>
-    </ul>
+    <?php
+        include "assets/navbar/index.php";
+    ?>
 </body>
 </html>

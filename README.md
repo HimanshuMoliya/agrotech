@@ -22,3 +22,21 @@ https://aggregate-agro.herokuapp.com/
 
 google credential link
 https://console.cloud.google.com/apis/credentials/oauthclient/837007103942-jr4t61mr2h5d007p13sitc7ene3lo0ba.apps.googleusercontent.com?authuser=2&project=agrotech-359105&supportedpurview=project
+
+
+background color 
+#ecf5ff
+
+button color 
+#0675e8
+
+
+code for access google photo name email etc...
+<img src="<?php echo $userinfo['picture'];?>" alt="" width="90px" height="90px">
+    
+    <ul>
+        <li>Full name: <?php echo $userinfo['fullname']; ?></li>
+        <li>Email: <?php echo $userinfo['email']; ?></li>
+        <li>Gender: <?php echo $userinfo['gender']; ?></li>
+        <li><a href="logout.php">Logout</a></li>
+    </ul>
