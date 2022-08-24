@@ -57,7 +57,7 @@ else{
             z-index: 100;
         }
     </style>
-    <title>welcome</title>
+    <title>Aggregate Agro</title>
 </head>
 <body>
     <div id="preload"></div>

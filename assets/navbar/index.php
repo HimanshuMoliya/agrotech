@@ -103,8 +103,26 @@ else{
             </form>
             <a href="/myprofile.php">
             <!-- <img src="/agrotech/assets/navbar/images/person1.jpg" class="rounded-circle" id="profile_img"> -->
-             <img src="<?php 
+
+            <?php 
+                if(!isset($userinfo['picture'])){
+                ?>
+                <img
+                  src="assets/css/img/user-default.png"
+                  alt="avatar"
+                  class="rounded-circle img-fluid"
+                  style="width: 150px"
+                />
+                
+                <?php
+                }else{
+                  ?>
+                  <img src="<?php 
              echo $userinfo['picture']; ?>" alt="" width="90px" height="90px" class="rounded-circle" id="profile_img"> 
+                <?php
+                }
+                ?>
+             
             <!-- <img src="https://lh3.googleusercontent.com/a/AItbvmnKBcTr6lqh3jV224BUJ8LUQjnAaAtB8CKw2264=s96-c" alt="error"> -->
 
             </a>
