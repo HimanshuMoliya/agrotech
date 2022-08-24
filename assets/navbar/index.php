@@ -75,7 +75,7 @@ else{
           <div class="collapse navbar-collapse menu_items" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active text-dark" aria-current="page" href="/agrotech/index1.php">Home</a>
+                <a class="nav-link active text-dark" aria-current="page" href="/index1.php">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-dark" href="#">About</a>
