@@ -33,7 +33,7 @@ else{
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/agrotech/assets/navbar/style.css">
+    <link rel="stylesheet" href="/assets/navbar/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <style>
       #navbar{
@@ -67,7 +67,7 @@ else{
     <nav class="navbar navbar-expand-lg bg-light" id="navbar">
         <div class="container-fluid">
             <div id="logo_div">
-          <a class="navbar-brand" href="#"><img src="/agrotech/assets/navbar/images/logo.png" id="logo"></a>
+          <a class="navbar-brand" href="#"><img src="/agrotech" id="logo"></a>
         </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -101,7 +101,7 @@ else{
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn w-50 text-light" type="submit" id="search_btn">Search</button>
             </form>
-            <a href="/agrotech/myprofile.php">
+            <a href="/myprofile.php">
             <!-- <img src="/agrotech/assets/navbar/images/person1.jpg" class="rounded-circle" id="profile_img"> -->
              <img src="<?php 
              echo $userinfo['picture']; ?>" alt="" width="90px" height="90px" class="rounded-circle" id="profile_img"> 
