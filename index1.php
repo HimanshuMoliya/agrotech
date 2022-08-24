@@ -48,10 +48,19 @@ else{
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="assets/css/img/logo.png">
-
+    <style>
+        #preload{
+            background: #000;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: 100;
+        }
+    </style>
     <title>welcome</title>
 </head>
 <body>
+    <div id="preload"></div>
     <?php
         include "assets/navbar/index.php";
     ?>
