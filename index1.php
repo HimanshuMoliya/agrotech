@@ -66,7 +66,7 @@ else{
         include "assets/navbar/index.php";
     ?>
     <script>
-        var loader = document.getElementById("preloader");
+        var loader = document.getElementById("preload");
         window.addEventListener("load",function(){
             loader.style.display = "none";
         })
