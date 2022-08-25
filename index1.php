@@ -63,7 +63,7 @@ else{
 <body>
     <div id="preload"></div>
     <?php
-        include "assets/navbar/index.php";
+        include "navbar/index.php";
     ?>
     <script>
         var loader = document.getElementById("preload");

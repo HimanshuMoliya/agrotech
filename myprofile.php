@@ -100,7 +100,7 @@ else{
     ?>
     <section style="background-color: #eee">
       <?php
-      include "assets/navbar/index.php";
+      include "navbar/index.php";
       ?>
       <div class="container py-5">
         <!-- <div class="row">

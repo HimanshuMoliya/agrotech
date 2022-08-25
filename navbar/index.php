@@ -33,7 +33,7 @@ else{
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/assets/navbar/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <style>
 
@@ -69,6 +69,14 @@ else{
       height: 48px;
     }
 
+    #logo{
+      width: 100%;
+    }
+    #logo_div{
+        width: 100%;
+        max-width: 60px;
+    }
+
 
     </style>
 </head>
@@ -77,8 +85,8 @@ else{
     <nav class="navbar navbar-expand-lg bg-light" id="navbar">
         <div class="container-fluid" id="cont">
             <div id="logo_div">
-          <a class="navbar-brand" href="#"><img src="/assets/css/img/logo.png" id="logo"></a>
-        </div>
+              <a class="navbar-brand" href="#"><img src="navbar/images/logo.png" id="logo"></a>
+            </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button> 
