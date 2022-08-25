@@ -149,7 +149,7 @@ button:hover::before{
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn w-50 text-light" type="submit" id="search_btn">Search</button>
             </form>
-            <a href="/myprofile.php">
+            <a href="myprofile.php">
             <!-- <img src="/agrotech/assets/navbar/images/person1.jpg" class="rounded-circle" id="profile_img"> -->
 
             <?php 
