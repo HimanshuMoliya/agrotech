@@ -36,7 +36,7 @@ else{
     <link rel="stylesheet" href="/assets/navbar/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <style>
-<<<<<<< HEAD
+
       #cont{
         background-color: #f9fafe;
       }
@@ -44,7 +44,7 @@ else{
       #navbar{
         background-color: #f9fafe;
       }
-=======
+
       #navbar{
         background: #ecf5ff;
         background-size: 300% 300%;
@@ -69,7 +69,7 @@ else{
       height: 48px;
     }
 
->>>>>>> 68ca5ad31570cbbeecfda77c0c3f2c65494ef0f1
+
     </style>
 </head>
 <body>
