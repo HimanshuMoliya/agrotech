@@ -51,17 +51,6 @@ else{
         color: black;
         }
 
-      button::before{
-          background: white;
-      }
-
-      #search_btn{
-        border: 1px solid rgb(134, 141, 134);
-        background: #0675e8;
-        border-radius: 2rem;
-        box-shadow: 2px 4px 3px 1px #b3cccc;
-      }
-
       #profile_img {
       width: 50px;
       border: 1px solid black;
@@ -76,6 +65,47 @@ else{
         width: 100%;
         max-width: 60px;
     }
+
+    #search_icon{
+    margin-right: 20px;
+}
+
+button{
+    background: transparent;
+    color: #3bd9d9;
+    font-weight: 400;
+    font-size: 24px;
+    padding: 16px 36px;
+    border: 2px solid #3bd9d9;
+    border-radius: 32px;
+    transform: translate(0);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+button::before{
+    content: "";
+    position: absolute;
+    width: 8px;
+    top: 0;
+    bottom: 0;
+    left: -32px;
+    transform: rotate(-16deg);
+    filter: blur(6px);
+    background: white;
+}
+
+button:hover::before{
+    left: calc(100% + 32px);
+    transition: 1.75s;
+}
+
+#search_btn{
+      border: 1px solid rgb(134, 141, 134);
+        background: #0675e8;
+        border-radius: 2rem;
+        box-shadow: 2px 4px 3px 1px #b3cccc;
+}
 
 
     </style>
