@@ -7,11 +7,20 @@
     <title>Document</title>
     <link rel="stylesheet" href="/agrotech/assets/navbar/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <style>
+      #cont{
+        background-color: #f9fafe;
+      }
+
+      #navbar{
+        background-color: #f9fafe;
+      }
+    </style>
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg bg-light" id="navbar">
-        <div class="container-fluid">
+        <div class="container-fluid" id="cont">
             <div id="logo_div">
           <a class="navbar-brand" href="#"><img src="/agrotech/assets/navbar/images/logo.png" id="logo"></a>
         </div>
