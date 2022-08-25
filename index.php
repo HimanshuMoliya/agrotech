@@ -53,8 +53,8 @@ if (isset($_GET['code'])) {
     // $email =  $google_account_info->email;
     // $name =  $google_account_info->name;
     $_SESSION['user_token'] = $userinfo['token'];
-    // header("location: index1.php");
-    header("location: myprofile.php");
+    header("location: index1.php");
+    // header("location: myprofile.php");
 
   
     // now you can use this profile info to create account in your website and make user logged in.
@@ -71,6 +71,7 @@ if (isset($_GET['code'])) {
     if(mysqli_num_rows($result) > 0){
         $userinfo = mysqli_fetch_assoc($result);
         $token = $userinfo['token'];
+        header("location: index1.php");
 
      }
   } 

@@ -48,17 +48,28 @@ else{
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="assets/css/img/logo.png">
-
-    <title>welcome</title>
+    <style>
+        #preload{
+            background: #000 url(assets/css/img/loader.gif) no-repeat center center;
+            background-size: 15%;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: 100;
+        }
+    </style>
+    <title>Aggregate Agro</title>
 </head>
 <body>
-    <img src="<?php echo $userinfo['picture'];?>" alt="" width="90px" height="90px">
-    
-    <ul>
-        <li>Full name: <?php echo $userinfo['fullname']; ?></li>
-        <li>Email: <?php echo $userinfo['email']; ?></li>
-        <li>Gender: <?php echo $userinfo['gender']; ?></li>
-        <li><a href="logout.php">Logout</a></li>
-    </ul>
+    <div id="preload"></div>
+    <?php
+        include "assets/navbar/index.php";
+    ?>
+    <script>
+        var loader = document.getElementById("preload");
+        window.addEventListener("load",function(){
+            loader.style.display = "none";
+        })
+    </script>
 </body>
 </html>
