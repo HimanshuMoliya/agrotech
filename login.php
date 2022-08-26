@@ -41,8 +41,8 @@ $invalid = false;
                     // console.log($_SESSION['id']);
 
                     setcookie('email',$email,time()+60*60*24*30);
-                    // header("location: index1.php");
-                    header("location: myprofile.php");
+                    header("location: index1.php");
+                    // header("location: myprofile1.php");
 
                 }else{
                    

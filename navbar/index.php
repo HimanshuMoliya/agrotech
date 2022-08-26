@@ -149,17 +149,15 @@ button:hover::before{
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn w-50 text-light" type="submit" id="search_btn">Search</button>
             </form>
-            <a href="myprofile.php">
+            <a href="myprofile1.php">
             <!-- <img src="/agrotech/assets/navbar/images/person1.jpg" class="rounded-circle" id="profile_img"> -->
 
             <?php 
                 if(!isset($userinfo['picture'])){
                 ?>
                 <img
-                  src="assets/css/img/user-default.png"
-                  alt="avatar"
-                  class="rounded-circle img-fluid"
-                  style="width: 150px"
+                  src="assets/css/img/person1.jpg"
+                  alt="" width="90px" height="90px" class="rounded-circle" id="profile_img"
                 />
                 
                 <?php
