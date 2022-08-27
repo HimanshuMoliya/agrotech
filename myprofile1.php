@@ -38,6 +38,8 @@ else{
     <!-- <link rel="stylesheet" href="assets/css/myprofileresponsive.css"> -->
     <link rel="stylesheet" href="assets/css/myprofilestyle.css">
     <link rel="stylesheet" href="assets/css/myprofileresponsive.css">
+    <link rel="icon" type="image/x-icon" href="assets/css/img/logo.png">
+
 
     <!-- ===== ===== Remix Font Icons Cdn ===== ===== -->
     <link rel="stylesheet" href="fonts/remixicon.css">
