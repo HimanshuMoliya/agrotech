@@ -48,6 +48,8 @@ else{
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="assets/css/img/logo.png">
+    
+
     <style>
         #preload{
             background: #000 url(assets/css/img/loader.gif) no-repeat center center;
@@ -61,10 +63,10 @@ else{
     <title>Aggregate Agro</title>
 </head>
 <body>
-    <div id="preload"></div>
     <?php
-        include "navbar/workernav.php";
+        include "workernav.php";
     ?>
+    <div id="preload"></div>
     <script>
         var loader = document.getElementById("preload");
         window.addEventListener("load",function(){
