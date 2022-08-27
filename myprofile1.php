@@ -272,6 +272,12 @@ else{
                     <li class="sendMsg">
                         <a href="#">Edit Profile</a>
                     </li>
+
+                    <li class="sendMsg active">
+                        <i class="ri-check-fill ri"></i>
+                        <a href="logout.php">Log Out</a>
+                    </li>
+
                 </ul>
             </div>
         </section>
