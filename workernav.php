@@ -75,7 +75,7 @@ else{
                     <?php
                 if(!isset($userinfo['picture'])){
                     ?>
-                <figure><img src="assets/css/img/person1.jpg" alt="profile" width="250px" height="250px"></figure>
+                <figure><img src="assets/css/img/person1.jpg" alt="profile" width="250px" height="50px"></figure>
                     <?php
                 }else{
                     ?>
