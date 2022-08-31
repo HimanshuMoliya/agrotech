@@ -48,7 +48,27 @@ else{
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        
+        #preloader  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin: -30px 0 0 -30px;
+ }
+#status {
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    background: #fff;
+    background-image: url(assets/css/img/pre-loader-1.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+}
         body {
             background-repeat: no-repeat;
             background-size: cover;
@@ -348,7 +368,15 @@ else{
             </div>
         </section>
     </div>
-
+    <div id="preloader">
+          <div id="status">&nbsp;</div>
+        </div>
+    <script>
+        var loader = document.getElementById("preloader");
+        window.addEventListener("load",function(){
+            loader.style.display = "none";
+        })
+    </script>
 </body>
 
 </html>
