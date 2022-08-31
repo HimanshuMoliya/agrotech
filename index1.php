@@ -84,7 +84,9 @@ else{
 
 
 
-    <div id="preload"></div>
+<div id="preloader">
+          <div id="status">&nbsp;</div>
+        </div>
     <script>
         var loader = document.getElementById("preload");
         window.addEventListener("load",function(){
