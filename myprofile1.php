@@ -38,6 +38,8 @@ else{
     <!-- <link rel="stylesheet" href="assets/css/myprofileresponsive.css"> -->
     <link rel="stylesheet" href="assets/css/myprofilestyle.css">
     <link rel="stylesheet" href="assets/css/myprofileresponsive.css">
+    <link rel="icon" type="image/x-icon" href="assets/css/img/logo.png">
+
 
     <!-- ===== ===== Remix Font Icons Cdn ===== ===== -->
     <link rel="stylesheet" href="fonts/remixicon.css">
@@ -275,6 +277,12 @@ else{
                     <li class="sendMsg">
                         <a href="#">Edit Profile</a>
                     </li>
+
+                    <li class="sendMsg active">
+                        <i class="ri-check-fill ri"></i>
+                        <a href="logout.php">Log Out</a>
+                    </li>
+
                 </ul>
             </div>
         </section>
