@@ -51,14 +51,28 @@ else{
     
 
     <style>
-        #preload{
-            background: #000 url(assets/css/img/loader.gif) no-repeat center center;
-            background-size: 15%;
-            height: 100vh;
-            width: 100%;
-            position: fixed;
-            z-index: 100;
-        }
+        #preloader  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin: -30px 0 0 -30px;
+ }
+#status {
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    background: #fff;
+    background-image: url(assets/css/img/pre-loader-1.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+        
     </style>
     <title>Aggregate Agro</title>
 </head>
@@ -66,6 +80,10 @@ else{
     <?php
         include "workernav.php";
     ?>
+
+
+
+
     <div id="preload"></div>
     <script>
         var loader = document.getElementById("preload");
