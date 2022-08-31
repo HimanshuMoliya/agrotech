@@ -88,7 +88,7 @@ else{
           <div id="status">&nbsp;</div>
         </div>
     <script>
-        var loader = document.getElementById("preload");
+        var loader = document.getElementById("preloader");
         window.addEventListener("load",function(){
             loader.style.display = "none";
         })
