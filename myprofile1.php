@@ -36,18 +36,19 @@ else{
 
     <!-- ===== ===== Custom Css ===== ===== -->
     <!-- <link rel="stylesheet" href="assets/css/myprofileresponsive.css"> -->
-    <link rel="stylesheet" href="assets/css/myprofilestyle.css">
     <link rel="stylesheet" href="assets/css/myprofileresponsive.css">
+    <link rel="stylesheet" href="assets/css/myprofilestyle.css">
     <link rel="icon" type="image/x-icon" href="assets/css/img/logo.png">
 
 
     <!-- ===== ===== Remix Font Icons Cdn ===== ===== -->
     <link rel="stylesheet" href="fonts/remixicon.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
-        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
 
     <style>
+        body{
+            display: contents;
+        }
         #preloader  {
     position: absolute;
     top: 50%;
@@ -130,7 +131,7 @@ else{
 
 <body>
 <?php
-        // include "workernav.php";
+        include "workernav.php";
     ?>
     <!-- ===== ===== Body Main-Background ===== ===== -->
     <span class="main_bg"></span>
@@ -368,6 +369,10 @@ else{
             </div>
         </section>
     </div>
+    <?php
+        include "footer.php";
+    ?>
+
     <div id="preloader">
           <div id="status">&nbsp;</div>
         </div>
