@@ -48,6 +48,8 @@ else{
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="assets/css/img/logo.png">
+    <link rel="stylesheet" href="workernav.css">
+    <link rel="stylesheet" href="footer.css">
     
 
     <style>
@@ -72,6 +74,217 @@ else{
     background-repeat: no-repeat;
     background-position: center;
 }
+
+section.sec_1 {
+            margin-top: 120px;
+            background-color: #222;
+        }
+
+        .h1_1 {
+            font-size: 36px;
+            text-align: center;
+            color: white;
+
+        }
+
+        .made_for .row {
+            margin-top: 70px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .wimg_1 {
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+        }
+
+        .wimg_1 img {
+            width: 100%;
+        }
+
+        .wimg_2 {
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .wimg_2 img {
+            width: 100%;
+        }
+
+
+        .wimg_3 {
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .wimg_3 img {
+            width: 100%;
+        }
+
+        .wimg1_title {
+            position: absolute;
+            width: 100%;
+            height: 99%;
+            background: rgba(0, 0, 0, 0.6);
+            top: 0;
+            left: 0;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            letter-spacing: 2px;
+            opacity: 0;
+            transition: 0.6s;
+        }
+
+        .wimg1_title:hover {
+            opacity: 1;
+        }
+
+        section.sec_2 {
+            margin-top: 120px;
+            background-color: #222;
+        }
+
+        .h1_2 {
+            font-size: 23px;
+            text-align: center;
+            color: white;
+
+        }
+
+        @media (max-width:992px) {
+            .wimg_2 {
+                margin-left: 0px;
+                margin-top: 10px;
+            }
+
+            .wimg_3 {
+                margin-left: 0px;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 1410px) {
+            .wimg_3 {
+                margin-top: 10px;
+            }
+        }
+
+        .winfo_img {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .winfo_img img {
+            width: 100%;
+        }
+
+        .winfo_img2 {
+            width: 100%;
+            max-width: 700px;
+            margin-left: 46px;
+        }
+
+        .winfo_img2 img {
+            width: 100%;
+        }
+
+        .worker_info {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 80px;
+        }
+
+        .winfo_title {
+            width: 660px;
+            margin-left: 46px;
+        }
+
+        .winfo_title2 {
+            width: 660px;
+        }
+
+        .winfo_title p {
+            font-size: 17px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            line-height: 30px;
+        }
+
+        .winfo_title2 p {
+            font-size: 17px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            line-height: 30px;
+        }
+
+        .winfo_title p {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .winfo_title2 p {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+
+        .winfo_btn {
+            margin-top: 40px;
+        }
+
+        button.winfo_btn1 {
+            padding: 10px 25px 10px 25px;
+            font-size: 14px;
+            background-color: #bac964;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            position: relative;
+            transform: translate(0);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .winfo_btn1::before {
+            content: "";
+            position: absolute;
+            background: white;
+            width: 8px;
+            top: 0;
+            bottom: 0;
+            left: -32px;
+            transform: rotate(-16deg);
+            filter: blur(6px);
+        }
+
+        .winfo_btn1:hover::before {
+            left: calc(100% + 32px);
+            transition: 1.75s;
+        }
+
+        @media (max-width:992px){
+            .winfo_title {
+            margin-left: 0px;
+        }
+
+        .winfo_img2 {
+            margin-left: 0px;
+            margin-top: 20px;
+        }
+        }
         
     </style>
     <title>Aggregate Agro</title>
@@ -263,5 +476,32 @@ else{
             loader.style.display = "none";
         })
     </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".nav_btn").click(function () {
+            $("header").toggleClass("slide");
+        });
+    });
+
+    $(document).ready(function () {
+        $(".nav_btn2").click(function () {
+            $("header").toggleClass("slide");
+        });
+    });
+
+
+</script>
+
+<script type="text/javascript">
+
+    window.addEventListener("scroll", function () {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    })
+
+</script>
 </body>
 </html>

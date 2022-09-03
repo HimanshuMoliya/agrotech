@@ -37,17 +37,18 @@ else{
     <!-- ===== ===== Custom Css ===== ===== -->
     <!-- <link rel="stylesheet" href="assets/css/myprofileresponsive.css"> -->
     <link rel="stylesheet" href="assets/css/myprofileresponsive.css">
-    <link rel="stylesheet" href="assets/css/myprofilestyle.css">
     <link rel="icon" type="image/x-icon" href="assets/css/img/logo.png">
-
-
+    
+    
     <!-- ===== ===== Remix Font Icons Cdn ===== ===== -->
     <link rel="stylesheet" href="fonts/remixicon.css">
-    
-
+    <link rel="stylesheet" href="assets/css/myprofilestyle.css">
+    <link rel="stylesheet" href="workernav.css">
+    <link rel="stylesheet" href="footer.css">
     <style>
         body{
             display: contents;
+            background-color: black;
         }
         #preloader  {
     position: absolute;
@@ -125,6 +126,27 @@ else{
             font-size: 13px;
         }
 
+        .main_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/css/img/homepage/Scene-20.jpg");
+  /* z-index: -1; */
+  filter: blur(0px);
+  background-position: left;
+  background-size: cover;
+}
+
+.container{
+    height:87vh;
+}
+
+
+
+
+
 
     </style>
 </head>
@@ -138,15 +160,15 @@ else{
 
 
     <!-- ===== ===== Main-Container ===== ===== -->
-    <div class="container">
+    <div class="container" style="margin-top:111px;">
 
         <!-- ===== ===== Header/Navbar ===== ===== -->
-        <header>
+        <!-- <header>
             <div class="brandLogo">
                 <figure><img src="assets/css/img/logo.png" alt="logo" width="40px" height="40px"></figure>
                 <span>Aggretech Agro</span>
             </div>
-        </header>
+        </header> -->
 
 
         <!-- ===== ===== User Main-Profile ===== ===== -->
@@ -382,6 +404,33 @@ else{
             loader.style.display = "none";
         })
     </script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".nav_btn").click(function () {
+            $("header").toggleClass("slide");
+        });
+    });
+
+    $(document).ready(function () {
+        $(".nav_btn2").click(function () {
+            $("header").toggleClass("slide");
+        });
+    });
+
+
+</script>
+
+<script type="text/javascript">
+
+    window.addEventListener("scroll", function () {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    })
+
+</script>
 </body>
 
 </html>
