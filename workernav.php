@@ -43,7 +43,7 @@
 
                 <!-- <input type="submit" value="Search" placeholder="Search" class="ip_2"> -->
 
-                <button type="submit" id="search_btn" class="button1" style="margin-right:0px;">Search</button>
+                <button type="submit" id="search_btn" class="button1" style="margin-right:5px;">Search</button>
 
                 
                 <div class="profile_img">
