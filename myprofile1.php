@@ -132,7 +132,7 @@ else{
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("assets/css/img/homepage/Scene-20.jpg");
+  background-color: #222;
   /* z-index: -1; */
   filter: blur(0px);
   background-position: left;
