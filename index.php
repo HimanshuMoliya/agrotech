@@ -60,7 +60,7 @@ if (isset($_GET['code'])) {
     // now you can use this profile info to create account in your website and make user logged in.
   }else{
     if(!isset($_SESSION['user_token'])){
-        header("location: login.php");
+        header("location: index1.php");
         die();
       }
 

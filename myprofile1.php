@@ -2,8 +2,8 @@
 require "db/db.php";
 require_once 'db/config.php';
 if(!isset($_SESSION['user_token']) AND !isset($_SESSION['email'])){
-    header("location: login.php");
-    die();
+    // header("location: login.php");
+    // die();
   }else{
 if(isset($_SESSION['user_token'])){
 
@@ -45,6 +45,7 @@ else{
     <link rel="stylesheet" href="assets/css/myprofilestyle.css">
     <link rel="stylesheet" href="workernav.css">
     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body{
             display: contents;

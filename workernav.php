@@ -38,12 +38,12 @@
             </div>
 
 
-            <div class="right_search">
+            <div class="right_search" style="margin-right:55px;">
                 <input type="text" placeholder="Search" class="ip_1">
 
                 <!-- <input type="submit" value="Search" placeholder="Search" class="ip_2"> -->
 
-                <button type="submit" id="search_btn" class="button1">Search</button>
+                <button type="submit" id="search_btn" class="button1" style="margin-right:5px;">Search</button>
 
                 
                 <div class="profile_img">
