@@ -51,7 +51,8 @@ else{
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="workernav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <link rel="stylesheet" href="lamp/lamp.css">
+
 
     <style>
         #preloader  {
@@ -417,12 +418,12 @@ section.sec_1 {
                     <img src="assets/css/img/homepage/worker2.jpg" alt="Aggregate Agro">
                 </div>
 
-
-
+  
 
             </div>
         </div>
     </section>
+                
 
     <section class="sec_2">
         <div class="container">

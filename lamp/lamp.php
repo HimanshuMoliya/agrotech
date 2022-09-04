@@ -1,14 +1,4 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="lamp.css">
-    <title>Lamp Animation using CSS - @code.scientist x @julianvelez1997</title>
-</head>
-
-<body>
+<div class="body">
     <div class="lamp">
         <div class="top-cover"></div>
         <div class="bubble1"></div>
@@ -38,6 +28,4 @@
         <div class="bottom-cover"></div>
     </div>
     <div class="lamp-bottom"></div>
-</body>
-
-</html>
+    </div>
