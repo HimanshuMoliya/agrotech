@@ -182,6 +182,18 @@ section.sec_1 {
             }
         }
 
+        @media (max-width: 1436px){
+            .worker_info{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .winfo_title {
+                margin-left: 0px;
+            }
+        }
+
         .winfo_img {
             width: 100%;
             max-width: 700px;
