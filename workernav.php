@@ -19,6 +19,7 @@
                             <li><a href="#">Services</a></li>
                             <li><a href="#">About</a></li>
                             <li><a href="#">Contact</a></li>
+                            <li><a href="login.php">Login</a></li>
                             <?php
                                 if(!isset($_SESSION['user_token']) AND !isset($_SESSION['email'])){
                                     header("location: index1.php");
