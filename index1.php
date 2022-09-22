@@ -81,7 +81,7 @@ section.sec_1 {
             margin-top: 120px;
             background-color: #222;
         }
-
+       
         .h1_1 {
             font-size: 36px;
             text-align: center;
@@ -304,9 +304,50 @@ section.sec_1 {
     <title>Aggregate Agro</title>
 </head>
 <body>
-    <?php
-        include "workernav.php";
-    ?>
+    <header>
+        
+        <div class="row">
+
+            <div class="main_nav">
+                <div class="logo_div">
+                    <a href="#" class="logo"><img src="assets/img/logo.png" alt=""></a>
+                </div>
+
+                <button class="nav_btn"> <i class="fa-solid fa-bars"></i> </button>
+
+                <div class="nav_section">
+                    <nav>
+
+                        <button class="nav_btn2"> <i class="fa-solid fa-xmark"></i> </button>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="login.php">Login</a></li>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+
+            <div class="right_search">
+                <!-- <input type="text" placeholder="Search" class="ip_1"> -->
+
+               
+
+                <a type="submit" style="text-decoration: none;" id="search_btn" href="login.php" class="button1">Login</a>
+
+                
+
+            </div>
+
+
+        </div>
+
+        </div>
+    </header> 
 
 
 <div>

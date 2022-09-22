@@ -5,6 +5,7 @@ require_once 'vendor/autoload.php';
 
 require_once 'db/config.php';
 $login = true;
+$notv = false;
 if(isset($_SESSION['user_token'])){
   // header("location: index.php");
   header("location: myprofile.php");
@@ -13,7 +14,10 @@ if(isset($_SESSION['user_token'])){
   $login = false;
 }
 
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+$v_code = rand ( 1000 , 9999 );
 // authenticate code from Google OAuth Flow
 
 
@@ -25,12 +29,13 @@ $invalid = false;
                 $email = $_POST['email1'];
                 $pass = $_POST['password1'];
 
-                $sql = "SELECT * FROM `register`";
+                $sql = "SELECT * FROM `register` WHERE `email` = '$email' AND `password` = '$pass'";
                 $result = mysqli_query($con,$sql);
-
-                while($row = mysqli_fetch_assoc($result)){
+                $row = mysqli_fetch_assoc($result);
+                if(mysqli_num_rows($result) > 0 ){
+                  if($row['verified']==1){
                 
-                if($email == $row['email'] AND $pass == $row['password']){
+                  
                     echo '<div class="alert alert-success" role="alert">
                             Successfully Login.
                         </div>';
@@ -39,19 +44,22 @@ $invalid = false;
                     $_SESSION['online'] = "true";
                     $_SESSION['id'] = $row['uid'];
                     // console.log($_SESSION['id']);
-
+                    $_SESSION['verified'] = true;
                     setcookie('email',$email,time()+60*60*24*30);
-                    header("location: index1.php");
+                    header("location: worker.php");
                     // header("location: myprofile1.php");
-
-                }else{
+                  
+                
+              }else{
+                $notv = true;
+              }
+            }else{
                    
-                    $invalid = true;
-                    
-                    // header("location: login.php");
-                }
-
-                }
+              $invalid = true;
+              
+              // header("location: login.php");
+          }
+                
                 
                 
             }
@@ -83,7 +91,7 @@ $invalid = false;
             if($password == $confirm_password){
               
                 $user_id = rand ( 1000 , 999999 ); 
-                $insert = "INSERT INTO `register` ( `uid`,`occupation`, `first_name`, `last_name`, `email`, `phoneno`, `password`, `date`) VALUES ( $user_id,'farmer', '$first_name', '$last_name', '$mail', '$phoneno', '$password', current_timestamp())";
+                $insert = "INSERT INTO `register` ( `uid`,`occupation`, `first_name`, `last_name`, `email`, `phoneno`, `password`,`otp`,`verified`, `date`) VALUES ( $user_id,'farmer', '$first_name', '$last_name', '$mail', '$phoneno', '$password',$v_code,0, current_timestamp())";
 
                 $fullname = $first_name . ' ' .$last_name;
                 $sql = "INSERT INTO `user_profile` ( `picture`, `token`, `email`, `fullname`, `phoneno`, `address`, `gender`, `age`, `workhour`, `approxsalary`, `date`) VALUES ( NULL,NULL , '{$mail}', '{$fullname}', '{$phoneno}', NULL, NULL, NULL, NULL,NULL, CURRENT_TIMESTAMP);";
@@ -95,8 +103,62 @@ $invalid = false;
 
                 $result_insert = mysqli_query($con,$insert);
                 $result_user = mysqli_query($con,$sql);
-                // header("location: index1.php");
-                header("location: myprofile.php");
+
+                function sendMail($mail,$v_code) {
+                  require("phpmailer/PHPMailer.php");
+                  require("phpmailer/SMTP.php");
+                  require("phpmailer/Exception.php");
+              
+                 $mail = new PHPMailer(true);
+                  try {
+                      $mail->isSMTP();                                            //Send using SMTP
+                      $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                      $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                      $mail->Username   = 'renishsuriya1441@gmail.com';                     //SMTP username
+                      $mail->Password   = 'qjkptgghewmnwqdj';                               //SMTP password
+                      $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                      $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+                  
+                      //Recipients
+                      $mail->setFrom('renishsuriya1441@gmail.com', 'Aggregate-Agro Notification');
+              
+                      $mail->addAddress($_POST['mail']);     //Add a recipient
+              
+              
+                      //Content
+                      $mail->isHTML(true);    //Set email format to HTML
+                      
+                      $mail->Subject = 'Aggregate-Agro: Verify your email';
+                      $fname = $fullname;
+                      $mail->Body    = "Dear $fname, <br>
+              
+                      <p>Your OTP for Contact details verification is $v_code.  This OTP is valid for 15 minutes.</p><br>
+                      Please do not share OTP with anyone.<br>
+                      <p>
+                      This is a system generated e-mail and please do not reply. Add renishsuriya1441@gmail.com to your white list / safe sender list. Else, your mailbox filter or ISP (Internet Service Provider) may stop you from receiving e-mails.</p><br>
+                      <br>
+                      Regards,<br>
+                      
+                      Aggregate Agro team";
+                  
+                      $mail->send();
+                      return true;
+                  } catch (Exception $e) {
+                      return false;
+                  }
+              }
+
+              $result_mail = sendMail($_POST['mail'],$v_code);
+
+              if($result_insert && $result_mail){
+                header("location: verifyotp.php");
+            }else{
+                echo '<div class="alert alert-danger" role="alert">
+                        server down
+                    </div>';
+            }
+
+                // header("location: myprofile.php");
             }else{
                 ?>
                 <div class="alert alert-danger" role="alert">
@@ -139,6 +201,51 @@ $invalid = false;
           overflow-x: hidden;
         }
       }
+      .login-with-google-btn {    text-align: center;
+    display: inline-block;
+    width: 100%;
+    height: 43px;
+    background-color: #151111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    transition: 0.3s;
+    transition: background-color .3s, box-shadow .3s;
+    padding: 12px 16px 12px 42px;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 -1px 0 rgb(0 0 0 / 4%), 0 1px 1px rgb(0 0 0 / 25%);
+    color: #757575;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: 12px 11px;
+      }
+  &:hover {
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+  }
+  
+  &:active {
+    background-color: #eeeeee;
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 
+      0 -1px 0 rgba(0, 0, 0, .04),
+      0 2px 4px rgba(0, 0, 0, .25),
+      0 0 0 3px #c8dafc;
+  }
+  
+
+
+
       </style>
   </head>
   <body>
@@ -175,19 +282,27 @@ $invalid = false;
                             Invalid Login Details!
                         </div>'; 
                     }
+                    if($notv){
+                      echo '<div class="alert alert-danger" role="alert">
+                            Email Not verified
+                        </div>'; 
+                    }
                 ?>
 
                 <input type="submit" name="submit" value="Sign In" class="sign-btn" />
+                <p style="margin-bottom: 1rem;text-align: center;">OR</p>
                     <?php
                     if($login == false){
-                      echo "<a href='".$client->createAuthUrl()."'>Google Login</a>";
+                      echo "<a type='button' href='".$client->createAuthUrl()."' class='login-with-google-btn' style='text-decoration: none;'>
+                      Sign in with Google
+                    </a>";
                     }else{
                       echo "loggedin";
                     }
                     ?>
                 
 
-                <p class="text">
+                <p class="text" style="margin-top: 1rem;">
                   Forgotten your password or you login datails?
                   <a href="#">Get help</a> signing in
                 </p>

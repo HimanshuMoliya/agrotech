@@ -35,45 +35,35 @@ else{
     <title>Profile</title>
 
     <!-- ===== ===== Custom Css ===== ===== -->
-    <!-- <link rel="stylesheet" href="assets/css/myprofileresponsive.css"> -->
-    <link rel="stylesheet" href="assets/css/myprofileresponsive.css">
-    <link rel="icon" type="image/x-icon" href="assets/css/img/logo.png">
-    
-    
+    <link rel="stylesheet" href="css/myprofilestyle.css">
+    <link rel="stylesheet" href="css/myprofileresponsive.css">
+
     <!-- ===== ===== Remix Font Icons Cdn ===== ===== -->
     <link rel="stylesheet" href="fonts/remixicon.css">
-    <link rel="stylesheet" href="assets/css/myprofilestyle.css">
-    <link rel="stylesheet" href="workernav.css">
-    <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="footer.css">
+        <link rel="icon" type="image/x-icon" href="assets/css/img/logo.png">
+
     <style>
-        body{
-            display: contents;
-            background-color: black;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        #preloader  {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    margin: -30px 0 0 -30px;
- }
-#status {
-    position: fixed;
-    z-index: 999999;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: block;
-    background: #fff;
-    background-image: url(assets/css/img/pre-loader-1.gif);
-    background-repeat: no-repeat;
-    background-position: center;
-}
+        header{
+            transition: 0.6s;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: #f7fbff;
+            color: black;
+            
+        }
         body {
+            background-image: url("img/bg.png");
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;
@@ -128,56 +118,271 @@ else{
             font-size: 13px;
         }
 
-        .main_bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('assets/css/img/homepage/Scene-20.jpg');
-  background-color: #222;
-  /* z-index: -1; */
-  filter: blur(0px);
-  background-position: left;
-  background-size: cover;
+        .brandLogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.container{
-    height:87vh;
+        /* ===================== Header ============================================ */
+
+        .main_navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px 4px 20px;
+}
+
+.logo_img {
+    width: 100%;
+    max-width: 70px;
+}
+
+.logo_img img {
+    width: 100%;
+}
+
+.logo_menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .nav_menu{
+    margin-left: 10px;
+} */
+
+.nav_menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav_menu ul li a{
+    color: gray;
+}
+
+/* .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+} */
+
+.nav_search {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+input.ip_1 {
+    padding: 10px;
+    border: 1px solid #b3b3b3;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.p_img{
+    width: 100%;
+    max-width: 50px;
+}
+
+.p_img img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+#search_btn {
+    border: 1px solid rgb(134, 141, 134);
+    background: #0675e8;
+    border-radius: 2rem;
+    box-shadow: 1px 1px 3px 1px #b3cccc;
+}
+
+button {
+    color: white;
+    font-weight: 400;
+    font-size: 12px;
+    padding: 11px 22px;
+    text-transform: uppercase;
+    border: 2px solid #3bd9d9;
+    border-radius: 32px;
+    transform: translate(0);
+    overflow: hidden;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+header.sticky {
+            background: #282828;;
+            z-index: 1;
+        }
+
+        .nav_btn{
+    display: none;
+}
+
+.nav_btn2{
+    display: none;
+}
+.slide .nav_menu{
+   left: 0%;
+}
+
+.nav_menu {
+    z-index: 99;
+    transition: all 0.5s;
+    left: -100%;
 }
 
 
+        @media(max-width: 992px){
+    .nav_btn{
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        right: 0;
+    }
 
+    .nav_btn2{
+        display: block;
+        background: none;
+        border: none;
+        color: black;
+        position: absolute;
+        right: 0;
+        font-size: 20px;
+    }
+    .nav_menu{
+        position: fixed;
+        background-color: #f3f3f3;
+        width: 100%;
+        top: 70px;
+        left: -100%;
+        text-align: center;
+    }
+    .nav_menu ul{
+        flex-direction: column;
+        gap: 0px;
+        
+    }
+    .nav_menu ul li{
+        padding: 20px 0;
+    }
 
+    input.ip_1 {
+        display: none;
+    }
 
+    #search_btn {
+        display: none;
+    }
+
+    .profile_img {
+        position: absolute;
+        right: 85px;
+    }
+}
+
+        
 
     </style>
 </head>
 
 <body>
-<?php
-        include "workernav.php";
-    ?>
+
+    <header>
+        <div class="main_navigation">
+            <div class="logo_menu">
+                <div class="logo">
+                    <div class="logo_img">
+                        <img src="img/logo.png" alt="">
+                    </div>
+                </div>
+                <button class="nav_btn"> <i class="fa-solid fa-bars"></i> </button>
+
+                <div class="nav_menu">
+                    <button class="nav_btn2"> <i class="fa-solid fa-xmark"></i> </button>
+                    <ul>
+                        <li><a href="worker.php">Home</a></li>
+                        <li><a href="#">Service</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="nav_search">
+                <div class="search_bar">
+                    <input type="text" placeholder="Search" class="ip_1">
+                </div>
+
+                <div class="search_button">
+                    <button  id="search_btn">Search</button>
+                </div>
+
+                <div class="profile_img">
+                    <div class="p_img">
+                    <?php
+                            if(!isset($_SESSION['user_token']) AND !isset($_SESSION['email'])){
+                                ?>
+                                <form action="login.php">
+                            <button type="submit" id="search_btn" class="button1">Login</button>
+                            </form>
+
+                                <?php
+                            }
+                        elseif(!isset($userinfo['picture'])){
+                            ?>
+                             
+                                <img src="assets/img/person1.jpg" alt="">
+                            
+                        <?php
+                        }else{
+                        ?>
+                            <figure><img src="<?php echo $userinfo['picture']; ?>" alt="profile" width="250px" height="50px"></figure>
+                    
+                                <?php
+                                }
+                            ?>
+                    </div>
+                </div>
+            </div>
+                </div>
+    </header>
+
     <!-- ===== ===== Body Main-Background ===== ===== -->
     <span class="main_bg"></span>
 
 
     <!-- ===== ===== Main-Container ===== ===== -->
-    <div class="container" style="margin-top:111px;">
+    <div class="container">
 
         <!-- ===== ===== Header/Navbar ===== ===== -->
-        <!-- <header>
-            <div class="brandLogo">
-                <figure><img src="assets/css/img/logo.png" alt="logo" width="40px" height="40px"></figure>
+        <!-- <header> -->
+            <!-- <div class="brandLogo">
+                <figure><img src="img/logo.png" alt="logo" width="40px" height="40px"></figure>
                 <span>Aggretech Agro</span>
-            </div>
-        </header> -->
+            </div> -->
+        <!-- </header> -->
 
 
         <!-- ===== ===== User Main-Profile ===== ===== -->
         <section class="userProfile card">
             <div class="profile">
-                <?php
+            <?php
                 if(!isset($userinfo['picture'])){
                     ?>
                 <figure><img src="assets/css/img/person1.jpg" alt="profile" width="250px" height="250px"></figure>
@@ -189,6 +394,7 @@ else{
                     <?php
                 }
                     ?>
+                
             </div>
         </section>
 
@@ -296,7 +502,7 @@ else{
                     echo $userinfo['fullname'];
                  }else{
                     echo $userinfo['first_name'].' '.$userinfo['last_name'];
-                 } ?></h1></h1>
+                 } ?></h1>
                 <p>Surat, Gujarat</p>
             </div>
 
@@ -320,15 +526,14 @@ else{
                         <a href="#">Edit Profile</a>
                     </li>
 
-                    <li class="sendMsg">
+                    <!-- <li class="sendMsg">
                         <a href="#">Edit Profile</a>
-                    </li>
+                    </li> -->
 
-                    <li class="sendMsg active">
+                    <li class="sendMsg">
                         <i class="ri-check-fill ri"></i>
                         <a href="logout.php">Log Out</a>
                     </li>
-
                 </ul>
             </div>
         </section>
@@ -374,7 +579,6 @@ else{
                     <?php
                     }
                     ?>
-                    
                 </ul>
             </div>
 
@@ -397,35 +601,25 @@ else{
     <?php
         include "footer.php";
     ?>
-
-    <div id="preloader">
-          <div id="status">&nbsp;</div>
-        </div>
-    <script>
-        var loader = document.getElementById("preloader");
-        window.addEventListener("load",function(){
-            loader.style.display = "none";
-        })
-    </script>
-    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $(".nav_btn").click(function () {
-            $("header").toggleClass("slide");
+    <script>
+        $(document).ready(function(){
+            $(".nav_btn").click(function(){
+                $("header").toggleClass("slide");
+            });
         });
-    });
 
-    $(document).ready(function () {
-        $(".nav_btn2").click(function () {
-            $("header").toggleClass("slide");
+        $(document).ready(function(){
+            $(".nav_btn2").click(function(){
+                $("header").toggleClass("slide");
+            });
         });
-    });
 
 
-</script>
+    </script>
 
+    
 <script type="text/javascript">
 
     window.addEventListener("scroll", function () {
@@ -434,6 +628,7 @@ else{
     })
 
 </script>
+
 </body>
 
 </html>
