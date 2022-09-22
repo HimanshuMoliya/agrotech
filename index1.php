@@ -359,7 +359,7 @@ section.sec_1 {
             <div class="worker_info">
 
                 <div class="winfo_img">
-                    <img src="assets/css/img/homepage/worker2.jpg" alt="Aggregate Agro">
+                    <img src="assets/css/img/homepage/worker3.jpg" alt="Aggregate Agro">
                 </div>
 
                 <div class="winfo_title">
@@ -427,7 +427,7 @@ section.sec_1 {
 
                 </div>
                 <div class="winfo_img2">
-                    <img src="assets/css/img/homepage/worker2.jpg" alt="Aggregate Agro">
+                    <img src="assets/css/img/homepage/farmer2.jpg" alt="Aggregate Agro">
                 </div>
 
   
@@ -446,7 +446,7 @@ section.sec_1 {
             <div class="worker_info">
 
                 <div class="winfo_img">
-                    <img src="assets/css/img/homepage/worker2.jpg" alt="Aggregate Agro">
+                    <img src="assets/css/img/homepage/seller2.jpg" alt="Aggregate Agro">
                 </div>
 
                 <div class="winfo_title">
