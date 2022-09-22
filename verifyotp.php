@@ -96,7 +96,7 @@
                 $update = "UPDATE `register` SET `verified` = '1' WHERE `register`.`email` = '$email'";
                 $result_update = mysqli_query($con,$update);
                 $_SESSION['verify'] = true;
-                header("location: worker.php");
+                header("location: login.php");
             }else{
                 echo '<div class="alert alert-danger" role="alert">
                         Invalid verification code
