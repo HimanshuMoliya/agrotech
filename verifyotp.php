@@ -95,6 +95,7 @@
             if($row['otp'] == $v_code){
                 $update = "UPDATE `register` SET `verified` = '1' WHERE `register`.`email` = '$email'";
                 $result_update = mysqli_query($con,$update);
+                $_SESSION['verify'] = true;
                 header("location: worker.php");
             }else{
                 echo '<div class="alert alert-danger" role="alert">

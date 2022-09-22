@@ -2,7 +2,11 @@
 require "db/db.php";
 require_once 'db/config.php';
 if(!isset($_SESSION['user_token']) AND !isset($_SESSION['email'])){
+    if($_SESSION['verify'] == true){
     header("location: index1.php");
+    }else{
+        header("location: index1.php");
+    }
     // die();
   }else{
 if(isset($_SESSION['user_token'])){
