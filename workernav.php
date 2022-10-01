@@ -16,7 +16,7 @@
                         <button class="nav_btn2"> <i class="fa-solid fa-xmark"></i> </button>
                         <ul>
                             <li><a href="#">Home</a></li>
-                            <li><a href="#">Services</a></li>
+                            <li><a href="w_job/worker_job.php">Jobs</a></li>
                             <li><a href="#">About</a></li>
                             <li><a href="#">Contact</a></li>
                             <?php
