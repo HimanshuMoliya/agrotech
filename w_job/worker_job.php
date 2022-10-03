@@ -1,5 +1,34 @@
+<?php
+require "../db/db.php";
+require_once 'config.php';
+if(!isset($_SESSION['user_token']) AND !isset($_SESSION['email'])){
+    if($_SESSION['verify'] == true){
+    header("location: index1.php");
+    }else{
+        header("location: index1.php");
+    }
+    // die();
+  }else{
+if(isset($_SESSION['user_token'])){
 
+$sql = "SELECT * FROM user_profile WHERE token = '{$_SESSION['user_token']}'";
+$result = mysqli_query($con,$sql);
 
+if(mysqli_num_rows($result) > 0){
+    $userinfo = mysqli_fetch_assoc($result);
+    
+ }
+}
+else{
+    $sql = "SELECT * FROM user_profile WHERE email = '{$_SESSION['email']}' ";
+    $result = mysqli_query($con,$sql);
+
+    if(mysqli_num_rows($result) > 0){
+        $userinfo = mysqli_fetch_assoc($result);
+    }
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -213,300 +242,10 @@ i.fa.fa-search {
                     <!-- job-grid right -->
                     <div class="col-lg-9 order-1 order-lg-2 mt-6 job_offer">
                         <div class="ps-lg-1-6 ps-xl-1-9">
+                             <div class="row mt-n1-9" id="row mt-n1-9"> 
+                                
+<!-- =====================================all farmer profile show here  ===================== -->
 
-                            <div class="row mt-n1-9">
-                                <div class="col-md-6 mt-1-9">
-                                    <div class="card border-color-extra-light-gray h-100 border-radius-5">
-                                        <div class="card-body p-1-6 p-xl-1-9">
-                                            <div class="d-flex mb-3">
-                                                <div class="flex-shrink-0">
-                                                    <img src="img/logos/person1.jpg" class="border-radius-50 w-40px" alt="...">
-                                                </div>
-                                                <div class="flex-grow-1 ms-3">
-                                                    <h6 class="mb-0">Michelle Herz</h6>
-                                                    <span class="text-muted display-31">Nov 18, 2021</span>
-                                                </div>
-                                            </div>
-                                            <h5 class="text-primary mb-3">12000 <span class="text-muted display-31">/ Month</span> </h5>
-                                            <div class="mb-4">
-                                                <span class="display-30 me-2"><i class="fas fa-map-marker-alt pe-2"></i>Amreli, Gujarat</span>
-                                                <span class="display-30"><i class="far fa-clock pe-2"></i>Full Time</span>
-                                            </div>
-                                            <a href="job-details.html" class="butn butn-md radius">Apply Now</a>
-
-                                            <div class="farmer_con">
-                                                <ul>
-                                                    <li  > <a href="#"> <i class="fa-solid fa-envelope"></i></a></li>
-                                                    <li > <a href="#"> <i class="fa-solid fa-phone"></i></a></li>
-                                                    <li >  <i class="fa-solid fa-circle"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1-9">
-                                    <div class="card border-color-extra-light-gray h-100 border-radius-5">
-                                        <div class="card-body p-1-6 p-xl-1-9">
-                                            <div class="d-flex mb-3">
-                                                <div class="flex-shrink-0">
-                                                    <img src="img/logos/person1.jpg" class="border-radius-50 w-40px" alt="...">
-                                                </div>
-                                                <div class="flex-grow-1 ms-3">
-                                                    <h6 class="mb-0">Michelle Herz</h6>
-                                                    <span class="text-muted display-31">Nov 18, 2021</span>
-                                                </div>
-                                            </div>
-                                            <h5 class="text-primary mb-3">12000 <span class="text-muted display-31">/ Month</span> </h5>
-                                            <div class="mb-4">
-                                                <span class="display-30 me-2"><i class="fas fa-map-marker-alt pe-2"></i>Amreli, Gujarat</span>
-                                                <span class="display-30"><i class="far fa-clock pe-2"></i>Full Time</span>
-                                            </div>
-                                            <a href="job-details.html" class="butn butn-md radius">Apply Now</a>
-
-                                            <div class="farmer_con">
-                                                <ul>
-                                                    <li  > <a href="#"> <i class="fa-solid fa-envelope"></i></a></li>
-                                                    <li > <a href="#"> <i class="fa-solid fa-phone"></i></a></li>
-                                                    <li >  <i class="fa-solid fa-circle"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1-9">
-                                    <div class="card border-color-extra-light-gray h-100 border-radius-5">
-                                        <div class="card-body p-1-6 p-xl-1-9">
-                                            <div class="d-flex mb-3">
-                                                <div class="flex-shrink-0">
-                                                    <img src="img/logos/person1.jpg" class="border-radius-50 w-40px" alt="...">
-                                                </div>
-                                                <div class="flex-grow-1 ms-3">
-                                                    <h6 class="mb-0">Michelle Herz</h6>
-                                                    <span class="text-muted display-31">Nov 18, 2021</span>
-                                                </div>
-                                            </div>
-                                            <h5 class="text-primary mb-3">12000 <span class="text-muted display-31">/ Month</span> </h5>
-                                            <div class="mb-4">
-                                                <span class="display-30 me-2"><i class="fas fa-map-marker-alt pe-2"></i>Amreli, Gujarat</span>
-                                                <span class="display-30"><i class="far fa-clock pe-2"></i>Full Time</span>
-                                            </div>
-                                            <a href="job-details.html" class="butn butn-md radius">Apply Now</a>
-
-                                            <div class="farmer_con">
-                                                <ul>
-                                                    <li  > <a href="#"> <i class="fa-solid fa-envelope"></i></a></li>
-                                                    <li > <a href="#"> <i class="fa-solid fa-phone"></i></a></li>
-                                                    <li >  <i class="fa-solid fa-circle"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1-9">
-                                    <div class="card border-color-extra-light-gray h-100 border-radius-5">
-                                        <div class="card-body p-1-6 p-xl-1-9">
-                                            <div class="d-flex mb-3">
-                                                <div class="flex-shrink-0">
-                                                    <img src="img/logos/person1.jpg" class="border-radius-50 w-40px" alt="...">
-                                                </div>
-                                                <div class="flex-grow-1 ms-3">
-                                                    <h6 class="mb-0">Michelle Herz</h6>
-                                                    <span class="text-muted display-31">Nov 18, 2021</span>
-                                                </div>
-                                            </div>
-                                            <h5 class="text-primary mb-3">12000 <span class="text-muted display-31">/ Month</span> </h5>
-                                            <div class="mb-4">
-                                                <span class="display-30 me-2"><i class="fas fa-map-marker-alt pe-2"></i>Amreli, Gujarat</span>
-                                                <span class="display-30"><i class="far fa-clock pe-2"></i>Full Time</span>
-                                            </div>
-                                            <a href="job-details.html" class="butn butn-md radius">Apply Now</a>
-
-                                            <div class="farmer_con">
-                                                <ul>
-                                                    <li  > <a href="#"> <i class="fa-solid fa-envelope"></i></a></li>
-                                                    <li > <a href="#"> <i class="fa-solid fa-phone"></i></a></li>
-                                                    <li >  <i class="fa-solid fa-circle"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1-9">
-                                    <div class="card border-color-extra-light-gray h-100 border-radius-5">
-                                        <div class="card-body p-1-6 p-xl-1-9">
-                                            <div class="d-flex mb-3">
-                                                <div class="flex-shrink-0">
-                                                    <img src="img/logos/person1.jpg" class="border-radius-50 w-40px" alt="...">
-                                                </div>
-                                                <div class="flex-grow-1 ms-3">
-                                                    <h6 class="mb-0">Michelle Herz</h6>
-                                                    <span class="text-muted display-31">Nov 18, 2021</span>
-                                                </div>
-                                            </div>
-                                            <h5 class="text-primary mb-3">12000 <span class="text-muted display-31">/ Month</span> </h5>
-                                            <div class="mb-4">
-                                                <span class="display-30 me-2"><i class="fas fa-map-marker-alt pe-2"></i>Amreli, Gujarat</span>
-                                                <span class="display-30"><i class="far fa-clock pe-2"></i>Full Time</span>
-                                            </div>
-                                            <a href="job-details.html" class="butn butn-md radius">Apply Now</a>
-
-                                            <div class="farmer_con">
-                                                <ul>
-                                                    <li  > <a href="#"> <i class="fa-solid fa-envelope"></i></a></li>
-                                                    <li > <a href="#"> <i class="fa-solid fa-phone"></i></a></li>
-                                                    <li >  <i class="fa-solid fa-circle"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1-9">
-                                    <div class="card border-color-extra-light-gray h-100 border-radius-5">
-                                        <div class="card-body p-1-6 p-xl-1-9">
-                                            <div class="d-flex mb-3">
-                                                <div class="flex-shrink-0">
-                                                    <img src="img/logos/person1.jpg" class="border-radius-50 w-40px" alt="...">
-                                                </div>
-                                                <div class="flex-grow-1 ms-3">
-                                                    <h6 class="mb-0">Michelle Herz</h6>
-                                                    <span class="text-muted display-31">Nov 18, 2021</span>
-                                                </div>
-                                            </div>
-                                            <h5 class="text-primary mb-3">12000 <span class="text-muted display-31">/ Month</span> </h5>
-                                            <div class="mb-4">
-                                                <span class="display-30 me-2"><i class="fas fa-map-marker-alt pe-2"></i>Amreli, Gujarat</span>
-                                                <span class="display-30"><i class="far fa-clock pe-2"></i>Full Time</span>
-                                            </div>
-                                            <a href="job-details.html" class="butn butn-md radius">Apply Now</a>
-
-                                            <div class="farmer_con">
-                                                <ul>
-                                                    <li  > <a href="#"> <i class="fa-solid fa-envelope"></i></a></li>
-                                                    <li > <a href="#"> <i class="fa-solid fa-phone"></i></a></li>
-                                                    <li >  <i class="fa-solid fa-circle"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mt-1-9">
-                                    <div class="card border-color-extra-light-gray h-100 border-radius-5">
-                                        <div class="card-body p-1-6 p-xl-1-9">
-                                            <div class="d-flex mb-3">
-                                                <div class="flex-shrink-0">
-                                                    <img src="img/logos/person1.jpg" class="border-radius-50 w-40px" alt="...">
-                                                </div>
-                                                <div class="flex-grow-1 ms-3">
-                                                    <h6 class="mb-0">Michelle Herz</h6>
-                                                    <span class="text-muted display-31">Nov 18, 2021</span>
-                                                </div>
-                                            </div>
-                                            <h5 class="text-primary mb-3">12000 <span class="text-muted display-31">/ Month</span> </h5>
-                                            <div class="mb-4">
-                                                <span class="display-30 me-2"><i class="fas fa-map-marker-alt pe-2"></i>Amreli, Gujarat</span>
-                                                <span class="display-30"><i class="far fa-clock pe-2"></i>Full Time</span>
-                                            </div>
-                                            <a href="job-details.html" class="butn butn-md radius">Apply Now</a>
-
-                                            <div class="farmer_con">
-                                                <ul>
-                                                    <li  > <a href="#"> <i class="fa-solid fa-envelope"></i></a></li>
-                                                    <li > <a href="#"> <i class="fa-solid fa-phone"></i></a></li>
-                                                    <li >  <i class="fa-solid fa-circle"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1-9">
-                                    <div class="card border-color-extra-light-gray h-100 border-radius-5">
-                                        <div class="card-body p-1-6 p-xl-1-9">
-                                            <div class="d-flex mb-3">
-                                                <div class="flex-shrink-0">
-                                                    <img src="img/logos/person1.jpg" class="border-radius-50 w-40px" alt="...">
-                                                </div>
-                                                <div class="flex-grow-1 ms-3">
-                                                    <h6 class="mb-0">Michelle Herz</h6>
-                                                    <span class="text-muted display-31">Nov 18, 2021</span>
-                                                </div>
-                                            </div>
-                                            <h5 class="text-primary mb-3">12000 <span class="text-muted display-31">/ Month</span> </h5>
-                                            <div class="mb-4">
-                                                <span class="display-30 me-2"><i class="fas fa-map-marker-alt pe-2"></i>Amreli, Gujarat</span>
-                                                <span class="display-30"><i class="far fa-clock pe-2"></i>Full Time</span>
-                                            </div>
-                                            <a href="job-details.html" class="butn butn-md radius">Apply Now</a>
-
-                                            <div class="farmer_con">
-                                                <ul>
-                                                    <li  > <a href="#"> <i class="fa-solid fa-envelope"></i></a></li>
-                                                    <li > <a href="#"> <i class="fa-solid fa-phone"></i></a></li>
-                                                    <li >  <i class="fa-solid fa-circle"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1-9">
-                                    <div class="card border-color-extra-light-gray h-100 border-radius-5">
-                                        <div class="card-body p-1-6 p-xl-1-9">
-                                            <div class="d-flex mb-3">
-                                                <div class="flex-shrink-0">
-                                                    <img src="img/logos/person1.jpg" class="border-radius-50 w-40px" alt="...">
-                                                </div>
-                                                <div class="flex-grow-1 ms-3">
-                                                    <h6 class="mb-0">Michelle Herz</h6>
-                                                    <span class="text-muted display-31">Nov 18, 2021</span>
-                                                </div>
-                                            </div>
-                                            <h5 class="text-primary mb-3">12000 <span class="text-muted display-31">/ Month</span> </h5>
-                                            <div class="mb-4">
-                                                <span class="display-30 me-2"><i class="fas fa-map-marker-alt pe-2"></i>Amreli, Gujarat</span>
-                                                <span class="display-30"><i class="far fa-clock pe-2"></i>Full Time</span>
-                                            </div>
-                                            <a href="job-details.html" class="butn butn-md radius">Apply Now</a>
-
-                                            <div class="farmer_con">
-                                                <ul>
-                                                    <li  > <a href="#"> <i class="fa-solid fa-envelope"></i></a></li>
-                                                    <li > <a href="#"> <i class="fa-solid fa-phone"></i></a></li>
-                                                    <li >  <i class="fa-solid fa-circle"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 mt-1-9">
-                                    <div class="card border-color-extra-light-gray h-100 border-radius-5">
-                                        <div class="card-body p-1-6 p-xl-1-9">
-                                            <div class="d-flex mb-3">
-                                                <div class="flex-shrink-0">
-                                                    <img src="img/logos/person1.jpg" class="border-radius-50 w-40px" alt="...">
-                                                </div>
-                                                <div class="flex-grow-1 ms-3">
-                                                    <h6 class="mb-0">Michelle Herz</h6>
-                                                    <span class="text-muted display-31">Nov 18, 2021</span>
-                                                </div>
-                                            </div>
-                                            <h5 class="text-primary mb-3">12000 <span class="text-muted display-31">/ Month</span> </h5>
-                                            <div class="mb-4">
-                                                <span class="display-30 me-2"><i class="fas fa-map-marker-alt pe-2"></i>Amreli, Gujarat</span>
-                                                <span class="display-30"><i class="far fa-clock pe-2"></i>Full Time</span>
-                                            </div>
-                                            <a href="job-details.html" class="butn butn-md radius">Apply Now</a>
-
-                                            <div class="farmer_con">
-                                                <ul>
-                                                    <li  > <a href="#"> <i class="fa-solid fa-envelope"></i></a></li>
-                                                    <li > <a href="#"> <i class="fa-solid fa-phone"></i></a></li>
-                                                    <li >  <i class="fa-solid fa-circle"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                            
                         </div>
@@ -656,7 +395,25 @@ i.fa.fa-search {
     <script src="quform/js/scripts.js"></script>
 
     <!-- all js include end -->
+    <script>
+function loadXMLDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("row mt-n1-9").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "worker_server.php", true);
+  xhttp.send();
+}
+setInterval(function(){
+	loadXMLDoc();
+	// 1sec
+},1000);
 
+window.onload = loadXMLDoc;
+</script>
 </body>
 
 

@@ -501,7 +501,7 @@ header.sticky {
                 if(isset($userinfo['fullname'])){
                     echo $userinfo['fullname'];
                  }else{
-                    echo $userinfo['first_name'].' '.$userinfo['last_name'];
+                    echo $userinfo['first_name'];
                  } ?></h1>
                 <p>Surat, Gujarat</p>
             </div>

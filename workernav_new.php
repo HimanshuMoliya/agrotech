@@ -66,10 +66,25 @@
                                         <ul>
                                             <li class="search"><a href="#!"><i class="fa fa-search"></i></a></li>
                                             <li class="d-none d-xl-inline-block">
-                                                <a href="">demo@gmail.com</a>
+                                                <a href=""><?php echo $userinfo['email']; ?></a>
                                             </li>
-                                            <li><a href="#!"> <div class="profile_img"> <img class="rounded-circle" alt="100x100" src="img/logos/person1.jpg"
-                                                data-holder-rendered="true"></div></a></li>
+                                            <li><a href="#!"> <div class="profile_img"> 
+                                            <?php
+                            if(!isset($userinfo['picture'])){
+                            ?>
+                             <img class="rounded-circle" alt="100x100" src="img/logos/person1.jpg" data-holder-rendered="true">
+                            
+                        <?php
+                        }else{
+                        ?>
+                            <img class="rounded-circle" alt="100x100" src="<?php echo $userinfo['picture']; ?>" data-holder-rendered="true">
+
+                    
+                                <?php
+                                }
+                            ?>
+                                                
+                                            </div></a></li>
 
                                         </ul>
                                     </div>

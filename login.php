@@ -70,11 +70,11 @@ $invalid = false;
 
         if(isset($_POST['first_name'])){
             $first_name = $_POST['first_name'];
-            $last_name = $_POST['last_name'];
             $mail = $_POST['mail'];
             $phoneno = $_POST['phoneno'];
             $password = $_POST['password'];
-            $confirm_password = $_POST['confirm_password'];
+            $address = $_POST['address'];
+            $occupation = $_POST['occupation'];
     
             $check = "SELECT * FROM `register` WHERE `email` = '$mail'";
             $result_check = mysqli_query($con,$check);
@@ -88,13 +88,12 @@ $invalid = false;
             }
             
             else{
-            if($password == $confirm_password){
               
                 $user_id = rand ( 1000 , 999999 ); 
-                $insert = "INSERT INTO `register` ( `uid`,`occupation`, `first_name`, `last_name`, `email`, `phoneno`, `password`,`otp`,`verified`, `date`) VALUES ( $user_id,'farmer', '$first_name', '$last_name', '$mail', '$phoneno', '$password',$v_code,0, current_timestamp())";
+                $insert = "INSERT INTO `register` ( `uid`,`occupation`, `first_name`, `email`, `phoneno`, `password`,`otp`,`verified`, `date`) VALUES ( $user_id,'farmer', '$first_name',  '$mail', '$phoneno', '$password',$v_code,0, current_timestamp())";
 
-                $fullname = $first_name . ' ' .$last_name;
-                $sql = "INSERT INTO `user_profile` ( `picture`, `token`, `email`, `fullname`, `phoneno`, `address`, `gender`, `age`, `workhour`, `approxsalary`, `date`) VALUES ( NULL,NULL , '{$mail}', '{$fullname}', '{$phoneno}', NULL, NULL, NULL, NULL,NULL, CURRENT_TIMESTAMP);";
+                $fullname = $first_name;
+                $sql = "INSERT INTO `user_profile` (`id`, `picture`, `token`, `email`, `fullname`, `phoneno`, `address`,`occupation`, `gender`, `age`, `workhour`, `approxsalary`, `date`) VALUES ( $user_id, NULL,NULL , '{$mail}', '{$fullname}', '{$phoneno}', '{$address}', '$occupation', NULL, NULL,NULL, CURRENT_TIMESTAMP);";
                 // $insert_userprofile = "INSERT INTO `user_profile` (`id`, `email`, `fullname`, `profile_picture`, `about`, `birthdate`, `gender`, `city`, `mothertongue`, `hobbys`, `maritualstatus`, `ethencity`, `heighest_education`, `occupation`, `annual_income`, `height`, `weight`, `any_disability`, `my_habbits`, `verified`, `is_online`, `date`) VALUES ($user_id, '$mail', '$fullname', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, current_timestamp())";
                 $_SESSION['email'] = $mail;
                 $_SESSION['loggedin'] = true;
@@ -159,13 +158,7 @@ $invalid = false;
             }
 
                 // header("location: myprofile.php");
-            }else{
-                ?>
-                <div class="alert alert-danger" role="alert">
-                    Password Not match
-                </div>
-                <?php
-            }
+            
             }
         }
         
@@ -324,17 +317,17 @@ $invalid = false;
               <div class="actual-form">
                 <div class="input-wrap">
                   <input type="text" minlength="4" class="input-field" autocomplete="off" name="first_name" required />
-                  <label>First Name</label>
-                </div>
-
-                <div class="input-wrap">
-                  <input type="text" minlength="4" class="input-field" autocomplete="off" name="last_name" required />
-                  <label>Last Name</label>
+                  <label>Full Name</label>
                 </div>
 
                 <div class="input-wrap">
                   <input type="email" class="input-field" autocomplete="off" name="mail" required />
                   <label>Email</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input type="text" class="input-field" autocomplete="off" name="address" required />
+                  <label>Address</label>
                 </div>
 
                 <div class="input-wrap">
@@ -347,10 +340,18 @@ $invalid = false;
                   <label>Password</label>
                 </div>
 
-                <div class="input-wrap">
-                  <input type="password" class="input-field" autocomplete="off" name="confirm_password" required />
-                  <label>Confirm Password</label>
+                <div class="input-wrap" style="gap: 14px;display: flex;">
+                  <p style="text-decoration: none;font-size: 13px;">Become a</p>
+                  <div class="selector">
+                    <select style="width: 71%;justify-content: right;right: 0;height: 63%;">
+                      <option value="farmer">Farmer</option>
+                      <option value="worker">Worker</option>
+                      <option value="seller">Seller</option>
+                      <option value="yard">Yard</option>
+                    </select>
+                  </div>
                 </div>
+                
 
 
 
