@@ -1,10 +1,11 @@
 <?php
 
     include "../db/db.php";
-    $query = mysqli_query($con, "SELECT * FROM register WHERE occupation = 'farmer'");
-	while($row = mysqli_fetch_array($query)){
-        $email = $row['email'];
-        $query1 = mysqli_query($con, "SELECT * FROM user_profile WHERE email =  '$email'");
+    // $query = mysqli_query($con, "SELECT * FROM register WHERE occupation = 'farmer'");
+	// while($row = mysqli_fetch_array($query)){
+        // $email = $row['email'];
+        $query1 = mysqli_query($con, "SELECT * FROM user_profile WHERE occupation = 'farmer' AND requested = 1");
+
         $row1 = mysqli_fetch_assoc($query1);
         ?>
 
@@ -16,7 +17,7 @@
                     <img src="img/logos/person1.jpg" class="border-radius-50 w-40px" alt="...">
                 </div>
                 <div class="flex-grow-1 ms-3">
-                    <h6 class="mb-0"><?php echo $row['first_name']; ?></h6>
+                    <h6 class="mb-0"><?php echo $row1['fullname']; ?></h6>
                     <span class="text-muted display-31">Nov 18, 2021</span>
                 </div>
             </div>
@@ -45,5 +46,5 @@
 </div>
 
 <?php
-    }
+    // }
 ?>
