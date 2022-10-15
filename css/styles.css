@@ -5211,7 +5211,7 @@ pre[class*="language-"] {
 
 .inner-box {
     position: relative;
-    background: rgba(38, 174, 97, 0.1);
+    /* background: rgba(38, 174, 97, 0.1); */
     border-radius: 5px;
     padding: 50px
 }
