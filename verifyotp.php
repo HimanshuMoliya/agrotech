@@ -20,6 +20,21 @@
       />
     <link rel="stylesheet" href="assets/css/style.css" />
     <style>
+      main {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #77877d;;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(img/bg/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: overlay;
+}
+
       @media (max-width: 850px) {
         .box {
           height: 420px;
