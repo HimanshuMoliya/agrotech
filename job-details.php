@@ -1,3 +1,6 @@
+<?php
+$requested_id = $_GET['id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 

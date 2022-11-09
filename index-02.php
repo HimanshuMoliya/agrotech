@@ -45,7 +45,7 @@ else{
     <meta name="description" content="Job Board - Job Portal HTML Template" />
 
     <!-- title  -->
-    <title>Job Board - Job Portal HTML Template</title>
+    <title>Aggregate Agro</title>
 
     <!-- favicon -->
     <link rel="shortcut icon" href="img/logos/logo.png" />
@@ -667,7 +667,51 @@ i.fa.fa-search {
                     <h2><strong>Latest job</strong></h2>
                 </div>
                 <div class="row mt-n1-9">
+                    <?php
+                    $sql = "SELECT * FROM user_profile WHERE occupation = 'farmer' AND requested = 1";
+                    $result = mysqli_query($con,$sql);
+                    $num = mysqli_num_rows($result);
+                        
+                        while($row = mysqli_fetch_assoc($result)){
+                       ?>
                     <div class="col-md-6 col-lg-4 mt-1-9">
+                        <div class="card border-color-extra-light-gray h-100 border-radius-5">
+                            <div class="card-body p-1-6 p-xl-1-9">
+                                <div class="d-flex mb-3">
+                                    <div class="flex-shrink-0">
+                                        <img src="<?php echo $row['picture']; ?>" class="border-radius-50 w-40px" alt="...">
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="mb-0"><?php echo $row['fullname']; ?></h6>
+                                        <span class="text-muted display-31">
+                                            <!-- Nov 18, 2021 -->
+                                            <?php echo substr($row['date'], 0, 10) ?>
+                                        </span>
+                                    </div>
+                                </div>
+                                <h5 class="text-primary mb-3"><?php echo $row['approxsalary']; ?> <span class="text-muted display-31">/ Month</span> </h5>
+                                <div class="mb-4">
+                                    <span class="display-30 me-2"><i class="fas fa-map-marker-alt pe-2"></i><?php echo $row['address']; ?></span>
+                                    <span class="display-30"><i class="far fa-clock pe-2"></i><?php echo $row['workhour']; ?></span>
+                                </div>
+                                <a href="job-details.php?id=<?php echo $row['id'] ?>" class="butn butn-md radius">Apply Now</a>
+
+                                
+                                <div class="farmer_con">
+                                    <ul>
+                                        <li  > <a href="#"> <i class="fa-solid fa-envelope"></i></a></li>
+                                        <li > <a href="#"> <i class="fa-solid fa-phone"></i></a></li>
+                                        <li >  <i class="fa-solid fa-circle"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                        }
+                        
+                        ?>
+                    <!-- <div class="col-md-6 col-lg-4 mt-1-9">
                         <div class="card border-color-extra-light-gray h-100 border-radius-5">
                             <div class="card-body p-1-6 p-xl-1-9">
                                 <div class="d-flex mb-3">
@@ -816,37 +860,7 @@ i.fa.fa-search {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mt-1-9">
-                        <div class="card border-color-extra-light-gray h-100 border-radius-5">
-                            <div class="card-body p-1-6 p-xl-1-9">
-                                <div class="d-flex mb-3">
-                                    <div class="flex-shrink-0">
-                                        <img src="img/avatar/avatar-01.jpg" class="border-radius-50 w-40px" alt="...">
-                                    </div>
-                                    <div class="flex-grow-1 ms-3">
-                                        <h6 class="mb-0">Michelle Herz</h6>
-                                        <span class="text-muted display-31">Nov 18, 2021</span>
-                                    </div>
-                                </div>
-                                <h5 class="text-primary mb-3">12000 <span class="text-muted display-31">/ Month</span> </h5>
-                                <div class="mb-4">
-                                    <span class="display-30 me-2"><i class="fas fa-map-marker-alt pe-2"></i>Amreli, Gujarat</span>
-                                    <span class="display-30"><i class="far fa-clock pe-2"></i>Full Time</span>
-                                </div>
-                                <a href="job-details.html" class="butn butn-md radius">Apply Now</a>
-
-                                
-                                <div class="farmer_con">
-                                    <ul>
-                                        <li  > <a href="#"> <i class="fa-solid fa-envelope"></i></a></li>
-                                        <li > <a href="#"> <i class="fa-solid fa-phone"></i></a></li>
-                                        <li >  <i class="fa-solid fa-circle"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
                 <a href="candidate-details.html" class="butn w-100 radius fprofile_btn2">More Jobs <i class="fa-solid fa-arrow-right"></i></a>
             </div>
@@ -927,15 +941,22 @@ i.fa.fa-search {
             <div class="container">
                 <div class="section-heading2">
                     <span># Farmers</span>
-                    <h2><strong>Farmer's</strong> Profile</h2>
+                    <h2><strong>Top</strong> worker's</h2>
                 </div>
                 <div class="featured-candidate owl-carousel owl-theme">
+                    <?php
+                      $sql = "SELECT * FROM user_profile WHERE occupation = 'worker' limit 5";
+                      $result = mysqli_query($con,$sql);
+                      $num = mysqli_num_rows($result);
+                          
+                          while($row1 = mysqli_fetch_assoc($result)){
+                    ?>
                     <div class="card card-style7">
                         <div class="card-body">
                             <a class="candidate-favourite" href="#!"><i class="far fa-heart"></i></a>
                             <img src="img/candidate/candidate-02.jpg" class="border-radius-50 mb-3" alt="...">
                             <div class="candidate-info">
-                                <h4 class="h5"><a href="candidate-details.html">Isha Patel</a></h4>
+                                <h4 class="h5"><a href="candidate-details.html"><?php echo $row1['fullname']; ?></a></h4>
                                 <span class="display-30 text-muted d-block mb-2 font-weight-500"></span>
                                 <div class="display-30 text-warning">
                                     <i class="fas fa-star"></i>
@@ -946,128 +967,16 @@ i.fa.fa-search {
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between mb-3">
-                                <span><i class="ti-location-pin text-secondary me-2 display-31 display-sm-30"></i><strong>Gujarat</strong></span>
-                                <span><i class="far fa-money-bill-alt text-secondary me-2 display-31 display-sm-30"></i><strong>12000 / Month</strong></span>
-                                <span><i class="ti-briefcase text-secondary me-2 display-31 display-sm-30"></i><strong>Part Time</strong></span>
+                                <span><i class="ti-location-pin text-secondary me-2 display-31 display-sm-30"></i><strong><?php echo $row1['address']; ?></strong></span>
+                                <span><i class="far fa-money-bill-alt text-secondary me-2 display-31 display-sm-30"></i><strong><?php echo $row1['approxsalary']; ?> / Month</strong></span>
+                                <span><i class="ti-briefcase text-secondary me-2 display-31 display-sm-30"></i><strong><?php echo $row1['workhour']; ?></strong></span>
                             </div>
-                            <a href="candidate-details.html" class="butn w-100 radius">View Profile</a>
+                            <a href="candidate-details.php?id=<?php echo $row1['id']; ?>" class="butn w-100 radius">View Profile</a>
                         </div>
                     </div>
-                    <div class="card card-style7">
-                        <div class="card-body">
-                            <a class="candidate-favourite" href="#!"><i class="far fa-heart"></i></a>
-                            <img src="img/candidate/candidate-02.jpg" class="border-radius-50 mb-3" alt="...">
-                            <div class="candidate-info">
-                                <h4 class="h5"><a href="candidate-details.html">Isha Patel</a></h4>
-                                <span class="display-30 text-muted d-block mb-2 font-weight-500"></span>
-                                <div class="display-30 text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="px-2 py-1 bg-primary text-white ms-2 display-31">4.0</span>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between mb-3">
-                                <span><i class="ti-location-pin text-secondary me-2 display-31 display-sm-30"></i><strong>Gujarat</strong></span>
-                                <span><i class="far fa-money-bill-alt text-secondary me-2 display-31 display-sm-30"></i><strong>12000 / Month</strong></span>
-                                <span><i class="ti-briefcase text-secondary me-2 display-31 display-sm-30"></i><strong>Part Time</strong></span>
-                            </div>
-                            <a href="candidate-details.html" class="butn w-100 radius">View Profile</a>
-                        </div>
-                    </div>
-                    <div class="card card-style7">
-                        <div class="card-body">
-                            <a class="candidate-favourite" href="#!"><i class="far fa-heart"></i></a>
-                            <img src="img/candidate/candidate-02.jpg" class="border-radius-50 mb-3" alt="...">
-                            <div class="candidate-info">
-                                <h4 class="h5"><a href="candidate-details.html">Isha Patel</a></h4>
-                                <span class="display-30 text-muted d-block mb-2 font-weight-500"></span>
-                                <div class="display-30 text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="px-2 py-1 bg-primary text-white ms-2 display-31">4.0</span>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between mb-3">
-                                <span><i class="ti-location-pin text-secondary me-2 display-31 display-sm-30"></i><strong>Gujarat</strong></span>
-                                <span><i class="far fa-money-bill-alt text-secondary me-2 display-31 display-sm-30"></i><strong>12000 / Month</strong></span>
-                                <span><i class="ti-briefcase text-secondary me-2 display-31 display-sm-30"></i><strong>Part Time</strong></span>
-                            </div>
-                            <a href="candidate-details.html" class="butn w-100 radius">View Profile</a>
-                        </div>
-                    </div>
-                    <div class="card card-style7">
-                        <div class="card-body">
-                            <a class="candidate-favourite" href="#!"><i class="far fa-heart"></i></a>
-                            <img src="img/candidate/candidate-02.jpg" class="border-radius-50 mb-3" alt="...">
-                            <div class="candidate-info">
-                                <h4 class="h5"><a href="candidate-details.html">Isha Patel</a></h4>
-                                <span class="display-30 text-muted d-block mb-2 font-weight-500"></span>
-                                <div class="display-30 text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="px-2 py-1 bg-primary text-white ms-2 display-31">4.0</span>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between mb-3">
-                                <span><i class="ti-location-pin text-secondary me-2 display-31 display-sm-30"></i><strong>Gujarat</strong></span>
-                                <span><i class="far fa-money-bill-alt text-secondary me-2 display-31 display-sm-30"></i><strong>12000 / Month</strong></span>
-                                <span><i class="ti-briefcase text-secondary me-2 display-31 display-sm-30"></i><strong>Part Time</strong></span>
-                            </div>
-                            <a href="candidate-details.html" class="butn w-100 radius">View Profile</a>
-                        </div>
-                    </div>
-                    <div class="card card-style7">
-                        <div class="card-body">
-                            <a class="candidate-favourite" href="#!"><i class="far fa-heart"></i></a>
-                            <img src="img/candidate/candidate-02.jpg" class="border-radius-50 mb-3" alt="...">
-                            <div class="candidate-info">
-                                <h4 class="h5"><a href="candidate-details.html">Isha Patel</a></h4>
-                                <span class="display-30 text-muted d-block mb-2 font-weight-500"></span>
-                                <div class="display-30 text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="px-2 py-1 bg-primary text-white ms-2 display-31">4.0</span>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between mb-3">
-                                <span><i class="ti-location-pin text-secondary me-2 display-31 display-sm-30"></i><strong>Gujarat</strong></span>
-                                <span><i class="far fa-money-bill-alt text-secondary me-2 display-31 display-sm-30"></i><strong>12000 / Month</strong></span>
-                                <span><i class="ti-briefcase text-secondary me-2 display-31 display-sm-30"></i><strong>Part Time</strong></span>
-                            </div>
-                            <a href="candidate-details.html" class="butn w-100 radius">View Profile</a>
-                        </div>
-                    </div>
-                    <div class="card card-style7">
-                        <div class="card-body">
-                            <a class="candidate-favourite" href="#!"><i class="far fa-heart"></i></a>
-                            <img src="img/candidate/candidate-02.jpg" class="border-radius-50 mb-3" alt="...">
-                            <div class="candidate-info">
-                                <h4 class="h5"><a href="candidate-details.html">Isha Patel</a></h4>
-                                <span class="display-30 text-muted d-block mb-2 font-weight-500"></span>
-                                <div class="display-30 text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="px-2 py-1 bg-primary text-white ms-2 display-31">4.0</span>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between mb-3">
-                                <span><i class="ti-location-pin text-secondary me-2 display-31 display-sm-30"></i><strong>Gujarat</strong></span>
-                                <span><i class="far fa-money-bill-alt text-secondary me-2 display-31 display-sm-30"></i><strong>12000 / Month</strong></span>
-                                <span><i class="ti-briefcase text-secondary me-2 display-31 display-sm-30"></i><strong>Part Time</strong></span>
-                            </div>
-                            <a href="candidate-details.html" class="butn w-100 radius">View Profile</a>
-                        </div>
-                    </div>
+                    <?php
+                          }
+                    ?>
                 </div>
                 <a href="candidate-details.html" class="butn w-100 radius fprofile_btn">More Profile <i class="fa-solid fa-arrow-right"></i></a>
             </div>
@@ -1082,15 +991,22 @@ i.fa.fa-search {
                     <h2><strong>Our satisfied</strong> Users</h2>
                 </div>
                 <div class="testimonial2-carousel owl-carousel owl-theme">
+                    <?php
+                        $sql = "SELECT * FROM review limit 5";
+                        $result = mysqli_query($con,$sql);
+                        $num = mysqli_num_rows($result);
+                            
+                            while($row = mysqli_fetch_assoc($result)){
+                    ?>
                     <div class="testimonial-wrapper">
                         <div class="testimonial-icon">
                             <i class="ti-quote-left"></i>
                         </div>
-                        <p class="mb-4">I would gladly pay over 600 dollars for jobboard. Jobboard is worth much more than I paid. The best on the net! I wish I would have thought of it first.</p>
+                        <p class="mb-4"><?php echo substr($row['description'],0,110).'..'; ?></p>
                         <div class="testimonial-box">
                             <div class="d-sm-flex justify-content-between align-items-center">
                                 <div class="mb-2 mb-sm-0">
-                                    <h4 class="h5">Meet Desai</h4>
+                                    <h4 class="h5"><?php echo $row['name'] ?></h4>
                                     <!-- <span class="designation">Web Designer</span> -->
                                 </div>
                                 <div class="display-31 text-warning">
@@ -1103,111 +1019,9 @@ i.fa.fa-search {
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial-wrapper">
-                        <div class="testimonial-icon">
-                            <i class="ti-quote-left"></i>
-                        </div>
-                        <p class="mb-4">I would gladly pay over 600 dollars for jobboard. Jobboard is worth much more than I paid. The best on the net! I wish I would have thought of it first.</p>
-                        <div class="testimonial-box">
-                            <div class="d-sm-flex justify-content-between align-items-center">
-                                <div class="mb-2 mb-sm-0">
-                                    <h4 class="h5">Meet Desai</h4>
-                                    <!-- <span class="designation">Web Designer</span> -->
-                                </div>
-                                <div class="display-31 text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-wrapper">
-                        <div class="testimonial-icon">
-                            <i class="ti-quote-left"></i>
-                        </div>
-                        <p class="mb-4">I would gladly pay over 600 dollars for jobboard. Jobboard is worth much more than I paid. The best on the net! I wish I would have thought of it first.</p>
-                        <div class="testimonial-box">
-                            <div class="d-sm-flex justify-content-between align-items-center">
-                                <div class="mb-2 mb-sm-0">
-                                    <h4 class="h5">Meet Desai</h4>
-                                    <!-- <span class="designation">Web Designer</span> -->
-                                </div>
-                                <div class="display-31 text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-wrapper">
-                        <div class="testimonial-icon">
-                            <i class="ti-quote-left"></i>
-                        </div>
-                        <p class="mb-4">I would gladly pay over 600 dollars for jobboard. Jobboard is worth much more than I paid. The best on the net! I wish I would have thought of it first.</p>
-                        <div class="testimonial-box">
-                            <div class="d-sm-flex justify-content-between align-items-center">
-                                <div class="mb-2 mb-sm-0">
-                                    <h4 class="h5">Meet Desai</h4>
-                                    <!-- <span class="designation">Web Designer</span> -->
-                                </div>
-                                <div class="display-31 text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-wrapper">
-                        <div class="testimonial-icon">
-                            <i class="ti-quote-left"></i>
-                        </div>
-                        <p class="mb-4">I would gladly pay over 600 dollars for jobboard. Jobboard is worth much more than I paid. The best on the net! I wish I would have thought of it first.</p>
-                        <div class="testimonial-box">
-                            <div class="d-sm-flex justify-content-between align-items-center">
-                                <div class="mb-2 mb-sm-0">
-                                    <h4 class="h5">Meet Desai</h4>
-                                    <!-- <span class="designation">Web Designer</span> -->
-                                </div>
-                                <div class="display-31 text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-wrapper">
-                        <div class="testimonial-icon">
-                            <i class="ti-quote-left"></i>
-                        </div>
-                        <p class="mb-4">I would gladly pay over 600 dollars for jobboard. Jobboard is worth much more than I paid. The best on the net! I wish I would have thought of it first.</p>
-                        <div class="testimonial-box">
-                            <div class="d-sm-flex justify-content-between align-items-center">
-                                <div class="mb-2 mb-sm-0">
-                                    <h4 class="h5">Meet Desai</h4>
-                                    <!-- <span class="designation">Web Designer</span> -->
-                                </div>
-                                <div class="display-31 text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                            }
+                    ?>
                 </div>
             </div>
             <a href="candidate-details.html" class="butn w-100 radius fprofile_btn3">More Reviews <i class="fa-solid fa-arrow-right"></i></a>
