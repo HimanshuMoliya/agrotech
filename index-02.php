@@ -954,7 +954,20 @@ i.fa.fa-search {
                     <div class="card card-style7">
                         <div class="card-body">
                             <a class="candidate-favourite" href="#!"><i class="far fa-heart"></i></a>
-                            <img src="img/candidate/candidate-02.jpg" class="border-radius-50 mb-3" alt="...">
+                            <?php
+                            if(!isset($row1['picture'])){
+                                ?>
+                                <img src="img/avatar/user.png" style="width: 96px;height:96px;" class="border-radius-50 mb-3" alt="...">
+
+                                <?php
+                            }else{
+                            ?>
+                            <img src="<?php echo $row1['picture']; ?>" class="border-radius-50 mb-3" alt="...">
+                            <?php
+                          
+
+                          }
+                            ?>
                             <div class="candidate-info">
                                 <h4 class="h5"><a href="candidate-details.html"><?php echo $row1['fullname']; ?></a></h4>
                                 <span class="display-30 text-muted d-block mb-2 font-weight-500"></span>
@@ -967,7 +980,7 @@ i.fa.fa-search {
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between mb-3">
-                                <span><i class="ti-location-pin text-secondary me-2 display-31 display-sm-30"></i><strong><?php echo $row1['address']; ?></strong></span>
+                                <span><i class="ti-location-pin text-secondary me-2 display-31 display-sm-30"></i><strong><?php echo substr($row1['address'],0,5).'..'; ?></strong></span>
                                 <span><i class="far fa-money-bill-alt text-secondary me-2 display-31 display-sm-30"></i><strong><?php echo $row1['approxsalary']; ?> / Month</strong></span>
                                 <span><i class="ti-briefcase text-secondary me-2 display-31 display-sm-30"></i><strong><?php echo $row1['workhour']; ?></strong></span>
                             </div>
@@ -1006,7 +1019,7 @@ i.fa.fa-search {
                         <div class="testimonial-box">
                             <div class="d-sm-flex justify-content-between align-items-center">
                                 <div class="mb-2 mb-sm-0">
-                                    <h4 class="h5"><?php echo $row['name'] ?></h4>
+                                    <h4 class="h5"><?php echo substr($row['name'],0,6).'..' ?></h4>
                                     <!-- <span class="designation">Web Designer</span> -->
                                 </div>
                                 <div class="display-31 text-warning">

@@ -40,13 +40,5 @@ button color
 #0675e8
 
 
-code for access google photo name email etc...
-    <img src="<?php echo $userinfo['picture'];?>" alt="" width="90px" height="90px">
-    
-    <ul>
-        <li>Full name: <?php echo $userinfo['fullname']; ?></li>
-        <li>Email: <?php echo $userinfo['email']; ?></li>
-        <li>Gender: <?php echo $userinfo['gender']; ?></li>
-        <li><a href="logout.php">Logout</a></li>
-    </ul>
->>>>>>> 68ca5ad31570cbbeecfda77c0c3f2c65494ef0f1
+photo retrive url
+<!-- https://photoserver.pythonanywhere.com/static/avatar/<?php echo $row_member['profile_picture']; ?> -->

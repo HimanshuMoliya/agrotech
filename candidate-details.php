@@ -1,3 +1,34 @@
+
+<?php
+$p_id = $_GET['id'];
+require "db/db.php";
+// $loggedin = true;
+
+require_once 'db/config.php';
+if(!isset($_SESSION['user_token']) AND !isset($_SESSION['email'])){
+    header("location: login.php");
+    // die();
+  }else{
+if(isset($_SESSION['user_token'])){
+
+$sql = "SELECT * FROM user_profile WHERE token = '{$_SESSION['user_token']}'";
+$result = mysqli_query($con,$sql);
+
+if(mysqli_num_rows($result) > 0){
+    $userinfo = mysqli_fetch_assoc($result);
+    
+ }
+}
+else{
+    $sql = "SELECT * FROM user_profile WHERE email = '{$_SESSION['email']}' ";
+    $result = mysqli_query($con,$sql);
+
+    if(mysqli_num_rows($result) > 0){
+        $userinfo = mysqli_fetch_assoc($result);
+    }
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,10 +45,10 @@
     <meta name="description" content="Job Board - Job Portal HTML Template" />
 
     <!-- title  -->
-    <title>Job Board - Job Portal HTML Template</title>
+    <title>Aggregate Agro</title>
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="img/logos/favicon.png" />
+    <link rel="shortcut icon" href="img/logos/logo.png" />
     <link rel="apple-touch-icon" href="img/logos/apple-touch-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="img/logos/apple-touch-icon-72x72.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="img/logos/apple-touch-icon-114x114.png" />
@@ -49,39 +80,6 @@
         <!-- HEADER
         ================================================== -->
         <header class="header-style2">
-            
-            <div id="top-bar" class="bg-primary">
-                <div class="container-fluid px-lg-1-6 px-xl-2-5 px-xxl-2-9">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div class="top-bar-info">
-                                <ul class="list-unstyled">
-                                    <li class="border-right text-white"><i class="fas fa-mobile-alt text-white"></i>(+123) 456 7890</li>
-                                    <li class="border-right text-white d-none d-md-inline-block"><i class="fas fa-envelope text-white"></i>addyour@emailhere</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 d-none d-md-block">
-                            <div>
-                                <ul class="top-social-icon mb-0">
-                                    <li>
-                                        <a href="#!"><i class="fab fa-facebook-f"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="fab fa-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="fab fa-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"><i class="fab fa-linkedin-in"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="navbar-default">
 
@@ -93,7 +91,7 @@
                                 <span class="input-group-addon cursor-pointer">
                                     <button class="search-form_submit fas fa-search text-white" type="submit"></button>
                                 </span>
-                                <input type="text" class="search-form_input form-control" name="s" autocomplete="off" placeholder="Type & hit enter...">
+                                <input type="text" class="search-form_input form-control" name="s" autocomplete="off" placeholder="Search...">
                                 <span class="input-group-addon close-search mt-1"><i class="fas fa-times"></i></span>
                             </div>
                         </form>
@@ -109,7 +107,9 @@
 
                                     <div class="navbar-header navbar-header-custom">
                                         <!-- start logo -->
-                                        <a href="index.html" class="navbar-brand logodefault"><img id="logo" src="img/logos/logo.png" alt="logo"></a>
+                                        <div class="custom_logo1">
+                                        <a href="index.html" class="navbar-brand logodefault"><img id="logo" src="img/logos/logo.png" alt="logo">Aggregate Agro</a>
+                                    </div>
                                         <!-- end logo -->
                                     </div>
 
@@ -117,191 +117,26 @@
 
                                     <!-- menu area -->
                                     <ul class="navbar-nav ms-auto" id="nav" style="display: none;">
-                                        <li><a href="#!">Home</a>
-                                            <ul class="row gx-1 megamenu">
-                                                <li class="col-lg-2">
-                                                    <a href="index-01.html" class="d-none d-lg-block">
-                                                        <span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-800 display-30">Home 01</span>
-                                                        <img src="img/content/home-01.jpg" class="d-none d-lg-block shadow" alt="...">
-                                                    </a>
-                                                    <a href="index-01.html" class="d-lg-none d-block">Home 01</a>
-                                                </li>
-                                                <li class="col-lg-2">
-                                                    <a href="index-02.html" class="d-none d-lg-block">
-                                                        <span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-800 display-30">Home 02</span>
-                                                        <img src="img/content/home-02.jpg" class="d-none d-lg-block shadow" alt="...">
-                                                    </a>
-                                                    <a href="index-02.html" class="d-lg-none d-block">Home 02</a>
-                                                </li>
-                                                <li class="col-lg-2">
-                                                    <a href="index-03.html" class="d-none d-lg-block">
-                                                        <span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-800 display-30">Home 03</span>
-                                                        <img src="img/content/home-03.jpg" class="d-none d-lg-block shadow" alt="...">
-                                                    </a>
-                                                    <a href="index-03.html" class="d-lg-none d-block">Home 03</a>
-                                                </li>
-                                                <li class="col-lg-2">
-                                                    <a href="index-04.html" class="d-none d-lg-block">
-                                                        <span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-800 display-30">Home 04</span>
-                                                        <img src="img/content/home-04.jpg" class="d-none d-lg-block shadow" alt="...">
-                                                    </a>
-                                                    <a href="index-04.html" class="d-lg-none d-block">Home 04</a>
-                                                </li>
-                                                <li class="col-lg-2">
-                                                    <a href="index-05.html" class="d-none d-lg-block">
-                                                        <span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-800 display-30">Home 05</span>
-                                                        <img src="img/content/home-05.jpg" class="d-none d-lg-block shadow" alt="...">
-                                                    </a>
-                                                    <a href="index-05.html" class="d-lg-none d-block">Home 05</a>
-                                                </li>
-                                                <li class="col-lg-2 d-none d-lg-block">
-                                                    <a href="#!">
-                                                        <span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-800 display-30">Commingsoon</span>
-                                                        <img src="img/content/comingsoon.jpg" class="d-none d-lg-block shadow" alt="...">
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                        <li><a href="index-02.php">Home</a>
                                         </li>
-                                        <li><a href="#!">Pages</a>
-                                            <ul>
-                                                <li><a href="aboutus.html">About Us</a></li>
-                                                <li><a href="how-it-works.html">How It Works</a></li>
-                                                <li><a href="testimonials.html">Testimonials</a></li>
-                                                <li><a href="pricing-plans.html">Pricing Plans</a></li>
-                                                <li><a href="faq.html">FAQ</a></li>
-                                                <li><a href="contact-us.html">Contact Us</a></li>
-                                                <li><a href="#!">User Pages</a>
-                                                    <ul>
-                                                        <li><a href="login.html">Login</a></li>
-                                                        <li><a href="registration.html">Register</a></li>
-                                                        <li><a href="forgot-password.html">Forgot Password</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#!">Others</a>
-                                                    <ul>
-                                                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                                        <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
-                                                        <li><a href="coming-soon.html">Coming Soon</a></li>
-                                                        <li><a href="404-page.html">404 Page</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
+                                    
                                         </li>
-                                        <li class="has-sub"><a href="#!">Job Listing</a>
-                                            <ul class="row megamenu">
-                                                <li class="col-lg-4 col-xl-3"><span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-700">Job Listing</span>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="job-listing.html">Job Listing 1 - Without Sidebar</a></li>
-                                                        <li><a href="job-listing-left-sidebar.html">Job Listing 1 - Left Sidebar</a></li>
-                                                        <li><a href="job-listing-right-sidebar.html">Job Listing 1 - Right Sidebar</a></li>
-                                                        <li><a href="job-listing-2.html">Job Listing 2 - Without Sidebar</a></li>
-                                                        <li><a href="job-listing-2-left-sidebar.html">Job Listing 2 - Left Sidebar</a></li>
-                                                        <li><a href="job-listing-2-right-sidebar.html">Job Listing 2 - Right Sidebar</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="col-lg-4 col-xl-3"><span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-700">Job Grid</span>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="job-grid.html">Job Grid 1 - Without Sidebar</a></li>
-                                                        <li><a href="job-grid-left-sidebar.html">Job Grid 1 - Left Sidebar</a></li>
-                                                        <li><a href="job-grid-right-sidebar.html">Job Grid 1 - Right Sidebar</a></li>
-                                                        <li><a href="job-grid-2.html">Job Grid 2 - Without Sidebar</a></li>
-                                                        <li><a href="job-grid-2-left-sidebar.html">Job Grid 2 - Left Sidebar</a></li>
-                                                        <li><a href="job-grid-2-right-sidebar.html">Job Grid 2 - Right Sidebar</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="col-lg-4 col-xl-3"><span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-700">Job Details</span>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="job-details.html">Job Details 1</a></li>
-                                                        <li><a href="job-details-2.html">Job Details 2</a></li>
-                                                        <li><a href="job-details-3.html">Job Details 3</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="col-lg-3 d-none d-xl-block">
-                                                    <div class="menu-slider owl-carousel owl-theme">
+                                        <li><a href="#!">Job</a>
+                                     
+                                        </li>
+               
+                                        <li><a href="#!">About Us</a>
+                                        </li>
+                                        <li><a href="#!">Contact Us</a>
+                                        </li>
 
-                                                        <img src="img/content/menu-slider1.jpg" alt="...">
-                                                        <img src="img/content/menu-slider2.jpg" alt="...">
-                                                        <img src="img/content/menu-slider3.jpg" alt="...">
-
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
                                         <li><a href="#!">Explore</a>
                                             <ul>
-                                                <li><a href="#!">Candidates</a>
-                                                    <ul>
-                                                        <li><a href="candidate-grid.html">Candidate Grid</a></li>
-                                                        <li><a href="candidate-list.html">Candidate List</a></li>
-                                                        <li><a href="candidate-details.html">Candidate Details</a></li>
-                                                        <li><a href="candidate-dashboard.html">Candidate Dashboard</a></li>
-                                                    </ul>
+                                                <li><a href="#!">Profile</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#!">Employers</a>
-                                                    <ul>
-                                                        <li><a href="employers-grid.html">Employer Grid</a></li>
-                                                        <li><a href="employers-list.html">Employer List</a></li>
-                                                        <li><a href="employer-details.html">Employer Details</a></li>
-                                                        <li><a href="employer-dashboard.html">Employer Dashboard</a></li>
-                                                    </ul>
+                                                    <a href="#!">Log out</a>
                                                 </li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#!">Elements</a>
-                                            <ul class="row megamenu">
-                                                <li class="col-lg-3">
-                                                    <span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-800 display-30">Elements 01</span>
-                                                    <ul>
-                                                        <li><a href="accordions.html"><i class="fas fa-sliders-h me-2"></i>Accordions</a></li>
-                                                        <li><a href="alerts.html"><i class="far fa-bell me-2"></i>Alerts</a></li>
-                                                        <li><a href="blockquote.html"><i class="fas fa-vector-square me-2"></i>Blockquote</a></li>
-                                                        <li><a href="buttons.html"><i class="fas fa-link me-2"></i>Buttons</a></li>
-                                                        <li><a href="call-to-action.html"><i class="far fa-square me-2"></i>Call to Action</a></li>
-                                                        <li><a href="carousel-slider.html"><i class="far fa-images me-2"></i>Carousel Slider</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="col-lg-3">
-                                                    <span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-800 display-30">Elements 02</span>
-                                                    <ul>
-                                                        <li><a href="count-down.html"><i class="far fa-flag me-2"></i>Count Down</a></li>
-                                                        <li><a href="counters.html"><i class="fa-solid fa-bolt me-2"></i>Counters</a></li>
-                                                        <li><a href="dropcaps.html"><i class="far fa-closed-captioning me-2"></i>Dropcaps</a></li>
-                                                        <li><a href="form-elements.html"><i class="fas fa-cubes me-2"></i>Form Elements</a></li>
-                                                        <li><a href="font-icons.html"><i class="far fa-check-square me-2"></i>Font Icons</a></li>
-                                                        <li><a href="highlights.html"><i class="fas fa-highlighter me-2"></i>Highlights</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="col-lg-3">
-                                                    <span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-800 display-30">Elements 03</span>
-                                                    <ul>
-                                                        <li><a href="header-style-01.html"><i class="fas fa-compress me-2"></i>Header Style 01</a></li>
-                                                        <li><a href="header-style-02.html"><i class="fas fa-compress-arrows-alt me-2"></i>Header Style 02</a></li>
-                                                        <li><a href="icon-with-text.html"><i class="fab fa-fonticons-fi me-2"></i>Icon With Text</a></li>
-                                                        <li><a href="list-styles.html"><i class="fas fa-list-ul me-2"></i>List Styles</a></li>
-                                                        <li><a href="media-object.html"><i class="fas fa-photo-video me-2"></i>Media Object</a></li>
-                                                        <li><a href="modal.html"><i class="fas fa-expand me-2"></i>Modal</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="col-lg-3">
-                                                    <span class="mb-0 mb-lg-3 d-block py-2 p-lg-0 px-4 px-lg-0 text-uppercase sub-title font-weight-800 display-30">Elements 04</span>
-                                                    <ul>
-                                                        <li><a href="pagination.html"><i class="far fa-caret-square-right me-2"></i>Pagination</a></li>
-                                                        <li><a href="progress-bars.html"><i class="fas fa-tasks me-2"></i>Progress Bars</a></li>
-                                                        <li><a href="tables.html"><i class="fas fa-table me-2"></i>Tables</a></li>
-                                                        <li><a href="tabs.html"><i class="fa-solid fa-clone me-2"></i>Tabs</a></li>
-                                                        <li><a href="typography.html"><i class="fas fa-text-height me-2"></i>Typography</a></li>
-                                                        <li><a href="videos.html"><i class="fas fa-video me-2"></i>Videos</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#!">Blog</a>
-                                            <ul>
-                                                <li><a href="blog-grid.html">Blog Grid</a></li>
-                                                <li><a href="blog-list.html">Blog List</a></li>
-                                                <li><a href="blog-details.html">Blog Details</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -310,8 +145,24 @@
                                     <!-- start attribute navigation -->
                                     <div class="attr-nav align-items-lg-center ms-lg-auto">
                                         <ul>
-                                            <li class="search"><a href="#!"><i class="fas fa-search"></i></a></li>
-                                            <li class="d-none d-xl-inline-block"><a href="employer-post-job.html" class="butn secondary text-white">Post a Job</a></li>
+                                            <li class="search"><a href="#!"><i class="fa fa-search"></i></a></li>
+                                            <li class="d-none d-xl-inline-block"><a href="employer-post-job.html"><?php 
+                                             echo $userinfo['email'];
+                                             ?></a></li>
+                                            <li><a href="#!"> <div class="profile_img">
+                                            <?php
+                                            if(isset($userinfo['picture'])){
+                                                ?>
+                                                <img class="rounded-circle" alt="100x100" src="<?php echo $userinfo['picture']; ?>" data-holder-rendered="true" style="width: 52px;height:52px;">
+                                                <?php
+                                            }else{
+                                                ?>
+                                                <img class="rounded-circle" alt="100x100" style="width: 52px;height:52px;" src="img/logos/person1.jpg" data-holder-rendered="true">
+                                                <?php
+                                            }
+                                            ?>
+                                        </div></a></li>
+
                                         </ul>
                                     </div>
                                     <!-- end attribute navigation -->
@@ -357,7 +208,22 @@
                                 <div class="col-lg-9 mb-4 mb-lg-0">
                                     <div class="text-center text-lg-start d-lg-flex align-items-center">
                                         <div class="flex-shrink-0 mb-4 mb-lg-0">
-                                            <img src="img/candidate/candidate-01.jpg" class="border-radius-50" alt="...">
+                                        <?php
+                                            $query = "SELECT * FROM user_profile WHERE id = $p_id";
+                                            $qres = mysqli_query($con,$query);
+                                            $row = mysqli_fetch_assoc($qres);
+                                            ?>
+                                            <?php
+                                            if(isset($row['picture'])){
+                                                ?>
+                                            <img src="<?php echo $row['picture']; ?>" class="border-radius-50" alt="...">
+                                            <?php
+                                            }else{
+                                                ?>
+                                            <img src="img/avatar/user.png" style="width: 96px;height:96px;" class="border-radius-50" alt="...">
+                                                <?php
+                                            }
+                                            ?>
                                         </div>
                                         <div class="flex-grow-1 ms-lg-4">
                                             <div class="display-30 text-warning mb-3">
@@ -368,11 +234,12 @@
                                                 <i class="fas fa-star"></i>
                                                 <span class="px-2 py-1 bg-primary text-white ms-2 display-31 border-radius-10">5.0</span>
                                             </div>
-                                            <h4 class="mb-3">Olle Nurmi</h4>
-                                            <span class="me-2"><i class="ti-briefcase pe-2 text-secondary"></i>Sr. Java Developer</span>
-                                            <span class="me-2"><i class="ti-location-pin pe-2 text-secondary"></i>Uk</span>
-                                            <span class="me-2"><i class="ti-time pe-2 text-secondary"></i>15 Hour Ago</span>
-                                            <span><i class="far fa-money-bill-alt pe-2 text-secondary"></i>$45</span>
+                                            
+                                            <h4 class="mb-3"><?php echo $row['fullname']; ?> </h4>
+                                            <span class="me-2"><i class="ti-briefcase pe-2 text-secondary"></i><?php echo $row['occupation']; ?></span>
+                                            <span class="me-2"><i class="ti-location-pin pe-2 text-secondary"></i><?php echo $row['address']; ?></span>
+                                            <span class="me-2"><i class="ti-time pe-2 text-secondary"></i><?php echo $row['workhour']; ?> Hour </span>
+                                            <span><i class="far fa-money-bill-alt pe-2 text-secondary"></i><?php echo $row['approxsalary']; ?></span>
                                         </div>
                                     </div>
                                 </div>
