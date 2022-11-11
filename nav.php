@@ -27,7 +27,7 @@
                                     <div class="navbar-header navbar-header-custom">
                                         <!-- start logo -->
                                         <div class="custom_logo1">
-                                        <a href="index.html" class="navbar-brand logodefault"><img id="logo" src="img/logos/logo.png" alt="logo">Aggregate Agro</a>
+                                        <a href="index-02.php" class="navbar-brand logodefault"><img id="logo" src="img/logos/logo.png" alt="logo">Aggregate Agro</a>
                                     </div>
                                         <!-- end logo -->
                                     </div>
@@ -40,7 +40,7 @@
                                         </li>
                                     
                                         </li>
-                                        <li><a href="#!">Job</a>
+                                        <li><a href="w_job/worker_job.html">Job</a>
                                      
                                         </li>
                
