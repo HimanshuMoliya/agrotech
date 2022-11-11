@@ -257,6 +257,8 @@ i.fa.fa-search {
 .fprofile_btn{
     width: 100%;
     max-width: 160px;
+    position: relative;
+    top: 20px;
 }
 
 .fprofile_btn2{
@@ -270,6 +272,7 @@ i.fa.fa-search {
     max-width: 180px;
     position: relative;
     left: 305px;
+    top: 20px;
 }
 
 
@@ -289,102 +292,9 @@ i.fa.fa-search {
 
         <!-- HEADER
         ================================================== -->
-        <header class="header-style2">
-
-            <div class="navbar-default">
-
-                <!-- start top search -->
-                <div class="top-search bg-secondary">
-                    <div class="container-fluid px-lg-1-6 px-xl-2-5 px-xxl-2-9">
-                        <form class="search-form" action="https://jobboard.websitelayout.net/search.html" method="GET" accept-charset="utf-8">
-                            <div class="input-group">
-                                <span class="input-group-addon cursor-pointer">
-                                    <button class="search-form_submit fas fa-search text-white" type="submit"></button>
-                                </span>
-                                <input type="text" class="search-form_input form-control" name="s" autocomplete="off" placeholder="Search...">
-                                <span class="input-group-addon close-search mt-1"><i class="fas fa-times"></i></span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- end top search -->
-
-                <div class="container-fluid px-lg-1-6 px-xl-2-5 px-xxl-2-9">
-                    <div class="row align-items-center">
-                        <div class="col-12 col-lg-12">
-                            <div class="menu_area alt-font">
-                                <nav class="navbar navbar-expand-lg navbar-light p-0">
-
-                                    <div class="navbar-header navbar-header-custom">
-                                        <!-- start logo -->
-                                        <div class="custom_logo1">
-                                        <a href="index.html" class="navbar-brand logodefault"><img id="logo" src="img/logos/logo.png" alt="logo">Aggregate Agro</a>
-                                    </div>
-                                        <!-- end logo -->
-                                    </div>
-
-                                    <div class="navbar-toggler"></div>
-
-                                    <!-- menu area -->
-                                    <ul class="navbar-nav ms-auto" id="nav" style="display: none;">
-                                        <li><a href="#!">Home</a>
-                                        </li>
-                                    
-                                        </li>
-                                        <li><a href="#!">Job</a>
-                                     
-                                        </li>
-               
-                                        <li><a href="#!">About Us</a>
-                                        </li>
-                                        <li><a href="#!">Contact Us</a>
-                                        </li>
-
-                                        <li><a href="#!">Explore</a>
-                                            <ul>
-                                                <li><a href="#!">Profile</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#!">Log out</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <!-- end menu area -->
-
-                                    <!-- start attribute navigation -->
-                                    <div class="attr-nav align-items-lg-center ms-lg-auto">
-                                        <ul>
-                                            <li class="search"><a href="#!"><i class="fa fa-search"></i></a></li>
-                                            <li class="d-none d-xl-inline-block"><a href="employer-post-job.html"><?php 
-                                             echo $userinfo['email'];
-                                             ?></a></li>
-                                            <li><a href="#!"> <div class="profile_img">
-                                            <?php
-                                            if(isset($userinfo['picture'])){
-                                                ?>
-                                                <img class="rounded-circle" alt="100x100" src="<?php echo $userinfo['picture']; ?>" data-holder-rendered="true">
-                                                <?php
-                                            }else{
-                                                ?>
-                                                <img class="rounded-circle" alt="100x100" src="img/logos/person1.jpg" data-holder-rendered="true">
-                                                <?php
-                                            }
-                                            ?>
-                                        </div></a></li>
-
-                                        </ul>
-                                    </div>
-                                    <!-- end attribute navigation -->
-
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
+        <?php
+        include "nav.php";
+        ?>
         <!-- BANNER
         ================================================== -->
         <section class="banner2">
@@ -1015,7 +925,7 @@ i.fa.fa-search {
                         <div class="testimonial-icon">
                             <i class="ti-quote-left"></i>
                         </div>
-                        <p class="mb-4"><?php echo substr($row['description'],0,110).'..'; ?></p>
+                        <p class="mb-4"><?php echo substr($row['description'],0,70).'..'; ?></p>
                         <div class="testimonial-box">
                             <div class="d-sm-flex justify-content-between align-items-center">
                                 <div class="mb-2 mb-sm-0">
@@ -1101,7 +1011,7 @@ i.fa.fa-search {
                         <div class="ps-sm-1-6 ps-lg-0">
                             <h3 class="h5 mb-1-6 mb-lg-1-9">Information</h3>
                             <ul class="footer-list-style2">
-                                <li><a href="aboutus.html">About us</a></li>
+                                <li><a href="about_us.php">About us</a></li>
                                 <li><a href="blog-grid.html">Blog</a></li>
                                 <li><a href="how-it-works.html">Our Process</a></li>
                                 <li><a href="pricing-plans.html">Our Pricing</a></li>
@@ -1137,8 +1047,8 @@ i.fa.fa-search {
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <p class="d-inline-block mb-0">&copy; <span class="current-year"></span> Job Board Powered by
-                                <a href="https://www.chitrakootweb.com/" target="_blank" class="text-primary secondary-hover">Chitrakoot Web</a>
+                            <p class="d-inline-block mb-0">&copy; <span class="current-year"></span> Aggregate Agro 
+                                <a href="https://www.chitrakootweb.com/" target="_blank" class="text-primary secondary-hover"></a>
                             </p>
                         </div>
                     </div>
