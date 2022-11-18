@@ -257,8 +257,6 @@ i.fa.fa-search {
 .fprofile_btn{
     width: 100%;
     max-width: 160px;
-    position: relative;
-    top: 20px;
 }
 
 .fprofile_btn2{
@@ -272,7 +270,6 @@ i.fa.fa-search {
     max-width: 180px;
     position: relative;
     left: 305px;
-    top: 20px;
 }
 
 
@@ -292,7 +289,6 @@ i.fa.fa-search {
 
         <!-- HEADER
         ================================================== -->
-<<<<<<< HEAD
         <header class="header-style2">
 
             <div class="navbar-default">
@@ -327,7 +323,7 @@ i.fa.fa-search {
                                         <!-- end logo -->
                                     </div>
 
-                                    <div c lass="navbar-toggler"></div>
+                                    <div class="navbar-toggler"></div>
 
                                     <!-- menu area -->
                                     <ul class="navbar-nav ms-auto" id="nav" style="display: none;">
@@ -389,11 +385,6 @@ i.fa.fa-search {
             </div>
         </header>
 
-=======
-        <?php
-        include "nav.php";
-        ?>
->>>>>>> 90294046f8f4b26e3749e34ea41c86827dc17385
         <!-- BANNER
         ================================================== -->
         <section class="banner2">
@@ -1024,7 +1015,7 @@ i.fa.fa-search {
                         <div class="testimonial-icon">
                             <i class="ti-quote-left"></i>
                         </div>
-                        <p class="mb-4"><?php echo substr($row['description'],0,70).'..'; ?></p>
+                        <p class="mb-4"><?php echo substr($row['description'],0,110).'..'; ?></p>
                         <div class="testimonial-box">
                             <div class="d-sm-flex justify-content-between align-items-center">
                                 <div class="mb-2 mb-sm-0">
@@ -1110,7 +1101,7 @@ i.fa.fa-search {
                         <div class="ps-sm-1-6 ps-lg-0">
                             <h3 class="h5 mb-1-6 mb-lg-1-9">Information</h3>
                             <ul class="footer-list-style2">
-                                <li><a href="about_us.php">About us</a></li>
+                                <li><a href="aboutus.html">About us</a></li>
                                 <li><a href="blog-grid.html">Blog</a></li>
                                 <li><a href="how-it-works.html">Our Process</a></li>
                                 <li><a href="pricing-plans.html">Our Pricing</a></li>
@@ -1146,8 +1137,8 @@ i.fa.fa-search {
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <p class="d-inline-block mb-0">&copy; <span class="current-year"></span> Aggregate Agro 
-                                <a href="https://www.chitrakootweb.com/" target="_blank" class="text-primary secondary-hover"></a>
+                            <p class="d-inline-block mb-0">&copy; <span class="current-year"></span> Job Board Powered by
+                                <a href="https://www.chitrakootweb.com/" target="_blank" class="text-primary secondary-hover">Chitrakoot Web</a>
                             </p>
                         </div>
                     </div>
