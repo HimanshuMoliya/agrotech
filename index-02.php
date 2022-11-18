@@ -323,7 +323,7 @@ i.fa.fa-search {
                                         <!-- end logo -->
                                     </div>
 
-                                    <div class="navbar-toggler"></div>
+                                    <div c lass="navbar-toggler"></div>
 
                                     <!-- menu area -->
                                     <ul class="navbar-nav ms-auto" id="nav" style="display: none;">

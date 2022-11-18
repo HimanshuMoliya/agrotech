@@ -248,9 +248,9 @@ else{
                                         <div class="col-12">
                                             <a href="#!" class="butn mb-3 w-100 text-center">Apply For Job</a>
                                         </div>
-                                        <div class="col-12">
+                                        <!-- <div class="col-12">
                                             <a href="#!" class="butn w-100 text-center">Download CV</a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
