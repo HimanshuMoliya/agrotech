@@ -52,8 +52,8 @@ else{
     <link rel="apple-touch-icon" sizes="72x72" href="img/logos/apple-touch-icon-72x72.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="img/logos/apple-touch-icon-114x114.png" />
 
-    <!-- plugins -->
-    <link rel="stylesheet" href="css/plugins.css" />
+     <!-- plugins -->
+     <link rel="stylesheet" href="css/plugins.css" />
 
     <!-- search css -->
     <link rel="stylesheet" href="search/search.css" />
@@ -63,6 +63,30 @@ else{
 
     <!-- core style css -->
     <link href="css/styles.css" rel="stylesheet" />
+    
+    <link href="css/dashboard.css" rel="stylesheet" />
+    <style>
+        .list-style li {
+            padding-left: 0px;
+            margin-left: 0px;
+        }
+        .list-style li:before {
+            position: inherit;
+        }
+        .list-style li button {
+        border-color: rgba(38, 174, 97, 0.1);
+        display: block;
+        background: rgba(38, 174, 97, 0.1);
+        color: #26ae61;
+        border-radius: 10px;
+        height: 34px;
+        width: 34px;
+        line-height: 36px;
+        font-size: 15px;
+        text-align: center;
+        transition: all 300ms ease;
+        }
+    </style>
 </head>
 
 <body>
@@ -82,8 +106,8 @@ else{
 
     <!-- PAGE TITLE
         ================================================== -->
-        <section class="page-title-section" style="    background: rgba(38, 174, 97, 0.1);
-    padding: 100px 0 100px 0;">
+        <!-- <section class="page-title-section" style="    background: rgba(38, 174, 97, 0.1);
+            padding: 100px 0 100px 0;">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-10 text-center">
@@ -101,7 +125,7 @@ else{
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- CANDIDATE DETAILS
         ================================================== -->
@@ -209,6 +233,77 @@ else{
                     <div class="col-lg-8 mb-1-9 mb-lg-0">
                         <div class="pe-lg-1-6 pe-xl-1-9">
                             <div class="row">
+                            <div class="col-lg-12 mb-1-9 mb-lg-2-5">
+                                <div class="dashboard-title">
+                                    <h5 class="mb-0">Recent Applicants</h5>
+                                </div>
+                                <div class="dashboard-widget">
+                                    <div class="row mt-n1-9">
+                                        <div class="col-xxl-6 mt-1-9">
+                                            <div class="card-style2">
+                                                <div class="card-body">
+                                                    <div class="d-sm-flex justify-content-between align-items-center">
+                                                        <div class="d-sm-flex text-center text-sm-start mb-4 mb-sm-0">
+                                                            <div class="flex-shrink-0 mb-3 mb-sm-0">
+                                                                <img src="img/candidate/candidate-01.jpg" alt="..." class="border-radius-50">
+                                                            </div>
+                                                            <div class="flex-grow-1 ms-sm-3">
+                                                                <h5><a href="employer-details.html">Olle Nurmi</a></h5>
+                                                                <div class="mb-3">
+                                                                    <span class="text-secondary me-2 display-30">Sr. Java Developer</span>
+                                                                    <span class="vertical-align-middle display-30"><i class="ti-location-pin pe-2 text-secondary"></i>UK</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span class="company-info">App</span>
+                                                                    <span class="company-info">Development</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <ul class="list-style pl-0">
+                                                            <!-- <li><a href="#!"><span class="ti-eye"></span></a></li> -->
+                                                            <li><button ><span class="ti-check"></span></button></li>
+                                                            <li><button ><span class="ti-close"></span></button></li>
+                                                            <!-- <li><a href="#!"><span class="ti-trash"></span></a></li> -->
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-6 mt-1-9">
+                                            <div class="card-style2">
+                                                <div class="card-body">
+                                                    <div class="d-sm-flex justify-content-between align-items-center">
+                                                        <div class="d-sm-flex text-center text-sm-start mb-4 mb-sm-0">
+                                                            <div class="flex-shrink-0 mb-3 mb-sm-0">
+                                                                <img src="img/candidate/candidate-02.jpg" alt="..." class="border-radius-50">
+                                                            </div>
+                                                            <div class="flex-grow-1 ms-sm-3">
+                                                                <h5><a href="employer-details.html">Selma Kolkkala</a></h5>
+                                                                <div class="mb-3">
+                                                                    <span class="text-secondary me-2 display-30">UI/UX Specialist</span>
+                                                                    <span class="vertical-align-middle display-30"><i class="ti-location-pin pe-2 text-secondary"></i>Australia</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span class="company-info">App</span>
+                                                                    <span class="company-info">Design</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <ul class="list-style">
+                                                            <!-- <li><a href="#!"><span class="ti-eye"></span></a></li> -->
+                                                            <li><a href="#!"><span class="ti-check"></span></a></li>
+                                                            <li><a href="#!"><span class="ti-close"></span></a></li>
+                                                            <!-- <li><a href="#!"><span class="ti-trash"></span></a></li> -->
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
                                 <div class="col-lg-12 mb-1-9 mb-lg-2-5">
                                     <div class="p-1-6 border border-color-extra-light-gray border-radius-10">
                                         <h4 class="mb-3">Candidates About :</h4>
@@ -433,23 +528,7 @@ else{
                     </div>
                     <div class="col-lg-4">
                         <div class="job-details-sidebar">
-                            <div class="widget">
-                                <div class="card border-color-extra-light-gray border-radius-10">
-                                    <div class="card-body p-4">
-                                        <h4>Job Summary</h4>
-                                        <ul class="list-style5">
-                                            <li><span>Salary</span> $45</li>
-                                            <li><span>Experience</span> 05 Year</li>
-                                            <li><span>Age</span> 20-30</li>
-                                            <li><span>Gender</span> Male</li>
-                                            <li><span>Location</span> UK</li>
-                                            <li><span>Languages</span> English, German</li>
-                                            <li><span>Education</span> Master Degree</li>
-                                            <li><span>Views</span> 975</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                           
                             <div class="widget">
                                 <div class="card border-color-extra-light-gray border-radius-10">
                                     <div class="card-body p-4">

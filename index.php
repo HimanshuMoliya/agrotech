@@ -3,6 +3,8 @@ session_start();
 if(!isset($_SESSION['user_token']) AND !isset($_SESSION['email'])){
     header("location: login.php");
     // die();
+  }else{
+    header("location: index-02.php");
   }
 ?>
 <!DOCTYPE html>

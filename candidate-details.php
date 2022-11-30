@@ -1,14 +1,17 @@
 
 <?php
 $p_id = $_GET['id'];
+
 require "db/db.php";
 // $loggedin = true;
 
 require_once 'db/config.php';
+$_SESSION['sendto'] = $p_id;
 if(!isset($_SESSION['user_token']) AND !isset($_SESSION['email'])){
     header("location: login.php");
     // die();
   }else{
+    $email = $_SESSION['email'];
 if(isset($_SESSION['user_token'])){
 
 $sql = "SELECT * FROM user_profile WHERE token = '{$_SESSION['user_token']}'";
@@ -28,6 +31,12 @@ else{
     }
   }
 }
+$sql = "SELECT id FROM user_profile WHERE email = '$email'";
+$result = mysqli_query($con,$sql);
+$data = mysqli_fetch_assoc($result);
+$id = $data['id'];
+$_SESSION['sendfrom'] =$id;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,101 +88,9 @@ else{
 
         <!-- HEADER
         ================================================== -->
-        <header class="header-style2">
-
-            <div class="navbar-default">
-
-                <!-- start top search -->
-                <div class="top-search bg-secondary">
-                    <div class="container-fluid px-lg-1-6 px-xl-2-5 px-xxl-2-9">
-                        <form class="search-form" action="https://jobboard.websitelayout.net/search.html" method="GET" accept-charset="utf-8">
-                            <div class="input-group">
-                                <span class="input-group-addon cursor-pointer">
-                                    <button class="search-form_submit fas fa-search text-white" type="submit"></button>
-                                </span>
-                                <input type="text" class="search-form_input form-control" name="s" autocomplete="off" placeholder="Search...">
-                                <span class="input-group-addon close-search mt-1"><i class="fas fa-times"></i></span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- end top search -->
-
-                <div class="container-fluid px-lg-1-6 px-xl-2-5 px-xxl-2-9">
-                    <div class="row align-items-center">
-                        <div class="col-12 col-lg-12">
-                            <div class="menu_area alt-font">
-                                <nav class="navbar navbar-expand-lg navbar-light p-0">
-
-                                    <div class="navbar-header navbar-header-custom">
-                                        <!-- start logo -->
-                                        <div class="custom_logo1">
-                                        <a href="index.html" class="navbar-brand logodefault"><img id="logo" src="img/logos/logo.png" alt="logo">Aggregate Agro</a>
-                                    </div>
-                                        <!-- end logo -->
-                                    </div>
-
-                                    <div class="navbar-toggler"></div>
-
-                                    <!-- menu area -->
-                                    <ul class="navbar-nav ms-auto" id="nav" style="display: none;">
-                                        <li><a href="index-02.php">Home</a>
-                                        </li>
-                                    
-                                        </li>
-                                        <li><a href="#!">Job</a>
-                                     
-                                        </li>
-               
-                                        <li><a href="#!">About Us</a>
-                                        </li>
-                                        <li><a href="#!">Contact Us</a>
-                                        </li>
-
-                                        <li><a href="#!">Explore</a>
-                                            <ul>
-                                                <li><a href="#!">Profile</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#!">Log out</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <!-- end menu area -->
-
-                                    <!-- start attribute navigation -->
-                                    <div class="attr-nav align-items-lg-center ms-lg-auto">
-                                        <ul>
-                                            <li class="search"><a href="#!"><i class="fa fa-search"></i></a></li>
-                                            <li class="d-none d-xl-inline-block"><a href="employer-post-job.html"><?php 
-                                             echo $userinfo['email'];
-                                             ?></a></li>
-                                            <li><a href="#!"> <div class="profile_img">
-                                            <?php
-                                            if(isset($userinfo['picture'])){
-                                                ?>
-                                                <img class="rounded-circle" alt="100x100" src="<?php echo $userinfo['picture']; ?>" data-holder-rendered="true" style="width: 52px;height:52px;">
-                                                <?php
-                                            }else{
-                                                ?>
-                                                <img class="rounded-circle" alt="100x100" style="width: 52px;height:52px;" src="img/logos/person1.jpg" data-holder-rendered="true">
-                                                <?php
-                                            }
-                                            ?>
-                                        </div></a></li>
-
-                                        </ul>
-                                    </div>
-                                    <!-- end attribute navigation -->
-
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <?php 
+                include "nav.php";
+            ?>
 
         <!-- PAGE TITLE
         ================================================== -->
@@ -212,6 +129,7 @@ else{
                                             $query = "SELECT * FROM user_profile WHERE id = $p_id";
                                             $qres = mysqli_query($con,$query);
                                             $row = mysqli_fetch_assoc($qres);
+
                                             ?>
                                             <?php
                                             if(isset($row['picture'])){
@@ -245,8 +163,43 @@ else{
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="row">
-                                        <div class="col-12">
-                                            <a href="#!" class="butn mb-3 w-100 text-center">Apply For Job</a>
+                                        <div class="col-12" id="actionBlock">
+                                        <div id="loader" style="display: none;text-align: center;">  
+                                            <img src="img/gif/load.gif" alt="" style="height: 3rem;width: 3rem;">
+                                        </div>
+                                        <?php
+                                        $select_req_status = "SELECT * FROM `request` WHERE `sendingid` = '$id' AND `receivingid` = '$p_id'";
+
+                                        $sql_req_status = mysqli_query($con,$select_req_status);
+    
+                                        $row_req_status = mysqli_fetch_assoc($sql_req_status);
+                                        // echo $row_req_status['accepted'];
+                                        $num = mysqli_num_rows($sql_req_status); 
+                                        if($num > 0){
+                                        if($row_req_status['status'] == 'pending'){
+                                            ?>
+                                            <button id="follow" class="butn mb-3 w-100 text-center follow"><?php echo $row_req_status['status']; ?></button>
+                                            <?php
+                                        }elseif($row_req_status['status'] == 'accept'){
+                                            ?>
+                                            <button id="follow" class="butn mb-3 w-100 text-center unfollow">Unfollow</button>
+                                            <?php
+                                        }elseif($row_req_status['status'] == 'reject'){
+                                            ?>
+                                            <button id="follow" class="butn mb-3 w-100 text-center follow">Follow</button>
+
+                                            <?php
+                                        }else{
+                                            ?>
+                                        <button id="follow" class="butn mb-3 w-100 text-center follow">Follow</button>
+                                            <?php
+                                        }
+                                        }else{
+                                            ?>
+                                            <button id="follow" class="butn mb-3 w-100 text-center follow">Follow</button>
+                                            <?php
+                                        }
+                                        ?>
                                         </div>
                                         <!-- <div class="col-12">
                                             <a href="#!" class="butn w-100 text-center">Download CV</a>
@@ -992,8 +945,52 @@ else{
 
     <!-- form scripts js -->
     <script src="quform/js/scripts.js"></script>
+    
+    
 
     <!-- all js include end -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script>
+        $(document).on('click', '.follow', function (e) {
+            e.preventDefault();
+
+            
+                var student_id = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "addtofrdscript.php",
+                    data: {
+                        'update_req': true
+                    },
+                    beforeSend: function(){
+                        $("#loader").css("display", "block");
+                        $("#follow").css("display", "none");
+                    },
+                    complete: function(){
+                        $("#loader").css("display", "none");
+                        $("#follow").css("display", "block");
+                    },
+                    success: function (response) {
+
+                        var res = jQuery.parseJSON(response);
+                        if(res.status == 500) {
+                            console.log("error");
+                        }else{
+                            // alertify.set('notifier','position', 'top-right');
+                            // alertify.success(res.message);
+
+                            console.log("success");
+
+                            $('#actionBlock').load(location.href + " #actionBlock");
+
+                        }
+                    }
+                    
+                });
+        });
+       
+
+    </script>
 
 </body>
 
