@@ -130,7 +130,7 @@ else{
         <!-- CANDIDATE DETAILS
         ================================================== -->
         <section>
-            <div class="container">
+            <div class="container" id="actionblock">
                 <div class="row mb-2-5 mb-lg-2-9">
                     <div class="col-lg-12">
                         <div class="p-1-6 p-lg-1-9 border border-color-extra-light-gray border-radius-10">
@@ -139,7 +139,7 @@ else{
                                     <div class="text-center text-lg-start d-lg-flex align-items-center">
                                         <div class="flex-shrink-0 mb-4 mb-lg-0">
                                         <?php
-                                            $query = "SELECT * FROM user_profile";
+                                            $query = "SELECT * FROM user_profile WHERE email = '{$_SESSION['email']}'";
                                             $qres = mysqli_query($con,$query);
                                             $row = mysqli_fetch_assoc($qres);
                                             ?>
@@ -178,25 +178,34 @@ else{
                                         <div class="col-12">
                                             <!-- <a href="#!" class="butn mb-3 w-100 text-center">Apply For Job</a> -->
                                             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                                            <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-dialog modal-dialog-centered"  id="modal">
                                                 <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Edit profile</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                <form>
+                                               
+
+                                                <!-- <form enctype="multipart/form-data"> -->
                                                 <div class="mb-3">
-                                                    <label for="exampleInputEmail1" class="form-label"> </label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                    <label for="exampleInputEmail1" class="form-label">Name</label>
+                                                    <input type="text" id="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $row['fullname'];  ?>">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                                                    <input type="password" class="form-control" id="exampleInputPassword1">
+                                                    <input type="password" id="password" class="form-control" id="exampleInputPassword1" >
                                                 </div>
-                                               
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                </form>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">Profile Picture</label>
+                                                    <input type="file" id="dp" name="dp" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                </div>
+                                                <div id="loader" style="display: none;text-align: center;">  
+                                                    <img src="img/gif/load.gif" alt="" style="height: 3rem;width: 3rem;">
+                                                </div>
+                                                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                                                <button id="follow" class="butn mb-3 w-100 text-center follow">Submit</button>
+                                                <!-- </form> -->
                                                 </div>
                                                 
                                                 </div>
@@ -239,6 +248,7 @@ else{
                                 </div>
                                 <div class="dashboard-widget">
                                     <div class="row mt-n1-9">
+
                                         <div class="col-xxl-6 mt-1-9">
                                             <div class="card-style2">
                                                 <div class="card-body">
@@ -1012,7 +1022,53 @@ else{
 
 <!-- form scripts js -->
 <script src="quform/js/scripts.js"></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script>
+        $(document).on('click', '.follow', function (e) {
+            e.preventDefault();
 
+            
+                var student_id = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "editprofile.php",
+                    data: {
+                        'update_req': true,
+                        'name': $('#name').val(),
+                        'password': $('#password').val(),
+                        'dp': $('#dp').val()
+                    },
+                    beforeSend: function(){
+                        $("#loader").css("display", "block");
+                        $("#follow").css("display", "none");
+                    },
+                    complete: function(){
+                        $("#loader").css("display", "none");
+                        $("#follow").css("display", "block");
+                    },
+                    success: function (response) {
+
+                        var res = jQuery.parseJSON(response);
+                        if(res.status == 500) {
+                            console.log("error");
+                        }else{
+                            // alertify.set('notifier','position', 'top-right');
+                            // alertify.success(res.message);
+
+                            console.log("success");
+
+                            // $("#modal").css("display", "none");
+                            $('#exampleModalToggle').modal('hide');
+                            $('#actionBlock').load(location.href + " #actionBlock");
+                            window.location = "myprofile.php";
+                        }
+                    }
+                    
+                });
+        });
+       
+
+    </script>
 <!-- all js include end -->
 
 </body>

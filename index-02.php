@@ -853,7 +853,7 @@ i.fa.fa-search {
                 </div>
                 <div class="featured-candidate owl-carousel owl-theme">
                     <?php
-                      $sql = "SELECT * FROM user_profile WHERE occupation = 'worker' limit 5";
+                      $sql = "SELECT * FROM user_profile WHERE `email` NOT IN ('{$_SESSION['email']}') AND occupation = 'worker' limit 5 ";
                       $result = mysqli_query($con,$sql);
                       $num = mysqli_num_rows($result);
                           
@@ -877,7 +877,7 @@ i.fa.fa-search {
                           }
                             ?>
                             <div class="candidate-info">
-                                <h4 class="h5"><a href="candidate-details.html"><?php echo $row1['fullname']; ?></a></h4>
+                                <h4 class="h5"><a href="candidate-details.php?id=<?php echo $row1['id']; ?>"><?php echo $row1['fullname']; ?></a></h4>
                                 <span class="display-30 text-muted d-block mb-2 font-weight-500"></span>
                                 <div class="display-30 text-warning">
                                     <i class="fas fa-star"></i>

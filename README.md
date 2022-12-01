@@ -42,3 +42,13 @@ button color
 
 photo retrive url
 <!-- https://photoserver.pythonanywhere.com/static/avatar/<?php echo $row_member['profile_picture']; ?> -->
+
+
+atlu myprofile na page ma edit thay avu karvanu che
+address
+occupation 
+gender
+age
+workhour
+approxsalary
+
