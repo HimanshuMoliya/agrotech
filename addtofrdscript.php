@@ -31,7 +31,12 @@ if(isset($_POST['update_req'])){
     $sendinto = $_SESSION['sendto'];
     $sendingfrom = $_SESSION['sendfrom'];
 
-    $query = "INSERT INTO `request` ( `sendingid`, `receivingid`, `status`, `date`) VALUES ( '$sendingfrom', '$sendinto', 'pending', CURRENT_TIMESTAMP)";
+    $select = "SELECT * FROM user_profile WHERE id=$sendingfrom";
+    $result = mysqli_query($con,$select);
+    $row = mysqli_fetch_assoc($result);
+    
+
+    $query = "INSERT INTO `request` ( `sendingid`, `receivingid`, `status`,`fullname`,`picture`,`occupation`, `address`,`date`) VALUES ( '$sendingfrom', '$sendinto', 'pending','{$row['fullname']}','{$row['picture']}','{$row['occupation']}','{$row['address']}', CURRENT_TIMESTAMP)";
     $query_run = mysqli_query($con, $query);
 
     if($query_run)

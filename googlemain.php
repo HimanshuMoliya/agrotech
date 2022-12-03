@@ -53,6 +53,8 @@ if (isset($_GET['code'])) {
     // $email =  $google_account_info->email;
     // $name =  $google_account_info->name;
     $_SESSION['user_token'] = $userinfo['token'];
+    $_SESSION['sendfrom'] = $userinfo['id'];
+    $_SESSION['email'] =$userinfo['email'];
     header("location: index-02.php");
     // header("location: myprofile.php");
 

@@ -190,16 +190,29 @@ else{
                                                 <!-- <form enctype="multipart/form-data"> -->
                                                 <div class="mb-3">
                                                     <label for="exampleInputEmail1" class="form-label">Name</label>
-                                                    <input type="text" id="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $row['fullname'];  ?>">
+                                                    <input type="text" id="name" class="form-control" aria-describedby="emailHelp" value="<?php echo $row['fullname'];  ?>" required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                                                    <input type="password" id="password" class="form-control" id="exampleInputPassword1" >
+                                                    <label for="exampleInputPassword1" class="form-label">Address</label>
+                                                    <input type="text" id="address" class="form-control" id="exampleInputPassword1" value="<?php echo $row['address'];  ?>" required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="exampleInputEmail1" class="form-label">Profile Picture</label>
-                                                    <input type="file" id="dp" name="dp" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                    <label for="exampleInputPassword1" class="form-label">Gender</label>
+                                                    <input type="text" id="gender" class="form-control" id="exampleInputPassword1" value="<?php echo $row['gender'];  ?>" required>
                                                 </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label">Age</label>
+                                                    <input type="number" id="age" class="form-control" id="exampleInputPassword1" value="<?php echo $row['age'];  ?>" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label">Work Hours</label>
+                                                    <input type="number" id="workhour" class="form-control" id="exampleInputPassword1" value="<?php echo $row['workhour'];  ?>" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label">Approx Salary</label>
+                                                    <input type="number" id="approxsalary" class="form-control" id="exampleInputPassword1"  value="<?php echo $row['approxsalary'];  ?>" required>
+                                                </div>
+                                                
                                                 <div id="loader" style="display: none;text-align: center;">  
                                                     <img src="img/gif/load.gif" alt="" style="height: 3rem;width: 3rem;">
                                                 </div>
@@ -244,71 +257,68 @@ else{
                             <div class="row">
                             <div class="col-lg-12 mb-1-9 mb-lg-2-5">
                                 <div class="dashboard-title">
-                                    <h5 class="mb-0">Recent Applicants</h5>
+                                    <h5 class="mb-0">Recent Request</h5>
                                 </div>
                                 <div class="dashboard-widget">
                                     <div class="row mt-n1-9">
+                                        <?php
+                                        $p_id = $_SESSION['sendto'];
+                                        $id = $_SESSION['sendfrom'];
+                                        $query = "SELECT * FROM request WHERE sendingid = $p_id AND receivingid = $id";
+                                        $result = mysqli_query($con,$query);
 
-                                        <div class="col-xxl-6 mt-1-9">
-                                            <div class="card-style2">
-                                                <div class="card-body">
-                                                    <div class="d-sm-flex justify-content-between align-items-center">
-                                                        <div class="d-sm-flex text-center text-sm-start mb-4 mb-sm-0">
-                                                            <div class="flex-shrink-0 mb-3 mb-sm-0">
-                                                                <img src="img/candidate/candidate-01.jpg" alt="..." class="border-radius-50">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-sm-3">
-                                                                <h5><a href="employer-details.html">Olle Nurmi</a></h5>
-                                                                <div class="mb-3">
-                                                                    <span class="text-secondary me-2 display-30">Sr. Java Developer</span>
-                                                                    <span class="vertical-align-middle display-30"><i class="ti-location-pin pe-2 text-secondary"></i>UK</span>
-                                                                </div>
-                                                                <div>
-                                                                    <span class="company-info">App</span>
-                                                                    <span class="company-info">Development</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <ul class="list-style pl-0">
-                                                            <!-- <li><a href="#!"><span class="ti-eye"></span></a></li> -->
-                                                            <li><button ><span class="ti-check"></span></button></li>
-                                                            <li><button ><span class="ti-close"></span></button></li>
-                                                            <!-- <li><a href="#!"><span class="ti-trash"></span></a></li> -->
-                                                        </ul>
+                                        while($row = mysqli_fetch_assoc($result)){
+
+                                            
+                                            ?>
+                                        
+                            <div class="col-xxl-6 mt-1-9">
+                                <div class="card-style2">
+                                    <div class="card-body">
+                                        <div class="d-sm-flex justify-content-between align-items-center">
+                                            <div class="d-sm-flex text-center text-sm-start mb-4 mb-sm-0">
+                                                <div class="flex-shrink-0 mb-3 mb-sm-0">
+                                                <?php
+                                                if(isset($row['picture'])){
+                                                    ?>
+                                                <img src="<?php echo $row['picture']; ?>"  alt="..." class="border-radius-50">
+                                                <?php
+                                                }else{
+                                                    ?>
+                                                <img src="img/candidate/candidate-01.jpg" alt="..." class="border-radius-50">
+                                                    <?php
+                                                }
+                                                ?>
+                                                    
+                                                </div>
+                                                <div class="flex-grow-1 ms-sm-3  mt-4">
+                                                    <h5><a href="employer-details.html"><?php echo $row['fullname']; ?></a></h5>
+                                                    <div class="mb-3">
+                                                        <span class="text-secondary me-2 display-30"><?php echo $row['occupation']; ?></span>
+                                                        <span class="vertical-align-middle display-30"><i class="ti-location-pin pe-2 text-secondary"></i><?php echo $row['address']; ?></span>
                                                     </div>
+                                                    <!-- <div>
+                                                        <span class="company-info">App</span>
+                                                        <span class="company-info">Development</span>
+                                                    </div> -->
                                                 </div>
                                             </div>
+                                            <ul class="list-style pl-0">
+                                                <!-- <li><a href="#!"><span class="ti-eye"></span></a></li> -->
+                                                <li><button class="butn "><span class="ti-check"></span></button></li>
+                                                <li><button class="butn"><span class="ti-check"></span></button></li>
+                                                <!-- <li><button ><span class="ti-check"></span></button></li> -->
+                                                <!-- <li><button ><span class="ti-close"></span></button></li> -->
+                                                <!-- <li><a href="#!"><span class="ti-trash"></span></a></li> -->
+                                            </ul>
                                         </div>
-                                        <div class="col-xxl-6 mt-1-9">
-                                            <div class="card-style2">
-                                                <div class="card-body">
-                                                    <div class="d-sm-flex justify-content-between align-items-center">
-                                                        <div class="d-sm-flex text-center text-sm-start mb-4 mb-sm-0">
-                                                            <div class="flex-shrink-0 mb-3 mb-sm-0">
-                                                                <img src="img/candidate/candidate-02.jpg" alt="..." class="border-radius-50">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-sm-3">
-                                                                <h5><a href="employer-details.html">Selma Kolkkala</a></h5>
-                                                                <div class="mb-3">
-                                                                    <span class="text-secondary me-2 display-30">UI/UX Specialist</span>
-                                                                    <span class="vertical-align-middle display-30"><i class="ti-location-pin pe-2 text-secondary"></i>Australia</span>
-                                                                </div>
-                                                                <div>
-                                                                    <span class="company-info">App</span>
-                                                                    <span class="company-info">Design</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <ul class="list-style">
-                                                            <!-- <li><a href="#!"><span class="ti-eye"></span></a></li> -->
-                                                            <li><a href="#!"><span class="ti-check"></span></a></li>
-                                                            <li><a href="#!"><span class="ti-close"></span></a></li>
-                                                            <!-- <li><a href="#!"><span class="ti-trash"></span></a></li> -->
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                        
                                         
                                         
                                     </div>
@@ -1035,8 +1045,12 @@ else{
                     data: {
                         'update_req': true,
                         'name': $('#name').val(),
-                        'password': $('#password').val(),
-                        'dp': $('#dp').val()
+                        'address': $('#address').val(),
+                        'gender': $('#gender').val(),
+                        'age': $('#age').val(),
+                        'workhour': $('#workhour').val(),
+                        'approxsalary': $('#approxsalary').val(),
+                        
                     },
                     beforeSend: function(){
                         $("#loader").css("display", "block");
