@@ -65,7 +65,7 @@
                                     <div class="attr-nav align-items-lg-center ms-lg-auto">
                                         <ul>
                                             <li class="search"><a href="#!"><i class="fa fa-search"></i></a></li>
-                                            <li class="d-none d-xl-inline-block"><a href="employer-post-job.html"><?php 
+                                            <li class="d-none d-xl-inline-block"><a href="#"><?php 
                                              echo $userinfo['email'];
                                              ?></a></li>
                                             <li><a href="myprofile.php"> <div class="profile_img">
