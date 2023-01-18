@@ -345,6 +345,7 @@ else{
                     <div class="col-lg-8 mb-1-9 mb-lg-0">
                         <div class="pe-lg-1-6 pe-xl-1-9">
                             <div class="row">
+<<<<<<< HEAD
                             <div class="col-lg-12 mb-1-9 mb-lg-2-5">
                                 <div class="dashboard-title">
                                     <h5 class="mb-0">Recent Request</h5>
@@ -413,6 +414,9 @@ else{
                                     </div>
                                 </div>
                             </div>
+=======
+                            
+>>>>>>> 49d06184bb9de188ba93773e02499eda0819894a
                                 <div class="col-lg-12 mb-1-9 mb-lg-2-5">
                                     <div class="p-1-6 border border-color-extra-light-gray border-radius-10">
                                         <h4 class="mb-3">Candidates About :</h4>

@@ -256,7 +256,9 @@ i.fa.fa-search {
 
 .fprofile_btn{
     width: 100%;
-    max-width: 160px;
+    max-width: 160px;    
+    margin-top: 15px;
+
 }
 
 .fprofile_btn2{
@@ -270,6 +272,8 @@ i.fa.fa-search {
     max-width: 180px;
     position: relative;
     left: 305px;
+    margin-top: 15px;
+    margin-left: 104px;
 }
 
 
