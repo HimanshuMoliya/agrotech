@@ -31,9 +31,9 @@ else{
     }
   }
 }
-$sql = "SELECT `uid` FROM user_profile WHERE email = '$email'";
-$result = mysqli_query($con,$sql);
-$data = mysqli_fetch_assoc($result);
+$sql4 = "SELECT * FROM user_profile WHERE `email` = '$email'";
+$result4 = mysqli_query($con,$sql4);
+$data = mysqli_fetch_assoc($result4);
 $id = $data['uid'];
 $_SESSION['sendfrom'] =$id;
 

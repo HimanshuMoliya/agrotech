@@ -24,8 +24,7 @@ $v_code = rand ( 1000 , 9999 );
 
 
         $invalid = false;
-        if($_SERVER['REQUEST_METHOD'] = "post"){
-            if(isset($_POST['submit'])){
+            if(isset($_POST['email1'])){
                 $email = $_POST['email1'];
                 $pass = $_POST['password1'];
 
@@ -34,7 +33,7 @@ $v_code = rand ( 1000 , 9999 );
                 $row = mysqli_fetch_assoc($result);
                 if(mysqli_num_rows($result) > 0 ){
                   if($row['verified']==1){
-                
+                    echo "<script>console.log('email is verified')</script>";
                   
                     echo '<div class="alert alert-success" role="alert">
                             Successfully Login.
@@ -45,16 +44,17 @@ $v_code = rand ( 1000 , 9999 );
                     $_SESSION['id'] = $row['uid'];
                     // console.log($_SESSION['id']);
                     $_SESSION['verified'] = true;
-                    setcookie('email',$email,time()+60*60*24*30);
+                    // setcookie('email',$email,time()+60*60*24*30);
                     header("location: index-02.php");
                     // header("location: myprofile1.php");
                   
                 
               }else{
                 $notv = true;
+                echo "<script>console.log('email not veified')</script>";
               }
             }else{
-                   
+                   echo "<script>console.log('Invalid login details')</script>";
               $invalid = true;
               
               header("location: login.php");
@@ -63,7 +63,7 @@ $v_code = rand ( 1000 , 9999 );
                 
                 
             }
-        }
+        
     ?>
 
 <?php

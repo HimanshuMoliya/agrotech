@@ -27,6 +27,7 @@ else{
     }
   }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,9 +80,6 @@ else{
         background: rgba(38, 174, 97, 0.1);
         color: #26ae61;
         border-radius: 10px;
-        height: 34px;
-        width: 34px;
-        line-height: 36px;
         font-size: 15px;
         text-align: center;
         transition: all 300ms ease;
@@ -137,7 +135,8 @@ else{
                             <div class="row align-items-center">
                                 <div class="col-lg-9 mb-4 mb-lg-0">
                                     <div class="text-center text-lg-start d-lg-flex align-items-center">
-                                        <div class="flex-shrink-0 mb-4 mb-lg-0">
+                                        <div class="flex-shrink-0 mb-4 mb-lg-0" >
+                                            
                                         <?php
                                             $query = "SELECT * FROM user_profile WHERE email = '{$_SESSION['email']}'";
                                             $qres = mysqli_query($con,$query);
@@ -149,7 +148,7 @@ else{
                                             <img src="<?php echo $row['picture']; ?>" class="border-radius-50" alt="...">
                                             <?php
                                             }else{
-                                                ?>
+                                                ?> 
                                             <img src="img/avatar/user.png" style="width: 96px;height:96px;" class="border-radius-50" alt="...">
                                                 <?php
                                             }
@@ -165,7 +164,10 @@ else{
                                                 <span class="px-2 py-1 bg-primary text-white ms-2 display-31 border-radius-10">5.0</span>
                                             </div>
                                             
-                                            <h4 class="mb-3"><?php echo $row['fullname']; ?> </h4>
+                                            <h4 class="mb-3">
+                                            <?php 
+                                            echo $row['fullname']; 
+                                            ?> </h4>
                                             <span class="me-2"><i class="ti-briefcase pe-2 text-secondary"></i><?php
                                              if(isset($row['occupation'])){
                                                 echo $row['occupation'];  
@@ -345,7 +347,6 @@ else{
                     <div class="col-lg-8 mb-1-9 mb-lg-0">
                         <div class="pe-lg-1-6 pe-xl-1-9">
                             <div class="row">
-<<<<<<< HEAD
                             <div class="col-lg-12 mb-1-9 mb-lg-2-5">
                                 <div class="dashboard-title">
                                     <h5 class="mb-0">Recent Request</h5>
@@ -358,8 +359,9 @@ else{
                                         $id=  $_SESSION['id'];
                                         $query = "SELECT * FROM request WHERE receivingid = $id";
                                         $result = mysqli_query($con,$query);
-
+                                        
                                         while($row = mysqli_fetch_assoc($result)){
+                                            $rec_id = $row['sendingid'];
                                             ?>
                                         
                             <div class="col-xxl-6 mt-1-9">
@@ -367,22 +369,24 @@ else{
                                     <div class="card-body">
                                         <div class="d-sm-flex justify-content-between align-items-center">
                                             <div class="d-sm-flex text-center text-sm-start mb-4 mb-sm-0">
-                                                <div class="flex-shrink-0 mb-3 mb-sm-0">
+                                                <div class="flex-shrink-0 mb-3 mb-sm-0" style="margin-top: 1rem;">
                                                 <?php
                                                 if(isset($row['picture'])){
                                                     ?>
-                                                <img src="<?php echo $row['picture']; ?>"  alt="..." class="border-radius-50">
+                                                <img src="<?php echo $row['picture']; ?>"  alt="User Image" class="border-radius-50" style="height: 4rem;width: 4rem;">
                                                 <?php
                                                 }else{
                                                     ?>
-                                                <img src="img/candidate/candidate-01.jpg" alt="..." class="border-radius-50">
+                                                <img src="img/avatar/user.png" style="height: 4rem;width: 4rem;" alt="User Default Image" class="border-radius-50">
                                                     <?php
                                                 }
                                                 ?>
                                                     
                                                 </div>
                                                 <div class="flex-grow-1 ms-sm-3  mt-4">
-                                                    <h5><a href="employer-details.html"><?php echo $row['fullname']; ?></a></h5>
+                                                    <h5><a href="employer-details.html"><?php
+                                                     echo $row['fullname']; 
+                                                     ?></a></h5>
                                                     <div class="mb-3">
                                                         <span class="text-secondary me-2 display-30"><?php echo $row['occupation']; ?></span>
                                                         <span class="vertical-align-middle display-30"><i class="ti-location-pin pe-2 text-secondary"></i><?php echo $row['address']; ?></span>
@@ -395,8 +399,15 @@ else{
                                             </div>
                                             <ul class="list-style pl-0">
                                                 <!-- <li><a href="#!"><span class="ti-eye"></span></a></li> -->
-                                                <li><button class="butn "><span class="ti-check"></span></button></li>
-                                                <li><button class="butn"><span class="ti-check"></span></button></li>
+                                                <li>
+                                                    <input type="hidden" id="acc_inp" value="<?php echo $_SESSION['id'] ?>">
+                                                    <input type="hidden" id="rej_inp" value="<?php echo $rec_id ?>">
+                                                    <button class="butn acceptbtn" id="acceptbtn"><span class="ti-check"></span></button>
+                                                </li>
+                                                <li>
+                                                   
+                                                    <button class="butn" id="rejectbtn"><span class="ti-close"></span></button>
+                                                </li>
                                                 <!-- <li><button ><span class="ti-check"></span></button></li> -->
                                                 <!-- <li><button ><span class="ti-close"></span></button></li> -->
                                                 <!-- <li><a href="#!"><span class="ti-trash"></span></a></li> -->
@@ -414,9 +425,6 @@ else{
                                     </div>
                                 </div>
                             </div>
-=======
-                            
->>>>>>> 49d06184bb9de188ba93773e02499eda0819894a
                                 <div class="col-lg-12 mb-1-9 mb-lg-2-5">
                                     <div class="p-1-6 border border-color-extra-light-gray border-radius-10">
                                         <h4 class="mb-3">Candidates About :</h4>
@@ -1178,7 +1186,55 @@ else{
        
 
     </script>
+    <script>
+        $(document).on('click', '.acceptbtn', function (e) {
+            e.preventDefault();
+
+            
+                var student_id1 = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "request.php",
+                    data: {
+                        'accept_req': true,
+                        'acc_inp': $('#acc_inp').val(),
+                        'rej_inp': $('#rej_inp').val(),
+                        
+                    },
+                    beforeSend: function(){
+                        $("#loader").css("display", "block");
+                        $("#follow").css("display", "none");
+                    },
+                    
+                    complete: function(){
+                        $("#loader").css("display", "none");
+                        $("#follow").css("display", "block");
+                    },
+                    success: function (response) {
+
+                        var res = jQuery.parseJSON(response);
+                        if(res.status == 500) {
+                            console.log("error");
+                        }else{
+                            // alertify.set('notifier','position', 'top-right');
+                            // alertify.success(res.message);
+
+                            console.log("success");
+
+                            // $("#modal").css("display", "none");
+                            $('#exampleModalToggle').modal('hide');
+                            $('#actionBlock').load(location.href + " #actionBlock");
+                            
+                        }
+                    }
+                    
+                });
+        });
+       
+
+    </script>
 <!-- all js include end -->
+
 
 </body>
 
