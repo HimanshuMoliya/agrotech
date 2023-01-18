@@ -23,7 +23,7 @@ $v_code = rand ( 1000 , 9999 );
 
 
 
-$invalid = false;
+        $invalid = false;
         if($_SERVER['REQUEST_METHOD'] = "post"){
             if(isset($_POST['submit'])){
                 $email = $_POST['email1'];
@@ -57,7 +57,7 @@ $invalid = false;
                    
               $invalid = true;
               
-              // header("location: login.php");
+              header("location: login.php");
           }
                 
                 
@@ -83,31 +83,32 @@ $invalid = false;
             $row = mysqli_fetch_assoc($result_check);
             if($num_check > 0){
             $valid= true;
-                
+            echo "<script>console.log('email already exist')</script>";
                
             }
             
             else{
             if($password == $confirm_password){
-              
+              echo "<script>console.log('password config')</script>";
                 $user_id = rand ( 1000 , 999999 ); 
                 $insert = "INSERT INTO `register` ( `uid`,`occupation`, `first_name`, `last_name`, `email`, `phoneno`, `password`,`otp`,`verified`, `date`) VALUES ( $user_id,'farmer', '$first_name', '$last_name', '$mail', '$phoneno', '$password',$v_code,0, current_timestamp())";
 
                 $fullname = $first_name . ' ' .$last_name;
-                $sql = "INSERT INTO `user_profile` ( `picture`, `token`, `email`, `fullname`, `phoneno`, `address`, `gender`, `age`, `workhour`, `approxsalary`, `date`) VALUES ( NULL,NULL , '{$mail}', '{$fullname}', '{$phoneno}', NULL, NULL, NULL, NULL,NULL, CURRENT_TIMESTAMP);";
+                // echo $fullname;
+                $sql = "INSERT INTO `user_profile` ( `uid`,`picture`, `token`, `email`, `fullname`, `phoneno`, `address`, `gender`, `age`, `workhour`, `approxsalary`, `date`) VALUES ( $user_id,NULL,NULL , '{$mail}', '{$fullname}', '{$phoneno}', NULL, NULL, NULL, NULL,NULL, CURRENT_TIMESTAMP);";
                 // $insert_userprofile = "INSERT INTO `user_profile` (`id`, `email`, `fullname`, `profile_picture`, `about`, `birthdate`, `gender`, `city`, `mothertongue`, `hobbys`, `maritualstatus`, `ethencity`, `heighest_education`, `occupation`, `annual_income`, `height`, `weight`, `any_disability`, `my_habbits`, `verified`, `is_online`, `date`) VALUES ($user_id, '$mail', '$fullname', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, current_timestamp())";
                 $_SESSION['email'] = $mail;
                 $_SESSION['loggedin'] = true;
                 $_SESSION['online'] = "true";
-                $_SESSION['id'] = $row['uid'];
+                $_SESSION['id'] = $user_id;
 
                 $result_insert = mysqli_query($con,$insert);
                 $result_user = mysqli_query($con,$sql);
-
+                echo "<script>console.log('data inserted')</script>";
                 function sendMail($mail,$v_code) {
-                  require("phpmailer/PHPMailer.php");
-                  require("phpmailer/SMTP.php");
-                  require("phpmailer/Exception.php");
+                  require("phpmailer/src/PHPMailer.php");
+                  require("phpmailer/src/SMTP.php");
+                  require("phpmailer/src/Exception.php");
               
                  $mail = new PHPMailer(true);
                   try {
@@ -129,7 +130,7 @@ $invalid = false;
                       $mail->isHTML(true);    //Set email format to HTML
                       
                       $mail->Subject = 'Aggregate-Agro: Verify your email';
-                      $fname = $fullname;
+                      $fname = $GLOBALS['fullname'];
                       $mail->Body    = "Dear $fname, <br>
               
                       <p>Your OTP for Contact details verification is $v_code.  This OTP is valid for 15 minutes.</p><br>
@@ -152,10 +153,12 @@ $invalid = false;
 
               if($result_insert && $result_mail){
                 header("location: verifyotp.php");
+                echo "<script>console.log('otp sent')</script>";
             }else{
                 echo '<div class="alert alert-danger" role="alert">
                         server down
                     </div>';
+                    echo "<script>console.log('server down')</script>";
             }
 
                 // header("location: myprofile.php");

@@ -40,8 +40,12 @@ if (isset($_GET['code'])) {
         $userinfo = mysqli_fetch_assoc($result);
         $token = $userinfo['token'];
     }else{
-        $sql = "INSERT INTO `user_profile` ( `picture`, `token`, `email`, `fullname`, `phoneno`, `address`, `gender`, `age`, `workhour`, `approxsalary`, `date`) VALUES ( '{$userinfo['picture']}', {$userinfo['token']}, '{$userinfo['email']}', '{$userinfo['fullname']}', '4546554', 'falkjdflkj kajdflk', '{$userinfo['gender']}', '18', '10', '10000', CURRENT_TIMESTAMP);";
+        $user_id = rand ( 1000 , 999999 ); 
+        
+        $sql = "INSERT INTO `user_profile` (`uid`, `picture`, `token`, `email`, `fullname`, `phoneno`, `address`, `gender`, `age`, `workhour`, `approxsalary`, `date`) VALUES ($user_id, '{$userinfo['picture']}', {$userinfo['token']}, '{$userinfo['email']}', '{$userinfo['fullname']}', NULL, NULL, '{$userinfo['gender']}', NULL, NULL,NULL, CURRENT_TIMESTAMP);";
+        $insert = "INSERT INTO `register` ( `uid`,`occupation`, `first_name`, `last_name`, `email`, `phoneno`, `password`,`otp`,`verified`, `date`) VALUES ( $user_id,'farmer', NULL, NULL, '{$userinfo['email']}', NULL, NULL,NULL,1, current_timestamp())";
         $result = mysqli_query($con,$sql);
+        $result = mysqli_query($con,$insert);
         if($result){
             $token = $userinfo['token'];
         }else{
@@ -53,8 +57,10 @@ if (isset($_GET['code'])) {
     // $email =  $google_account_info->email;
     // $name =  $google_account_info->name;
     $_SESSION['user_token'] = $userinfo['token'];
-    $_SESSION['sendfrom'] = $userinfo['id'];
+    $_SESSION['sendfrom'] = $userinfo['uid'];
+    $_SESSION['id'] = $userinfo['uid'];
     $_SESSION['email'] =$userinfo['email'];
+    
     header("location: index-02.php");
     // header("location: myprofile.php");
 

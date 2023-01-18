@@ -52,3 +52,9 @@ age
 workhour
 approxsalary
 
+
+default mail
+gotobi8960@tohup.com
+
+password
+rr

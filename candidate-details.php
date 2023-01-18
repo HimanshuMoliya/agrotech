@@ -31,10 +31,10 @@ else{
     }
   }
 }
-$sql = "SELECT id FROM user_profile WHERE email = '$email'";
+$sql = "SELECT `uid` FROM user_profile WHERE email = '$email'";
 $result = mysqli_query($con,$sql);
 $data = mysqli_fetch_assoc($result);
-$id = $data['id'];
+$id = $data['uid'];
 $_SESSION['sendfrom'] =$id;
 
 ?>
@@ -126,7 +126,7 @@ $_SESSION['sendfrom'] =$id;
                                     <div class="text-center text-lg-start d-lg-flex align-items-center">
                                         <div class="flex-shrink-0 mb-4 mb-lg-0">
                                         <?php
-                                            $query = "SELECT * FROM user_profile WHERE id = $p_id";
+                                            $query = "SELECT * FROM user_profile WHERE `uid` = $p_id";
                                             $qres = mysqli_query($con,$query);
                                             $row = mysqli_fetch_assoc($qres);
 

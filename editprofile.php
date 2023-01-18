@@ -27,11 +27,12 @@ else{
   }
 }
 
-if(isset($_POST['update_req'])){
+if(isset($_POST['name'])){
     $name = $_POST['name'];
     $approxsalary = $_POST['approxsalary'];
     $address = $_POST['address'];
     $gender = $_POST['gender'];
+    $occupation = $_POST['occupation'];
     $age = $_POST['age'];
     $workhour = $_POST['workhour'];
     
@@ -64,8 +65,8 @@ if(isset($_POST['update_req'])){
     //         return;
     //     }
     // }else{
-
-        $query = "UPDATE `user_profile` SET `fullname` = '$name' , `address` = '$address' , `gender` = '$gender' , `age`='$age' , `workhour` = '$workhour' WHERE `user_profile`.`id` = $id";
+        
+        $query = "UPDATE `user_profile` SET `fullname` = '$name' ,`occupation` = '$occupation' , `address` = '$address' , `gender` = '$gender' , `age`='$age' , `workhour` = '$workhour' WHERE `user_profile`.`uid` = $id";
         $query_run = mysqli_query($con, $query);
     
         if($query_run)
@@ -89,6 +90,14 @@ if(isset($_POST['update_req'])){
     }
 
 
+// }
+// $id = $_SESSION['sendfrom'];
+// $query = "UPDATE `user_profile` SET `gender` = 'male' WHERE `user_profile`.`uid` = $id";
+// $query_run = mysqli_query($con, $query);
+// if($query_run){
+//     echo 'updated';
+// }else{
+//     echo "error";
 // }
 
 ?>

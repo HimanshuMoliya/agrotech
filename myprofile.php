@@ -166,10 +166,34 @@ else{
                                             </div>
                                             
                                             <h4 class="mb-3"><?php echo $row['fullname']; ?> </h4>
-                                            <span class="me-2"><i class="ti-briefcase pe-2 text-secondary"></i><?php echo $row['occupation']; ?></span>
-                                            <span class="me-2"><i class="ti-location-pin pe-2 text-secondary"></i><?php echo $row['address']; ?></span>
-                                            <span class="me-2"><i class="ti-time pe-2 text-secondary"></i><?php echo $row['workhour']; ?> Hour </span>
-                                            <span><i class="far fa-money-bill-alt pe-2 text-secondary"></i><?php echo $row['approxsalary']; ?></span>
+                                            <span class="me-2"><i class="ti-briefcase pe-2 text-secondary"></i><?php
+                                             if(isset($row['occupation'])){
+                                                echo $row['occupation'];  
+                                             }else{
+                                                echo "Not set";
+                                             }
+                                             ?> </span>
+                                            <span class="me-2"><i class="ti-location-pin pe-2 text-secondary"></i><?php
+                                             if(isset($row['address'])){
+                                                echo $row['address'];
+                                             }else{
+                                                echo "Not set";
+                                             }
+                                             ?></span>
+                                            <span class="me-2"><i class="ti-time pe-2 text-secondary"></i><?php
+                                             if(isset($row['workhour'])){
+                                                echo $row['workhour'];
+                                             }else{
+                                                echo "Not set";
+                                             }
+                                              ?> Hour </span>
+                                            <span><i class="far fa-money-bill-alt pe-2 text-secondary"></i><?php
+                                             if(isset($row['approxsalary'])){
+                                                echo $row['approxsalary'];
+                                             }else{
+                                                echo "Not set";
+                                             }
+                                             ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -198,7 +222,31 @@ else{
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="exampleInputPassword1" class="form-label">Gender</label>
-                                                    <input type="text" id="gender" class="form-control" id="exampleInputPassword1" value="<?php echo $row['gender'];  ?>" required>
+                                                    <div class="options d-flex" >
+                                                    <div class="form-check" style="padding-right:1rem">
+    <input class="form-check-input gender" type="radio" name="gender" value="male" id="male"  <?php 
+        if($row['gender'] == 'male'){
+            echo "checked";
+        }
+    ?>>
+    <label class="form-check-label" for="flexRadioDefault1">
+    Male 
+  </label>
+</div>
+<div class="form-check" style="padding-right:1rem">
+    <input class="form-check-input gender" type="radio" name="gender" value="female" id="female" <?php 
+        if($row['gender'] == 'female'){
+            echo "checked";
+        }
+    ?>>
+    <label class="form-check-label" for="flexRadioDefault2">
+    Female
+  </label>
+</div>
+    </div>
+                    
+
+                                                    
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="exampleInputPassword1" class="form-label">Age</label>
@@ -209,8 +257,50 @@ else{
                                                     <input type="number" id="workhour" class="form-control" id="exampleInputPassword1" value="<?php echo $row['workhour'];  ?>" required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="exampleInputPassword1" class="form-label">Approx Salary</label>
-                                                    <input type="number" id="approxsalary" class="form-control" id="exampleInputPassword1"  value="<?php echo $row['approxsalary'];  ?>" required>
+                                                    <label for="exampleInputPassword1" class="form-label">Occupation</label>
+        <?php
+        if(!isset($row['occupation'])){
+            echo "not set";
+        }else{
+        ?>
+                                                    <div class="options d-flex">
+                                                    <div class="form-check" style="padding-right:1rem">
+    <input class="form-check-input occupation "  type="radio" name="occupation" value="farmer"   <?php 
+        if($row['occupation'] == 'farmer'){
+            echo "checked";
+        }
+    ?>>
+    <label class="form-check-label" for="flexRadioDefault1">
+    Farmer 
+  </label>
+</div>
+<div class="form-check" style="padding-right:1rem">
+    <input class="form-check-input occupation" type="radio" name="occupation" value="worker"  <?php 
+        if($row['occupation'] == 'worker'){
+            echo "checked";
+        }
+    ?>>
+    <label class="form-check-label" for="flexRadioDefault2">
+    Worker
+  </label>
+</div>
+<div class="form-check" style="padding-right:1rem">
+    <input class="form-check-input occupation" type="radio" name="occupation" value="seller"   <?php 
+        if($row['occupation'] == 'seller'){
+            echo "checked";
+        }
+    ?>>
+    <label class="form-check-label" for="flexRadioDefault1">
+    Seller 
+  </label>
+</div>
+</div>
+<?php
+        }
+?>
+                    
+
+                                                    
                                                 </div>
                                                 
                                                 <div id="loader" style="display: none;text-align: center;">  
@@ -262,14 +352,13 @@ else{
                                 <div class="dashboard-widget">
                                     <div class="row mt-n1-9">
                                         <?php
-                                        $p_id = $_SESSION['sendto'];
-                                        $id = $_SESSION['sendfrom'];
-                                        $query = "SELECT * FROM request WHERE sendingid = $p_id AND receivingid = $id";
+                                        // $p_id = $_SESSION['sendto'];
+                                        // $id = $_SESSION['sendfrom'];
+                                        $id=  $_SESSION['id'];
+                                        $query = "SELECT * FROM request WHERE receivingid = $id";
                                         $result = mysqli_query($con,$query);
 
                                         while($row = mysqli_fetch_assoc($result)){
-
-                                            
                                             ?>
                                         
                             <div class="col-xxl-6 mt-1-9">
@@ -486,7 +575,7 @@ else{
                                                     <div class="col-md-6">
                                                         <div class="quform-element mb-3">
                                                             <div class="quform-input">
-                                                                <input class="form-control border-radius-10" id="name" type="text" name="name" placeholder="Your name here">
+                                                                <input class="form-control border-radius-10" type="text" name="name" placeholder="Your name here">
                                                             </div>
                                                         </div>
 
@@ -582,7 +671,7 @@ else{
                                                         <div class="quform-element form-group">
                                                             <label for="name">Your Name <span class="quform-required">*</span></label>
                                                             <div class="quform-input">
-                                                                <input class="form-control border-radius-10" id="name" type="text" name="name" placeholder="Your name here" />
+                                                                <input class="form-control border-radius-10"type="text" name="name" placeholder="Your name here" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -593,7 +682,7 @@ else{
                                                         <div class="quform-element form-group">
                                                             <label for="email">Your Email <span class="quform-required">*</span></label>
                                                             <div class="quform-input">
-                                                                <input class="form-control border-radius-10" id="email" type="text" name="email" placeholder="Your email here" />
+                                                                <input class="form-control border-radius-10" type="text" name="email" placeholder="Your email here" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -604,7 +693,7 @@ else{
                                                         <div class="quform-element form-group">
                                                             <label for="subject">Your Subject <span class="quform-required">*</span></label>
                                                             <div class="quform-input">
-                                                                <input class="form-control border-radius-10" id="subject" type="text" name="subject" placeholder="Your subject here" />
+                                                                <input class="form-control border-radius-10" type="text" name="subject" placeholder="Your subject here" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -615,7 +704,7 @@ else{
                                                         <div class="quform-element form-group">
                                                             <label for="phone">Contact Number</label>
                                                             <div class="quform-input">
-                                                                <input class="form-control border-radius-10" id="phone" type="text" name="phone" placeholder="Your phone here" />
+                                                                <input class="form-control border-radius-10" type="text" name="phone" placeholder="Your phone here" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -626,7 +715,7 @@ else{
                                                         <div class="quform-element form-group">
                                                             <label for="message">Message <span class="quform-required">*</span></label>
                                                             <div class="quform-input">
-                                                                <textarea class="form-control border-radius-10" id="message" name="message" rows="3" placeholder="Tell us a few words"></textarea>
+                                                                <textarea class="form-control border-radius-10" name="message" rows="3" placeholder="Tell us a few words"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1046,7 +1135,8 @@ else{
                         'update_req': true,
                         'name': $('#name').val(),
                         'address': $('#address').val(),
-                        'gender': $('#gender').val(),
+                        'gender': $('input[name="gender"]:checked').val(),
+                        'gender': $('input[name="occupation"]:checked').val(),
                         'age': $('#age').val(),
                         'workhour': $('#workhour').val(),
                         'approxsalary': $('#approxsalary').val(),
@@ -1056,6 +1146,7 @@ else{
                         $("#loader").css("display", "block");
                         $("#follow").css("display", "none");
                     },
+                    
                     complete: function(){
                         $("#loader").css("display", "none");
                         $("#follow").css("display", "block");

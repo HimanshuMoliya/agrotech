@@ -248,8 +248,8 @@ i.fa.fa-search {
                                     $select = "SELECT * FROM `user_profile` WHERE `occupation` = 'farmer'";
                                     $select_r = mysqli_query($con,$select);
                                 
-                                    $num = mysqli_num_rows($select_r);
-                                    if($num > 0){
+                                    $num3 = mysqli_num_rows($select_r);
+                                    if($num3 > 0){
                                         while($row = mysqli_fetch_assoc($select_r)){
                                             ?>
                                             <div class="col-md-6 mt-1-9">
@@ -264,7 +264,7 @@ i.fa.fa-search {
                                                                 <?php 
                                                                 }else{
                                                                     ?>
-                                                                    <img src="img/logos/person1.jpg" class="border-radius-50 w-40px" alt="...">
+                                                                    <img src="img/avatar/user.png" class="border-radius-50 w-40px" alt="...">
                                                                     <?php
                                                                 }
                                                                 ?>

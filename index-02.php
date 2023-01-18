@@ -576,18 +576,24 @@ i.fa.fa-search {
                 </div>
                 <div class="row mt-n1-9">
                     <?php
-                    $sql = "SELECT * FROM user_profile WHERE occupation = 'farmer' AND requested = 1";
-                    $result = mysqli_query($con,$sql);
-                    $num = mysqli_num_rows($result);
-                        
-                        while($row = mysqli_fetch_assoc($result)){
+                    $sql55 = "SELECT * FROM user_profile";
+                    $result55 = mysqli_query($con,$sql55);
+                    $num55 = mysqli_num_rows($result55);
+                        if($num55 > 0){
+                        while($row = mysqli_fetch_assoc($result55)){
                        ?>
                     <div class="col-md-6 col-lg-4 mt-1-9">
                         <div class="card border-color-extra-light-gray h-100 border-radius-5">
                             <div class="card-body p-1-6 p-xl-1-9">
                                 <div class="d-flex mb-3">
                                     <div class="flex-shrink-0">
-                                        <img src="<?php echo $row['picture']; ?>" class="border-radius-50 w-40px" alt="...">
+                                        <img src="<?php
+                                        if(isset($row['picture'])){
+                                            echo $row['picture'];
+                                        }else{
+                                            echo "img/avatar/user.png";
+                                        }
+                                        ?>" class="border-radius-50 w-40px" alt="...">
                                     </div>
                                     <div class="flex-grow-1 ms-3">
                                         <h6 class="mb-0"><?php echo $row['fullname']; ?></h6>
@@ -602,7 +608,7 @@ i.fa.fa-search {
                                     <span class="display-30 me-2"><i class="fas fa-map-marker-alt pe-2"></i><?php echo $row['address']; ?></span>
                                     <span class="display-30"><i class="far fa-clock pe-2"></i><?php echo $row['workhour']; ?></span>
                                 </div>
-                                <a href="job-details.php?id=<?php echo $row['id'] ?>" class="butn butn-md radius">Apply Now</a>
+                                <a href="job-details.php?id=<?php echo $row['uid'] ?>" class="butn butn-md radius">Apply Now</a>
 
                                 
                                 <div class="farmer_con">
@@ -617,7 +623,9 @@ i.fa.fa-search {
                     </div>
                     <?php
                         }
-                        
+                    }else{
+                        echo "NO data found";
+                    }
                         ?>
                     <!-- <div class="col-md-6 col-lg-4 mt-1-9">
                         <div class="card border-color-extra-light-gray h-100 border-radius-5">
@@ -853,11 +861,11 @@ i.fa.fa-search {
                 </div>
                 <div class="featured-candidate owl-carousel owl-theme">
                     <?php
-                      $sql = "SELECT * FROM user_profile WHERE `email` NOT IN ('{$_SESSION['email']}') AND occupation = 'worker' limit 5 ";
-                      $result = mysqli_query($con,$sql);
-                      $num = mysqli_num_rows($result);
-                          
-                          while($row1 = mysqli_fetch_assoc($result)){
+                      $sql56 = "SELECT * FROM user_profile WHERE `email` NOT IN ('{$_SESSION['email']}')  limit 5 ";
+                      $result56 = mysqli_query($con,$sql56);
+                      $num56 = mysqli_num_rows($result56);
+                          if($num56 > 0){
+                          while($row1 = mysqli_fetch_assoc($result56)){
                     ?>
                     <div class="card card-style7">
                         <div class="card-body">
@@ -877,7 +885,7 @@ i.fa.fa-search {
                           }
                             ?>
                             <div class="candidate-info">
-                                <h4 class="h5"><a href="candidate-details.php?id=<?php echo $row1['id']; ?>"><?php echo $row1['fullname']; ?></a></h4>
+                                <h4 class="h5"><a href="candidate-details.php?id=<?php echo $row1['uid']; ?>"><?php echo $row1['fullname']; ?></a></h4>
                                 <span class="display-30 text-muted d-block mb-2 font-weight-500"></span>
                                 <div class="display-30 text-warning">
                                     <i class="fas fa-star"></i>
@@ -888,18 +896,44 @@ i.fa.fa-search {
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between mb-3">
-                                <span><i class="ti-location-pin text-secondary me-2 display-31 display-sm-30"></i><strong><?php echo substr($row1['address'],0,5).'..'; ?></strong></span>
-                                <span><i class="far fa-money-bill-alt text-secondary me-2 display-31 display-sm-30"></i><strong><?php echo $row1['approxsalary']; ?> / Month</strong></span>
-                                <span><i class="ti-briefcase text-secondary me-2 display-31 display-sm-30"></i><strong><?php echo $row1['workhour']; ?></strong></span>
+                                <span><i class="ti-location-pin text-secondary me-2 display-31 display-sm-30"></i><strong>
+                                    <?php 
+                                    if($row1['address'] == NULL){
+                                        echo substr("Address Notset",0,5).'..';
+                                    }else{
+                                        echo substr($row1['address'],0,5).'..'; 
+                                    }
+
+                                    ?></strong></span>
+                                <span><i class="far fa-money-bill-alt text-secondary me-2 display-31 display-sm-30"></i><strong><?php
+                                if($row1['approxsalary'] == NULL){
+                                    echo substr("Sallary Notset",0,5).'..';
+                                }else{
+                                    echo $row1['approxsalary']; 
+                                }
+                                 ?> / Month</strong></span>
+                                <span><i class="ti-briefcase text-secondary me-2 display-31 display-sm-30"></i><strong>
+                                    <?php 
+                                    if($row1['workhour'] == NULL){
+                                        echo substr("WorkHour Notset",0,5).'..';
+                                    }else{
+                                        echo $row1['workhour']; 
+                                    }
+                                    
+                                    ?></strong></span>
                             </div>
-                            <a href="candidate-details.php?id=<?php echo $row1['id']; ?>" class="butn w-100 radius">View Profile</a>
+                            <a href="candidate-details.php?id=<?php echo $row1['uid']; ?>" class="butn w-100 radius">View Profile</a>
                         </div>
                     </div>
                     <?php
                           }
+                        }
+                        else{
+                          echo "Data not found";
+                        }
                     ?>
                 </div>
-                <a href="candidate-details.html" class="butn w-100 radius fprofile_btn">More Profile <i class="fa-solid fa-arrow-right"></i></a>
+                <!-- <a href="candidate-details.html" class="butn w-100 radius fprofile_btn">More Profile <i class="fa-solid fa-arrow-right"></i></a> -->
             </div>
         </section>
 

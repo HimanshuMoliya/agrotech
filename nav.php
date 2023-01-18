@@ -69,6 +69,7 @@
                                              echo $userinfo['email'];
                                              ?></a></li>
                                             <li><a href="myprofile.php"> <div class="profile_img">
+                                                
                                             <?php
                                             if(isset($userinfo['picture'])){
                                                 ?>
@@ -76,7 +77,7 @@
                                                 <?php
                                             }else{
                                                 ?>
-                                                <img class="rounded-circle" alt="100x100" src="img/logos/person1.jpg" data-holder-rendered="true" style="width: 52px;height: 52px;">
+                                                <img class="rounded-circle" alt="100x100" src="img/avatar/user.png" data-holder-rendered="true" style="width: 50px;height: 45px;">
                                                 <?php
                                             }
                                             ?>
